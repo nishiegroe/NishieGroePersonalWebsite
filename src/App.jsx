@@ -1,5 +1,4 @@
-import { useState } from "react";
-import profilePic from "../";
+import profilePic from "./assets/Profile Pic.jpg";
 import "./App.css";
 
 function App() {
