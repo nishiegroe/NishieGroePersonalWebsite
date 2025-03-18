@@ -1,11 +1,14 @@
-import profilePic from "./assets/Profile Pic.jpg";
 import "./App.css";
+import Header from "./components/Header.tsx";
+import { Typography } from "@mui/material";
 
 function App() {
   return (
     <div className="app">
-      <img src={profilePic} className="logo" alt="Vite logo" />
-      <h1>Hi! I'm Nishie.</h1>
+      <Header />
+      <Typography sx={{ padding: "2em" }} color="black" variant="h3">
+        Website in progress...
+      </Typography>
     </div>
   );
 }

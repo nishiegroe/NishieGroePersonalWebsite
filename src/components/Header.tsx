@@ -1,12 +1,27 @@
 import React from "react";
+import profilePic from "../assets/Profile Pic.jpg";
+import { Avatar, Card, Typography } from "@mui/material";
 
-const MyComponent: React = ({ name, age }) => {
+const Header = () => {
   return (
-    <div>
-      <h1>Hello, {name}!</h1>
-      {age && <p>You are {age} years old.</p>}
-    </div>
+    <Card
+      className="header"
+      style={{
+        padding: "5px",
+        backgroundColor: "#FDFAF6",
+        display: "flex",
+        position: "absolute",
+        top: "15px",
+        justifySelf: "anchor-center",
+        borderRadius: "15px",
+      }}
+    >
+      <Avatar src={profilePic} className="logo" sx={{ mr: 2 }} />
+      <Typography variant="h4" className="logo">
+        Nishie Groe
+      </Typography>
+    </Card>
   );
 };
 
-export default MyComponent;
+export default Header;
