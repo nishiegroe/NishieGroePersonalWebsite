@@ -15,7 +15,7 @@ const Introduction = () => {
       }}
     >
       <div
-        style={{ width: "50%", alignContent: "center", marginRight: "60px" }}
+        style={{ width: "50%", alignContent: "center", marginRight: "80px" }}
       >
         <Typography variant="h2">
           Hey! I'm <span style={{ color: "#36C0F0" }}>Nishie</span>,
@@ -25,7 +25,7 @@ const Introduction = () => {
         <Typography variant="body1" sx={{ textAlign: "left" }} fontSize="20px">
           Software Engineer with a bachelor's degree from WIU in MIS and over 7
           years of experience at a leading Fortune 500 company, excelling in
-          full-stack and frontend development and Agile methodologies.
+          full-stack development, frontend development, and Agile methodologies.
           Demonstrates a visionary approach to system architecture and user
           experience, leveraging skills in ReactJS/AngularJS, microservices, and
           AWS. Proven ability to lead international teams and streamline
