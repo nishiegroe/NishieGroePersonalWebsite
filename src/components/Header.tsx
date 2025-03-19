@@ -4,9 +4,8 @@ import profilePic from "../assets/Profile Pic.jpg";
 import resume from "../assets/Nishie-Groe-Software Engineer March.pdf";
 import ArticleIcon from "@mui/icons-material/Article";
 
-const Header = ({ firstRowRef, secondRowRef }) => {
+const Header = ({ firstRowRef, secondRowRef, thirdRowRef }) => {
   const scrollToSection = (elementRef: { current: { offsetTop: any } }) => {
-    console.log(secondRowRef);
     window.scrollTo({
       top: elementRef.current.offsetTop - 80,
       behavior: "smooth",
@@ -91,6 +90,23 @@ const Header = ({ firstRowRef, secondRowRef }) => {
             }}
           >
             Employment History
+          </Typography>
+        </Card>{" "}
+        <Card sx={{ backgroundColor: "#E4EFE7", ml: 1 }}>
+          <Typography
+            variant="h6"
+            sx={{
+              ml: 1,
+              mr: 1,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+            }}
+            onClick={(e) => {
+              scrollToSection(thirdRowRef);
+            }}
+          >
+            Contact Info
           </Typography>
         </Card>{" "}
         <Card sx={{ backgroundColor: "#E4EFE7", ml: 50 }}>

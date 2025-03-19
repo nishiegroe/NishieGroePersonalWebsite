@@ -6,14 +6,20 @@ import "./App.css";
 import Introduction from "./components/Introduction.tsx";
 import Skills from "./components/Skills.tsx";
 import EmploymentHistory from "./components/EmploymentHistory.tsx";
+import Contact from "./components/Contact.tsx";
 
 function App() {
   const firstRowRef = useRef(null);
   const secondRowRef = useRef(null);
+  const thirdRowRef = useRef(null);
 
   return (
     <div className="app">
-      <Header firstRowRef={firstRowRef} secondRowRef={secondRowRef} />
+      <Header
+        firstRowRef={firstRowRef}
+        secondRowRef={secondRowRef}
+        thirdRowRef={thirdRowRef}
+      />
       <div className="body" style={{ marginTop: "50px" }}>
         <div ref={firstRowRef}>
           <Introduction />
@@ -26,9 +32,9 @@ function App() {
           <Skills />
           <EmploymentHistory />
         </div>
-        <Typography sx={{ padding: "2em" }} color="black" variant="h3">
-          More to come!
-        </Typography>
+        <div id="thirdrow" ref={thirdRowRef}>
+          <Contact />
+        </div>
       </div>
     </div>
   );
