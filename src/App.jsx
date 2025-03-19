@@ -1,6 +1,7 @@
-import "./App.css";
-import Header from "./components/Header.tsx";
 import { Typography } from "@mui/material";
+import Header from "./components/Header.tsx";
+
+import "./App.css";
 
 function App() {
   return (
