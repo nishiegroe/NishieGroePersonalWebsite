@@ -52,8 +52,7 @@ const Contact = () => {
           >
             <Phone />
             <Typography variant="body3">
-              Phone:{" "}
-              <Link href="tel: NishieGroe@gmail.com">(815) 219-9863</Link>
+              Phone: <Link href="tel: 815-219-9863">(815) 219-9863</Link>
             </Typography>
           </div>
         </div>
