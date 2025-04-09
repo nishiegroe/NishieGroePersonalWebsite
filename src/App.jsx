@@ -7,6 +7,7 @@ import Introduction from "./components/Introduction.tsx";
 import Skills from "./components/Skills.tsx";
 import EmploymentHistory from "./components/EmploymentHistory.tsx";
 import Contact from "./components/Contact.tsx";
+import JobSearch from "./components/JobSearch.tsx";
 
 function App() {
   const firstRowRef = useRef(null);
@@ -35,6 +36,7 @@ function App() {
         <div id="thirdrow" ref={thirdRowRef}>
           <Contact />
         </div>
+        <JobSearch />
       </div>
     </div>
   );
