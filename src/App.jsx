@@ -36,7 +36,6 @@ function App() {
         <div id="thirdrow" ref={thirdRowRef}>
           <Contact />
         </div>
-        <JobSearch />
       </div>
     </div>
   );
