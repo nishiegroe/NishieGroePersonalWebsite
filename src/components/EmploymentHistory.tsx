@@ -26,7 +26,13 @@ const EmploymentHistory = () => {
       <Typography variant="h4">Employment History</Typography>
       <Card sx={{ p: 1, m: 1, bgcolor: "", pr: 3 }}>
         <Typography variant="h6" align="left">
-          Senior Software Engineer - John Deere (Moline)
+          <Typography
+            variant="h6"
+            sx={{ display: "inline", fontWeight: "bold" }}
+          >
+            Senior Software Engineer
+          </Typography>
+          - John Deere (Moline)
         </Typography>
         <List sx={{ listStyleType: "disc" }}>
           <ListItem sx={{ display: "list-item", left: "20px", p: 0 }}>
@@ -86,7 +92,13 @@ const EmploymentHistory = () => {
       </Card>
       <Card sx={{ p: 1, m: 1, pr: 3 }}>
         <Typography variant="h6" align="left">
-          Software Engineer - John Deere (Moline)
+          <Typography
+            variant="h6"
+            sx={{ display: "inline", fontWeight: "bold" }}
+          >
+            Software Engineer
+          </Typography>
+          - John Deere (Moline)
         </Typography>
 
         <List sx={{ listStyleType: "disc" }}>
@@ -112,7 +124,13 @@ const EmploymentHistory = () => {
       </Card>
       <Card sx={{ p: 1, m: 1, bgcolor: "", pr: 3 }}>
         <Typography variant="h6" align="left">
-          Engineering Development Program - John Deere (Moline)
+          <Typography
+            variant="h6"
+            sx={{ display: "inline", fontWeight: "bold" }}
+          >
+            IT Engineering Development Program
+          </Typography>
+          - John Deere (Moline)
         </Typography>
 
         <List sx={{ listStyleType: "disc" }}>
