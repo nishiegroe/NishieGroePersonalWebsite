@@ -32,6 +32,7 @@ function App() {
             marginLeft: "-15px",
             padding: "0px",
             display: { lg: "none", md: "flex", sm: "flex", xs: "flex" },
+            placeContent: "center",
           }}
           ref={SkillsRef}
           className="skillsContainer"

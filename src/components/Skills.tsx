@@ -56,7 +56,7 @@ const Skills = () => {
         >
           {skill}
         </Typography>
-        <Rating value={rating} readOnly />
+        <Rating sx={{ marginLeft: "auto" }} value={rating} readOnly />
       </div>
     );
   };
@@ -68,23 +68,20 @@ const Skills = () => {
         backgroundColor: "#FDFAF6",
         padding: "5px",
         margin: "15px",
-        width: "100%",
+        width: {
+          xs: "400px",
+          sm: "400px",
+          md: "400px",
+          lg: "60vw",
+          xl: "50vw",
+        },
+        minWidth: "400px",
       }}
     >
       <Typography variant="h4" sx={{ mb: 2 }}>
         Skills
       </Typography>
-      <Container
-        sx={{
-          justifyItems: {
-            lg: "initial",
-            md: "right",
-            sm: "right",
-            xs: "right",
-          },
-          paddingRight: { md: "25%", sm: "25%", xs: "25%" },
-        }}
-      >
+      <Container>
         {skillSet.map((skill, index) => {
           return addSkill(skill[0], skill[1], index);
         })}
