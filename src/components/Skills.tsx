@@ -1,5 +1,12 @@
 import React from "react";
-import { Avatar, Card, Tooltip, Typography, Rating } from "@mui/material";
+import {
+  Avatar,
+  Card,
+  Tooltip,
+  Typography,
+  Rating,
+  Container,
+} from "@mui/material";
 
 const Skills = () => {
   var skillSet: [string, number][] = [
@@ -12,9 +19,14 @@ const Skills = () => {
     ["Support Management", 5],
     ["Communication", 5],
     ["Agile Methodology", 4],
+    ["React Testing Library", 4],
     ["AngularJS", 4],
     ["CSS", 4],
     ["Amazon Web Services (AWS)", 4],
+    ["Node.js ", 4],
+    ["HTML", 4],
+    ["Jira", 4],
+    ["RESTful APIs", 4],
     ["CI/CD", 4],
     ["REST API's", 4],
     ["IaaS", 4],
@@ -23,7 +35,7 @@ const Skills = () => {
     ["Cross-Team Collaboration", 4],
     ["System Architecture", 4],
     ["Microservices", 3],
-    ["Team Leadership", 3],
+    ["Jest", 3],
     ["Java", 3],
     ["Drone", 3],
     ["Spring/Springboot", 2],
@@ -40,7 +52,7 @@ const Skills = () => {
       >
         <Typography
           variant="body1"
-          sx={{ width: "70%", textAlign: "right", pr: 2 }}
+          sx={{ textAlign: "right", pr: 2, textWrap: "nowrap" }}
         >
           {skill}
         </Typography>
@@ -56,15 +68,27 @@ const Skills = () => {
         backgroundColor: "#FDFAF6",
         padding: "5px",
         margin: "15px",
-        width: "30%",
+        width: "100%",
       }}
     >
-      <Typography variant="h3" sx={{ mb: 2 }}>
+      <Typography variant="h4" sx={{ mb: 2 }}>
         Skills
       </Typography>
-      {skillSet.map((skill, index) => {
-        return addSkill(skill[0], skill[1], index);
-      })}
+      <Container
+        sx={{
+          justifyItems: {
+            lg: "initial",
+            md: "right",
+            sm: "right",
+            xs: "right",
+          },
+          paddingRight: { md: "25%", sm: "25%", xs: "25%" },
+        }}
+      >
+        {skillSet.map((skill, index) => {
+          return addSkill(skill[0], skill[1], index);
+        })}
+      </Container>
     </Card>
   );
 };

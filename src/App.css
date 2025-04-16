@@ -39,3 +39,20 @@
 .read-the-docs {
   color: #888;
 }
+
+#transparentTop {
+  background: white;
+  position: "fixed";
+  top: "16";
+  justify-self: "anchor-center";
+  left: "0";
+  z-index: "998";
+  opacity: "0.5";
+  transition: "opacity 0.5s";
+  &:hover {
+    opacity: "1";
+  }
+  &:active {
+    opacity: "0.5";
+  }
+}

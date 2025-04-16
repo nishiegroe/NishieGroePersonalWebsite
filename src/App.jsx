@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import Header from "./components/Header.tsx";
 import React, { useRef } from "react";
 
@@ -7,33 +7,61 @@ import Introduction from "./components/Introduction.tsx";
 import Skills from "./components/Skills.tsx";
 import EmploymentHistory from "./components/EmploymentHistory.tsx";
 import Contact from "./components/Contact.tsx";
-import JobSearch from "./components/JobSearch.tsx";
 
 function App() {
-  const firstRowRef = useRef(null);
-  const secondRowRef = useRef(null);
-  const thirdRowRef = useRef(null);
+  const IntroRef = useRef(null);
+  const SkillsRef = useRef(null);
+  const EmploymentHistoryRef = useRef(null);
+  const ContactRef = useRef(null);
 
   return (
     <div className="app">
       <Header
-        firstRowRef={firstRowRef}
-        secondRowRef={secondRowRef}
-        thirdRowRef={thirdRowRef}
+        IntroRef={IntroRef}
+        SkillsRef={SkillsRef}
+        EmploymentHistoryRef={EmploymentHistoryRef}
+        ContactRef={ContactRef}
       />
       <div className="body" style={{ marginTop: "50px" }}>
-        <div ref={firstRowRef}>
+        <div ref={IntroRef}>
           <Introduction />
         </div>
-        <div
-          ref={secondRowRef}
-          id="secondRow"
-          style={{ display: "flex", flexDirection: "row" }}
+        <Container
+          sx={{
+            paddingLeft: "-15px",
+            marginLeft: "-15px",
+            padding: "0px",
+            display: { lg: "none", md: "flex", sm: "flex", xs: "flex" },
+          }}
+          ref={SkillsRef}
+          className="skillsContainer"
         >
           <Skills />
-          <EmploymentHistory />
+        </Container>
+        <div id="secondRow" style={{ display: "flex", flexDirection: "row" }}>
+          <Container
+            sx={{
+              display: { lg: "flex", md: "none", sm: "none", xs: "none" },
+              width: "40%",
+            }}
+            ref={SkillsRef}
+            className="skillsContainer"
+          >
+            <Skills />
+          </Container>
+          <Container
+            sx={{
+              pl: "0px",
+              mr: "15px",
+              width: { lg: "70%", md: "100%", sm: "100%", xs: "100%" },
+            }}
+            ref={EmploymentHistoryRef}
+          >
+            <EmploymentHistory />
+          </Container>
         </div>
-        <div id="thirdrow" ref={thirdRowRef}>
+
+        <div id="thirdrow" ref={ContactRef}>
           <Contact />
         </div>
       </div>

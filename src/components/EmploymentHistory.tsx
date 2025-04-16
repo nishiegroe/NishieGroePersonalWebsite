@@ -16,13 +16,14 @@ const EmploymentHistory = () => {
       className="header"
       sx={{
         backgroundColor: "#FDFAF6",
-        padding: "5px",
-        margin: "15px",
+        marginRight: "15px",
+        marginTop: "15px",
+        marginBottom: "15px",
         placeContent: "center",
-        width: "70%",
+        width: "100%",
       }}
     >
-      <Typography variant="h3">Employment History</Typography>
+      <Typography variant="h4">Employment History</Typography>
       <Card sx={{ p: 1, m: 1, bgcolor: "", pr: 3 }}>
         <Typography variant="h6" align="left">
           Senior Software Engineer - John Deere (Moline)

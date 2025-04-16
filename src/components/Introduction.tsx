@@ -1,5 +1,5 @@
 import React from "react";
-import { Avatar, Card, Tooltip, Typography } from "@mui/material";
+import { Avatar, Card, Container, Tooltip, Typography } from "@mui/material";
 import img1 from "../assets/IMG_2444.jpg";
 
 const Introduction = () => {
@@ -14,13 +14,32 @@ const Introduction = () => {
         placeContent: "center",
       }}
     >
-      <div
-        style={{ width: "50%", alignContent: "center", marginRight: "80px" }}
-      >
-        <Typography variant="h2">
-          Hey! I'm <span style={{ color: "#36C0F0" }}>Nishie</span>,
-        </Typography>
-        <br />
+      <Container style={{ alignContent: "center" }}>
+        <Container
+          sx={{ display: "flex", alignItems: "center", placeContent: "center" }}
+        >
+          <Typography variant={"h2"}>
+            Hey! I'm <span style={{ color: "#36C0F0" }}>Nishie</span>,
+          </Typography>
+          <Container
+            sx={{
+              display: { lg: "none", md: "flex", sm: "flex", xs: "flex" },
+              width: "112px",
+              margin: 0,
+              ml: 2,
+            }}
+          >
+            <img
+              src={img1}
+              style={{
+                height: "150px",
+                width: "112px",
+                borderRadius: "20px",
+              }}
+            />
+          </Container>
+        </Container>
+
         <br />
         <Typography variant="body1" sx={{ textAlign: "left" }} fontSize="20px">
           Software Engineer with a bachelor's degree from WIU in MIS and over 7
@@ -32,13 +51,24 @@ const Introduction = () => {
           software lifecycles. Passionate about empowering teams and enhancing
           software lifecycles to achieve strategic business objectives.
         </Typography>
-      </div>
-      <div style={{ width: "30%", marginRight: "-15px" }}>
+      </Container>
+      <Container
+        sx={{
+          display: { lg: "flex", md: "none", sm: "none", xs: "none" },
+          width: "30%",
+          marginRight: "-15px",
+          minWidth: "100px",
+        }}
+      >
         <img
           src={img1}
-          style={{ maxWidth: "100%", height: "auto", borderRadius: "20px" }}
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            borderRadius: "20px",
+          }}
         />
-      </div>
+      </Container>
     </Card>
   );
 };
