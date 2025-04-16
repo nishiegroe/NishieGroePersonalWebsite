@@ -1,5 +1,5 @@
-import React, { forwardRef } from "react";
-import { Avatar, Card, Tooltip, Typography, Link } from "@mui/material";
+import React from "react";
+import { Card, Typography, Link } from "@mui/material";
 import image from "../assets/IMG_2521.jpg";
 import { Email, Phone } from "@mui/icons-material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -17,7 +17,6 @@ const Contact = () => {
         borderRadius: "15px",
       }}
     >
-      <Typography variant="h4">Contact Info:</Typography>
       <div
         style={{
           display: "flex",
@@ -30,8 +29,9 @@ const Contact = () => {
             flexDirection: "column",
           }}
         >
-          <div style={{ display: "flex" }}>
-            <Typography variant="body1" width="400px" sx={{ mt: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <Typography variant="h4">Contact Info</Typography>
+            <Typography variant="body1" width="400px" sx={{ mt: 4 }}>
               Want to get in contact? I'm available most times/days every week.
               Give me a call or shoot me an email!
             </Typography>
