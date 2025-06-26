@@ -1,4 +1,3 @@
-import React from 'react'
 import {
     Avatar,
     Card,
@@ -15,15 +14,6 @@ import Email from '@mui/icons-material/Email'
 import GitHub from '@mui/icons-material/GitHub'
 
 const Header = () => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-    const open = Boolean(anchorEl)
-    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget)
-    }
-    const handleClose = () => {
-        setAnchorEl(null)
-    }
-
     return (
         <Card
             className="header"
