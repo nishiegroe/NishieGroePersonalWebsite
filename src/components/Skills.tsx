@@ -1,93 +1,109 @@
-import React from "react";
+import { Card, Typography, Container } from '@mui/material'
 import {
-  Avatar,
-  Card,
-  Tooltip,
-  Typography,
-  Rating,
-  Container,
-} from "@mui/material";
+    React,
+    JavaScript,
+    TypeScript,
+    PostgreSQL,
+    Redux,
+    Git,
+    Angular,
+    CSS,
+    NodeJs,
+    HTML5,
+    Java,
+    Jest,
+    Python,
+    Cypress,
+    Docker,
+    ExpressJsDark,
+    Grafana,
+    Jenkins,
+    Jira,
+    Lua,
+    MySQL,
+    MongoDB,
+    NextJs,
+} from 'developer-icons'
 
-const Skills = () => {
-  var skillSet: [string, number][] = [
-    ["ReactJS", 5],
-    ["Javascript", 5],
-    ["SQL", 5],
-    ["Redux", 5],
-    ["Micro-Frontends (MFE)", 5],
-    ["Git", 5],
-    ["Support Management", 5],
-    ["Communication", 5],
-    ["Agile Methodology", 4],
-    ["React Testing Library", 4],
-    ["AngularJS", 4],
-    ["CSS", 4],
-    ["Amazon Web Services (AWS)", 4],
-    ["Node.js ", 4],
-    ["HTML", 4],
-    ["Jira", 4],
-    ["RESTful APIs", 4],
-    ["CI/CD", 4],
-    ["REST API's", 4],
-    ["IaaS", 4],
-    ["SaaS", 4],
-    ["Single Sign-On (SSO)", 4],
-    ["Cross-Team Collaboration", 4],
-    ["System Architecture", 4],
-    ["Microservices", 3],
-    ["Jest", 3],
-    ["Java", 3],
-    ["Drone", 3],
-    ["Spring/Springboot", 2],
-    ["Python", 2],
-  ];
-  var addSkill = function (skill: string, rating: number, index: number) {
-    return (
-      <div
+type Skill = {
+    Icon: React.ElementType
+    label: string
+}
+
+const skills: Skill[] = [
+    { Icon: React, label: 'React' },
+    { Icon: JavaScript, label: 'JavaScript' },
+    { Icon: TypeScript, label: 'TypeScript' },
+    { Icon: Redux, label: 'Redux' },
+    { Icon: PostgreSQL, label: 'PostgreSQL' },
+    { Icon: Git, label: 'Git' },
+    { Icon: Angular, label: 'Angular' },
+    { Icon: CSS, label: 'CSS' },
+    { Icon: NodeJs, label: 'NodeJs' },
+    { Icon: HTML5, label: 'HTML5' },
+    { Icon: Java, label: 'Java' },
+    { Icon: Jest, label: 'Jest' },
+    { Icon: Python, label: 'Python' },
+    { Icon: Cypress, label: 'Cypress' },
+    { Icon: Docker, label: 'Docker' },
+    { Icon: ExpressJsDark, label: 'Express' },
+    { Icon: Grafana, label: 'Grafana' },
+    { Icon: Jenkins, label: 'Jenkins' },
+    { Icon: Jira, label: 'Jira' },
+    { Icon: Lua, label: 'Lua' },
+    { Icon: MySQL, label: 'MySQL' },
+    { Icon: MongoDB, label: 'MongoDB' },
+    { Icon: NextJs, label: 'Next.js' },
+]
+
+const SkillItem = ({ Icon, label }: Skill) => (
+    <div
+        class="icon-wiggle"
         style={{
-          display: "flex",
-          flexDirection: "row",
+            display: 'flex',
+            flexDirection: 'row',
+            margin: '4px',
         }}
-        key={index}
-      >
-        <Typography
-          variant="body1"
-          sx={{ textAlign: "right", pr: 2, textWrap: "nowrap" }}
-        >
-          {skill}
-        </Typography>
-        <Rating sx={{ marginLeft: "auto" }} value={rating} readOnly />
-      </div>
-    );
-  };
-
-  return (
-    <Card
-      className="header"
-      sx={{
-        backgroundColor: "#FDFAF6",
-        padding: "5px",
-        margin: "15px",
-        width: {
-          xs: "400px",
-          sm: "400px",
-          md: "400px",
-          lg: "60vw",
-          xl: "50vw",
-        },
-        minWidth: "400px",
-      }}
     >
-      <Typography variant="h4" sx={{ mb: 2 }}>
-        Skills
-      </Typography>
-      <Container>
-        {skillSet.map((skill, index) => {
-          return addSkill(skill[0], skill[1], index);
-        })}
-      </Container>
-    </Card>
-  );
-};
+        <Icon size={30} class="icon-wiggle" />
+        <Typography
+            variant="h6"
+            sx={{
+                textAlign: 'right',
+                pr: 2,
+                ml: 1,
+                textWrap: 'nowrap',
+                alignContent: 'center',
+            }}
+        >
+            {label}
+        </Typography>
+    </div>
+)
 
-export default Skills;
+const Skills = () => (
+    <Card
+        className="header"
+        sx={{
+            margin: '16px 8px',
+            p: 2,
+        }}
+    >
+        <Typography variant="h4" sx={{ mb: 2 }}>
+            Skills
+        </Typography>
+        <Container
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexFlow: 'wrap',
+            }}
+        >
+            {skills.map((skill) => (
+                <SkillItem key={skill.label} {...skill} />
+            ))}
+        </Container>
+    </Card>
+)
+
+export default Skills
