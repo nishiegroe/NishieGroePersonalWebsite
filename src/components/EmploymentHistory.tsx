@@ -9,6 +9,7 @@ type EmploymentEntryProps = {
     period: string
     highlights?: string[]
     currentRole?: boolean
+    headerColor?: string
 }
 
 const EmploymentHistoryEntry = ({
@@ -19,6 +20,7 @@ const EmploymentHistoryEntry = ({
     period,
     highlights,
     currentRole,
+    headerColor,
 }: EmploymentEntryProps) => (
     <Card sx={{ m: 4 }}>
         <div
@@ -26,7 +28,7 @@ const EmploymentHistoryEntry = ({
                 display: 'grid',
                 gridAutoFlow: 'row',
                 gridTemplateColumns: '3fr 2fr 3fr',
-                backgroundColor: '#f2f2f2f2',
+                backgroundColor: headerColor || '#f2f2f2',
                 borderRadius: '4px',
             }}
         >
@@ -113,6 +115,7 @@ const employmentData: EmploymentEntryProps[] = [
         location: 'Chicago, IL',
         period: '2025 - Present',
         currentRole: true,
+        headerColor: 'rgba(227, 28, 61, .05)',
     },
     {
         title: 'Senior Software Engineer',
@@ -131,6 +134,7 @@ const employmentData: EmploymentEntryProps[] = [
             'Created Drone CI/CD pipelines for our MFE’s',
             'Assisted in creating a container UI to better house our MFE’s.',
         ],
+        headerColor: 'rgba(54, 124, 43, .1)',
     },
     {
         title: 'Software Engineer',
@@ -146,6 +150,7 @@ const employmentData: EmploymentEntryProps[] = [
             'Partnered with cross-functional teams to execute smooth transition from legacy systems, ensuring minimal disruption to business operations during migration process.',
             'Spearheaded SiteMinder to OKTA SSO migration in ColdFusion apps, enhancing security protocols. Analyzed and decommissioned underutilized applications, optimizing resources.',
         ],
+        headerColor: 'rgba(54, 124, 43, .1)',
     },
 ]
 

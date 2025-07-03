@@ -86,7 +86,8 @@ const Skills = () => (
         className="header"
         sx={{
             margin: '16px 8px',
-            p: 2,
+            p: 4,
+            pt: 2,
         }}
     >
         <Typography variant="h4" sx={{ mb: 2 }}>

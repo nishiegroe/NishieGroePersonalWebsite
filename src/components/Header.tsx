@@ -123,66 +123,6 @@ const Header = () => {
                 </Tooltip>
             </div>
 
-            {/* <Container
-                sx={{
-                    display: { lg: 'none', md: 'flex', sm: 'flex', xs: 'flex' },
-                    width: 'auto',
-                }}
-            >
-                <IconButton
-                    aria-label="more"
-                    id="long-button"
-                    aria-controls={open ? 'long-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-haspopup="true"
-                    onClick={handleClick}
-                    sx={{ ml: 1 }}
-                >
-                    <Typography variant="h6" sx={{ pr: 1 }}>
-                        Menu
-                    </Typography>
-                    {!open ? <MenuIcon /> : <MenuOpenIcon />}
-                </IconButton>
-            </Container>
-
-            <Menu
-                id="long-menu"
-                MenuListProps={{
-                    'aria-labelledby': 'long-button',
-                }}
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                slotProps={{
-                    paper: {
-                        style: {
-                            width: '30ch',
-                        },
-                    },
-                }}
-            >
-                <MenuItem>
-                    <Tooltip title="View my resume">
-                        <Typography
-                            variant="h6"
-                            sx={{
-                                ml: 1,
-                                mr: 1,
-                                cursor: 'pointer',
-                                display: 'flex',
-                                alignItems: 'center',
-                            }}
-                            onClick={(e) => {
-                                window.open(resume, '_blank')
-                            }}
-                        >
-                            View Resume
-                            <ArticleIcon sx={{ top: '5px', ml: 1 }} />
-                        </Typography>
-                    </Tooltip>
-                </MenuItem>
-            </Menu> */}
-
             <Container
                 id="right"
                 sx={{
@@ -192,7 +132,7 @@ const Header = () => {
                     width: 'auto',
                 }}
             >
-                <Card sx={{ backgroundColor: '#E4EFE7', ml: 2 }}>
+                <Card sx={{ backgroundColor: 'rgba(54, 192, 240, .4)', ml: 2 }}>
                     <Tooltip title="View my resume">
                         <Typography
                             variant="h6"
