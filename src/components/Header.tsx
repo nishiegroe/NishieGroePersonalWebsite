@@ -43,16 +43,11 @@ const Header = () => {
                 <Avatar
                     className="logo"
                     sx={{ mr: 2, width: 40, height: 40 }}
-                    imgProps={{
-                        src: profilePic256,
-                        srcSet: `${profilePic128} 128w, ${profilePic256} 256w`,
-                        sizes: '40px',
-                        loading: 'eager',
-                        decoding: 'async',
-                        width: 40,
-                        height: 40,
-                        alt: 'Profile picture',
-                    }}
+                    alt="Profile picture"
+                    src={profilePic256}
+                    srcSet={`${profilePic128} 128w, ${profilePic256} 256w`}
+                    sizes="40px"
+                    imgProps={{ loading: 'eager', decoding: 'async' }}
                 />
                 <Typography
                     variant="h4"
