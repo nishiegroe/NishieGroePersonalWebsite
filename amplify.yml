@@ -1,0 +1,70 @@
+version: 1
+frontend:
+    phases:
+        preBuild:
+            commands:
+                - npm ci || npm install
+        build:
+            commands:
+                - npm run build
+    artifacts:
+        baseDirectory: dist
+        files:
+            - '**/*'
+    cache:
+        paths:
+            - node_modules/**/*
+
+# SPA rewrite so client routes work on refresh
+redirects:
+    - source: </^[^.]+$|\.(?!(css|gif|ico|jpg|jpeg|js|png|svg|txt|webp|woff|woff2|ttf|eot|pdf)$)([^.]+$)/>
+      target: /index.html
+      status: 200
+
+# HTTP response headers set by Amplify Hosting at the edge
+customHeaders:
+    # HTML should not be cached by browsers/proxies
+    - pattern: /index.html
+      headers:
+          - key: Cache-Control
+            value: no-cache
+
+    # App static assets (hashed) - cache for a year
+    - pattern: /assets/*
+      headers:
+          - key: Cache-Control
+            value: public, max-age=31536000, immutable
+
+    # Social preview image
+    - pattern: /og-image.jpg
+      headers:
+          - key: Cache-Control
+            value: public, max-age=31536000, immutable
+
+    # Icons
+    - pattern: /favicon.png
+      headers:
+          - key: Cache-Control
+            value: public, max-age=604800
+
+    # SEO files
+    - pattern: /robots.txt
+      headers:
+          - key: Cache-Control
+            value: public, max-age=3600
+    - pattern: /sitemap.xml
+      headers:
+          - key: Cache-Control
+            value: public, max-age=3600
+
+    # Security/privacy headers for all routes
+    - pattern: /*
+      headers:
+          - key: Strict-Transport-Security
+            value: max-age=31536000; includeSubDomains; preload
+          - key: X-Content-Type-Options
+            value: nosniff
+          - key: Referrer-Policy
+            value: strict-origin-when-cross-origin
+          - key: Permissions-Policy
+            value: camera=(), microphone=(), geolocation=()

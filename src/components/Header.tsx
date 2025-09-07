@@ -6,7 +6,8 @@ import {
     Container,
     Link,
 } from '@mui/material'
-import profilePic from '../assets/Profile Pic.jpg'
+import profilePic128 from '../assets/profile-pic-128.webp'
+import profilePic256 from '../assets/profile-pic-256.webp'
 import resume from '../assets/Nishie Groe- Resume (April).pdf'
 import ArticleIcon from '@mui/icons-material/Article'
 import { LinkedIn } from 'developer-icons'
@@ -39,7 +40,20 @@ const Header = () => {
                     marginLeft: '16px',
                 }}
             >
-                <Avatar src={profilePic} className="logo" sx={{ mr: 2 }} />
+                <Avatar
+                    className="logo"
+                    sx={{ mr: 2, width: 40, height: 40 }}
+                    imgProps={{
+                        src: profilePic256,
+                        srcSet: `${profilePic128} 128w, ${profilePic256} 256w`,
+                        sizes: '40px',
+                        loading: 'eager',
+                        decoding: 'async',
+                        width: 40,
+                        height: 40,
+                        alt: 'Profile picture',
+                    }}
+                />
                 <Typography
                     variant="h4"
                     className="logo"
@@ -72,10 +86,10 @@ const Header = () => {
                         }}
                     >
                         <div
-                            class="icon-wiggle"
+                            className="icon-wiggle"
                             style={{ display: 'flex', alignItems: 'center' }}
                         >
-                            <GitHub size={30} />
+                            <GitHub sx={{ fontSize: 30 }} />
                         </div>
                     </Link>
                 </Tooltip>
@@ -93,7 +107,7 @@ const Header = () => {
                         }}
                     >
                         <div
-                            class="icon-wiggle"
+                            className="icon-wiggle"
                             style={{ display: 'flex', alignItems: 'center' }}
                         >
                             <LinkedIn size={30} />
@@ -114,7 +128,7 @@ const Header = () => {
                         }}
                     >
                         <div
-                            class="icon-wiggle"
+                            className="icon-wiggle"
                             style={{ display: 'flex', alignItems: 'center' }}
                         >
                             <Email sx={{ fontSize: 30 }} />

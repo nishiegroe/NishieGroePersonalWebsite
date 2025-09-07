@@ -1,4 +1,5 @@
 User-agent: *
-Disallow: /src/
-Disallow: /node_modules/
-Allow: /public/
+Disallow:
+
+# Optional: add your sitemap URL when available
+Sitemap: https://nishiegroe.com/sitemap.xml

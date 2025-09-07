@@ -50,6 +50,8 @@ const EmploymentHistoryEntry = ({
             <img
                 src={logo}
                 alt={`${company} Logo`}
+                loading="lazy"
+                decoding="async"
                 style={{
                     height: '50px',
                     alignSelf: 'center',
