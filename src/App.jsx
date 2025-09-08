@@ -11,15 +11,17 @@ import Introduction from './components/Introduction.tsx'
 import Skills from './components/Skills.tsx'
 import EmploymentHistory from './components/EmploymentHistory.tsx'
 import Contact from './components/Contact.tsx'
+import { Box } from '@mui/material'
 
 function App() {
     return (
         <div className="app">
             <Header />
-            <div
+            <Box
                 className="body"
-                style={{
-                    marginTop: '80px',
+                sx={{
+                    mt: { xs: 1, md: '80px' },
+                    pb: { xs: '88px', md: 0 },
                     width: '100%',
                     display: 'flex',
                     flexDirection: 'column',
@@ -34,7 +36,7 @@ function App() {
                 <EmploymentHistory />
 
                 <Contact />
-            </div>
+            </Box>
         </div>
     )
 }
