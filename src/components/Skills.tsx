@@ -1,4 +1,4 @@
-import { Card, Typography, Container } from '@mui/material'
+import { Card, Typography, Container, Stack } from '@mui/material'
 import {
     React,
     JavaScript,
@@ -58,21 +58,16 @@ const skills: Skill[] = [
 
 const SkillItem = ({ Icon, label }: Skill) => (
     <div
-        class="icon-wiggle"
-        style={{
-            display: 'flex',
-            flexDirection: 'row',
-            margin: '4px',
-        }}
+        className="icon-wiggle"
+        style={{ display: 'flex', flexDirection: 'row', margin: '6px 8px' }}
     >
-        <Icon size={30} class="icon-wiggle" />
+        <Icon size={28} className="icon-wiggle" />
         <Typography
-            variant="h6"
+            variant="body1"
             sx={{
-                textAlign: 'right',
-                pr: 2,
+                pr: 1,
                 ml: 1,
-                textWrap: 'nowrap',
+                whiteSpace: { xs: 'normal', sm: 'nowrap' },
                 alignContent: 'center',
             }}
         >
@@ -85,24 +80,35 @@ const Skills = () => (
     <Card
         className="header"
         sx={{
-            margin: '16px 8px',
-            p: 4,
-            pt: 2,
+            m: { xs: '16px 8px', md: '24px 12px' },
+            p: { xs: 2, sm: 3, md: 4 },
+            width: '100%',
+            maxWidth: { xs: 680, md: 960 },
+            boxSizing: 'border-box',
+            mx: 'auto',
         }}
     >
-        <Typography variant="h4" sx={{ mb: 2 }}>
-            Skills
-        </Typography>
-        <Container
+        <Typography
+            variant="h4"
             sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexFlow: 'wrap',
+                mb: { xs: 1, sm: 2 },
+                textAlign: { xs: 'center', md: 'left' },
             }}
         >
-            {skills.map((skill) => (
-                <SkillItem key={skill.label} {...skill} />
-            ))}
+            Skills
+        </Typography>
+        <Container sx={{ px: { xs: 0.5, sm: 2 } }}>
+            <Stack
+                direction="row"
+                flexWrap="wrap"
+                justifyContent="center"
+                useFlexGap
+                spacing={{ xs: 0.5, sm: 1 }}
+            >
+                {skills.map((skill) => (
+                    <SkillItem key={skill.label} {...skill} />
+                ))}
+            </Stack>
         </Container>
     </Card>
 )

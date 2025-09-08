@@ -16,7 +16,16 @@ function App() {
     return (
         <div className="app">
             <Header />
-            <div className="body" style={{ marginTop: '50px', width: '70vw' }}>
+            <div
+                className="body"
+                style={{
+                    marginTop: '80px',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
                 <div>
                     <Introduction />
                 </div>

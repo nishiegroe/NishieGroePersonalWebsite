@@ -1,4 +1,11 @@
-import { Card, Typography, List, ListItem, Container } from '@mui/material'
+import {
+    Card,
+    Typography,
+    List,
+    ListItem,
+    Container,
+    Grid,
+} from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
 
 type EmploymentEntryProps = {
@@ -22,64 +29,67 @@ const EmploymentHistoryEntry = ({
     currentRole,
     headerColor,
 }: EmploymentEntryProps) => (
-    <Card sx={{ m: 4 }}>
-        <div
-            style={{
-                display: 'grid',
-                gridAutoFlow: 'row',
-                gridTemplateColumns: '3fr 2fr 3fr',
+    <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
+        <Container
+            disableGutters
+            sx={{
                 backgroundColor: headerColor || '#f2f2f2',
-                borderRadius: '4px',
+                borderRadius: 1,
+                px: { xs: 1.5, sm: 2 },
+                py: { xs: 1.5, sm: 2 },
             }}
         >
-            <div
-                style={{
-                    display: 'grid',
-                    gridAutoFlow: 'row',
-                    alignItems: 'center',
-                    margin: '8px 16px 8px 16px',
-                }}
-            >
-                <Typography variant="h5" sx={{ textAlign: 'left' }}>
-                    {title}
-                </Typography>
-                <Typography variant="h6" sx={{ textAlign: 'left' }}>
-                    {company}
-                </Typography>
-            </div>
-            <img
-                src={logo}
-                alt={`${company} Logo`}
-                loading="lazy"
-                decoding="async"
-                style={{
-                    height: '50px',
-                    alignSelf: 'center',
-                    justifySelf: 'center',
-                }}
-            />
-            <div
-                style={{
-                    display: 'grid',
-                    gridAutoFlow: 'row',
-                    alignItems: 'center',
-                    margin: '8px 16px 8px 16px',
-                }}
-            >
-                <div
-                    style={{
-                        justifyContent: 'flex-end',
-                        display: 'flex',
-                    }}
-                >
-                    <LocationOnIcon sx={{ scale: 0.8 }} />
-                    <Typography>{location}</Typography>
-                </div>
-                <Typography variant="body1" sx={{ textAlign: 'right' }}>
-                    {period}
-                </Typography>
-            </div>
-        </div>
+            <Grid container spacing={2} alignItems="center">
+                <Grid item xs={12} md={5}>
+                    <Typography
+                        variant="h6"
+                        sx={{ textAlign: { xs: 'center', md: 'left' } }}
+                    >
+                        {title}
+                    </Typography>
+                    <Typography
+                        variant="subtitle1"
+                        sx={{ textAlign: { xs: 'center', md: 'left' } }}
+                    >
+                        {company}
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={2} sx={{ textAlign: 'center' }}>
+                    <img
+                        src={logo}
+                        alt={`${company} Logo`}
+                        loading="lazy"
+                        decoding="async"
+                        style={{
+                            height: 50,
+                            maxWidth: '100%',
+                            objectFit: 'contain',
+                        }}
+                    />
+                </Grid>
+                <Grid item xs={12} md={5}>
+                    <Container
+                        disableGutters
+                        sx={{
+                            display: 'flex',
+                            justifyContent: { xs: 'center', md: 'flex-end' },
+                        }}
+                    >
+                        <LocationOnIcon sx={{ mr: 0.5, fontSize: 18 }} />
+                        <Typography>{location}</Typography>
+                    </Container>
+                    <Typography
+                        variant="body2"
+                        sx={{
+                            textAlign: { xs: 'center', md: 'right' },
+                            mt: { xs: 0.5, md: 0 },
+                        }}
+                    >
+                        {period}
+                    </Typography>
+                </Grid>
+            </Grid>
+        </Container>
         {currentRole ? (
             <Container sx={{ m: 2 }}>
                 <Typography
@@ -93,11 +103,18 @@ const EmploymentHistoryEntry = ({
                 </Typography>
             </Container>
         ) : highlights && highlights.length > 0 ? (
-            <List sx={{ listStyleType: 'disc', width: '97%', ml: 3, mr: 3 }}>
+            <List
+                sx={{
+                    listStyleType: 'disc',
+                    px: { xs: 2, sm: 3 },
+                    width: '100%',
+                    boxSizing: 'border-box',
+                }}
+            >
                 {highlights.map((highlight, index) => (
                     <ListItem
                         key={index}
-                        sx={{ display: 'list-item', left: '20px', p: 0 }}
+                        sx={{ display: 'list-item', pl: 2, p: 0 }}
                     >
                         <Typography variant="body2" align="left">
                             {highlight}
@@ -161,12 +178,23 @@ const EmploymentHistory = () => (
         className="header"
         sx={{
             backgroundColor: '#FDFAF6',
-            placeContent: 'center',
-            margin: '16px 8px ',
-            p: 2,
+            m: { xs: '16px 8px', md: '24px 12px' },
+            p: { xs: 2, sm: 3, md: 4 },
+            width: '100%',
+            maxWidth: { xs: 680, md: 960 },
+            boxSizing: 'border-box',
+            mx: 'auto',
         }}
     >
-        <Typography variant="h4">Employment History</Typography>
+        <Typography
+            variant="h4"
+            sx={{
+                textAlign: { xs: 'center', md: 'left' },
+                mb: { xs: 1, sm: 2 },
+            }}
+        >
+            Employment History
+        </Typography>
         {employmentData.map((entry, idx) => (
             <EmploymentHistoryEntry key={idx} {...entry} />
         ))}

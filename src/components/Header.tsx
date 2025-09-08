@@ -5,31 +5,52 @@ import {
     Typography,
     Container,
     Link,
+    Box,
+    IconButton,
+    Menu,
+    MenuItem,
+    Divider,
+    ListItemIcon,
 } from '@mui/material'
 import profilePic128 from '../assets/profile-pic-128.webp'
 import profilePic256 from '../assets/profile-pic-256.webp'
 import resume from '../assets/Nishie Groe- Resume (April).pdf'
 import ArticleIcon from '@mui/icons-material/Article'
 import { LinkedIn } from 'developer-icons'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import MenuIcon from '@mui/icons-material/Menu'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import { useState } from 'react'
 import Email from '@mui/icons-material/Email'
 import GitHub from '@mui/icons-material/GitHub'
 
 const Header = () => {
+    const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
+    const menuOpen = Boolean(menuAnchorEl)
+
+    const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+        setMenuAnchorEl(event.currentTarget)
+    }
+    const handleMenuClose = () => setMenuAnchorEl(null)
+
     return (
         <Card
             className="header"
-            style={{
-                padding: '8px',
+            sx={{
+                p: 1,
                 backgroundColor: '#FDFAF6',
                 display: 'flex',
                 position: 'fixed',
                 zIndex: 999,
-                top: '16px',
-                justifySelf: 'anchor-center',
+                top: 16,
                 borderRadius: '15px',
                 backdropFilter: 'blur(10px)',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                width: '70vw',
+                width: { xs: '100%', md: '70vw' },
+                maxWidth: { xs: 360, sm: 680, md: 960 },
+                boxSizing: 'border-box',
+                left: '50%',
+                transform: 'translateX(-50%)',
             }}
         >
             <div
@@ -58,11 +79,11 @@ const Header = () => {
                 </Typography>
             </div>
 
-            <div
+            <Box
                 id="center"
-                style={{
+                sx={{
                     flexGrow: 1,
-                    display: 'flex',
+                    display: { xs: 'none', md: 'flex' },
                     justifyContent: 'center',
                     gap: '8px',
                 }}
@@ -130,12 +151,12 @@ const Header = () => {
                         </div>
                     </Link>
                 </Tooltip>
-            </div>
+            </Box>
 
             <Container
                 id="right"
                 sx={{
-                    display: 'flex',
+                    display: { xs: 'none', md: 'flex' },
                     alignItems: 'center',
                     paddingRight: '8px',
                     width: 'auto',
@@ -162,6 +183,97 @@ const Header = () => {
                     </Tooltip>
                 </Card>
             </Container>
+
+            {/* Mobile menu trigger */}
+            <Box
+                sx={{
+                    ml: 'auto',
+                    display: { xs: 'flex', md: 'none' },
+                    alignItems: 'center',
+                    pr: 1,
+                }}
+            >
+                <IconButton
+                    id="header-menu-button"
+                    aria-label="Open navigation menu"
+                    aria-controls={menuOpen ? 'header-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={menuOpen ? 'true' : undefined}
+                    onClick={handleMenuOpen}
+                    size="large"
+                >
+                    <MenuIcon />
+                </IconButton>
+                <Menu
+                    id="header-menu"
+                    anchorEl={menuAnchorEl}
+                    open={menuOpen}
+                    onClose={handleMenuClose}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                    keepMounted
+                >
+                    <MenuItem
+                        component="a"
+                        href="https://github.com/nishiegroe"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <GitHub fontSize="small" />
+                        </ListItemIcon>
+                        GitHub
+                        <OpenInNewIcon
+                            fontSize="small"
+                            style={{ marginLeft: 'auto' }}
+                        />
+                    </MenuItem>
+                    <MenuItem
+                        component="a"
+                        href="https://www.linkedin.com/in/nishie-groe/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <LinkedInIcon fontSize="small" />
+                        </ListItemIcon>
+                        LinkedIn
+                        <OpenInNewIcon
+                            fontSize="small"
+                            style={{ marginLeft: 'auto' }}
+                        />
+                    </MenuItem>
+                    <MenuItem
+                        component="a"
+                        href="mailto:nishiegroe@gmail.com"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <Email fontSize="small" />
+                        </ListItemIcon>
+                        Email
+                    </MenuItem>
+                    <Divider />
+                    <MenuItem
+                        component="a"
+                        href={resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <ArticleIcon fontSize="small" />
+                        </ListItemIcon>
+                        View Resume
+                        <OpenInNewIcon
+                            fontSize="small"
+                            style={{ marginLeft: 'auto' }}
+                        />
+                    </MenuItem>
+                </Menu>
+            </Box>
         </Card>
     )
 }

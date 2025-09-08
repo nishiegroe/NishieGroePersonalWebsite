@@ -9,7 +9,8 @@
         "lint": "eslint .",
         "preview": "vite preview",
         "compress:og": "node scripts/compress-og-image.mjs && node -e \"const fs=require('fs');fs.renameSync('public/og-image.compressed.jpg','public/og-image.jpg');\"",
-        "compress:profile": "node scripts/compress-profile-pic.mjs"
+        "compress:profile": "node scripts/compress-profile-pic.mjs",
+        "compress:photos": "node scripts/compress-photos.mjs"
     },
     "dependencies": {
         "@emotion/react": "^11.14.0",
