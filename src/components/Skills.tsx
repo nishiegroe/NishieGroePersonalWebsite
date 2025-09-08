@@ -78,6 +78,7 @@ const SkillItem = ({ Icon, label }: Skill) => (
 
 const Skills = () => (
     <Card
+        id="skills"
         className="header"
         sx={{
             m: { xs: '16px 8px', md: '24px 12px' },
@@ -86,6 +87,7 @@ const Skills = () => (
             maxWidth: { xs: 680, md: 960 },
             boxSizing: 'border-box',
             mx: 'auto',
+            scrollMarginTop: { xs: '88px', md: '104px' },
         }}
     >
         <Typography

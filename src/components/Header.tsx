@@ -23,6 +23,10 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { useState } from 'react'
 import Email from '@mui/icons-material/Email'
 import GitHub from '@mui/icons-material/GitHub'
+import HomeIcon from '@mui/icons-material/Home'
+import BuildIcon from '@mui/icons-material/Build'
+import WorkIcon from '@mui/icons-material/Work'
+import ContactPageIcon from '@mui/icons-material/ContactPage'
 
 const Header = () => {
     const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
@@ -213,6 +217,48 @@ const Header = () => {
                     transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                     keepMounted
                 >
+                    {/* In-page navigation */}
+                    <MenuItem
+                        component="a"
+                        href="#introduction"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <HomeIcon fontSize="small" />
+                        </ListItemIcon>
+                        Introduction
+                    </MenuItem>
+                    <MenuItem
+                        component="a"
+                        href="#skills"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <BuildIcon fontSize="small" />
+                        </ListItemIcon>
+                        Skills
+                    </MenuItem>
+                    <MenuItem
+                        component="a"
+                        href="#experience"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <WorkIcon fontSize="small" />
+                        </ListItemIcon>
+                        Experience
+                    </MenuItem>
+                    <MenuItem
+                        component="a"
+                        href="#contact"
+                        onClick={handleMenuClose}
+                    >
+                        <ListItemIcon>
+                            <ContactPageIcon fontSize="small" />
+                        </ListItemIcon>
+                        Contact
+                    </MenuItem>
+                    <Divider />
                     <MenuItem
                         component="a"
                         href="https://github.com/nishiegroe"

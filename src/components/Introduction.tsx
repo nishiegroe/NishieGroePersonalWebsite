@@ -6,6 +6,7 @@ import img1w960 from '../assets/IMG_2444-960.webp'
 const Introduction = () => {
     return (
         <Card
+            id="introduction"
             className="Introduction"
             sx={{
                 m: { xs: '16px 8px', md: '24px 12px' },
@@ -14,6 +15,7 @@ const Introduction = () => {
                 maxWidth: { xs: 680, md: 960 },
                 boxSizing: 'border-box',
                 mx: 'auto',
+                scrollMarginTop: { xs: '88px', md: '104px' },
             }}
         >
             <Stack

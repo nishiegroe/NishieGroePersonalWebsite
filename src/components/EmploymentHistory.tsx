@@ -175,6 +175,7 @@ const employmentData: EmploymentEntryProps[] = [
 
 const EmploymentHistory = () => (
     <Card
+        id="experience"
         className="header"
         sx={{
             backgroundColor: '#FDFAF6',
@@ -184,6 +185,7 @@ const EmploymentHistory = () => (
             maxWidth: { xs: 680, md: 960 },
             boxSizing: 'border-box',
             mx: 'auto',
+            scrollMarginTop: { xs: '88px', md: '104px' },
         }}
     >
         <Typography

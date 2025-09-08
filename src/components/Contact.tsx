@@ -9,6 +9,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 const Contact = () => {
     return (
         <Card
+            id="contact"
             className="header"
             sx={{
                 p: { xs: 2, sm: 3, md: 4 },
@@ -19,6 +20,7 @@ const Contact = () => {
                 maxWidth: { xs: 680, md: 960 },
                 boxSizing: 'border-box',
                 mx: 'auto',
+                scrollMarginTop: { xs: '88px', md: '104px' },
             }}
         >
             <Stack
