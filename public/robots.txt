@@ -1,5 +1,11 @@
 User-agent: *
-Disallow:
+# Block crawling of resume and any PDFs
+Disallow: /*.pdf$
+Disallow: /src/assets/*.pdf
+Disallow: /assets/*.pdf
+
+# Allow everything else
+Allow: /
 
 # Optional: add your sitemap URL when available
 Sitemap: https://nishiegroe.com/sitemap.xml

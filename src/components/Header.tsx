@@ -346,11 +346,14 @@ const Header = () => {
                         </MenuItem>
                         <Divider />
                         <MenuItem
-                            component="a"
-                            href={resume}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={handleMenuClose}
+                            onClick={() => {
+                                handleMenuClose()
+                                window.open(
+                                    resume,
+                                    '_blank',
+                                    'noopener,noreferrer'
+                                )
+                            }}
                         >
                             <ListItemIcon>
                                 <ArticleIcon fontSize="small" />
