@@ -26,6 +26,7 @@ const Introduction = () => {
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Typography
                         variant="h2"
+                        component="h1"
                         sx={{
                             textAlign: { xs: 'center', md: 'left' },
                             fontSize: {
@@ -37,6 +38,23 @@ const Introduction = () => {
                     >
                         Hey! I'm{' '}
                         <span style={{ color: '#36C0F0' }}>Nishie</span>,
+                    </Typography>
+                    {/* Visually hidden site name to reinforce title for crawlers */}
+                    <Typography
+                        component="span"
+                        sx={{
+                            position: 'absolute',
+                            width: 1,
+                            height: 1,
+                            p: 0,
+                            m: -1,
+                            overflow: 'hidden',
+                            clip: 'rect(0,0,0,0)',
+                            whiteSpace: 'nowrap',
+                            border: 0,
+                        }}
+                    >
+                        Nishie Groe
                     </Typography>
                     <Typography
                         variant="body1"
