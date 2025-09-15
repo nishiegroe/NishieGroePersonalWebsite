@@ -32,11 +32,13 @@ type Skill = {
 
 const skills: Skill[] = [
     { Icon: React, label: 'React' },
-    { Icon: JavaScript, label: 'JavaScript' },
     { Icon: TypeScript, label: 'TypeScript' },
+    { Icon: JavaScript, label: 'JavaScript' },
     { Icon: Redux, label: 'Redux' },
     { Icon: PostgreSQL, label: 'PostgreSQL' },
     { Icon: Git, label: 'Git' },
+    { Icon: Docker, label: 'Docker' },
+    { Icon: NextJs, label: 'Next.js' },
     { Icon: Angular, label: 'Angular' },
     { Icon: CSS, label: 'CSS' },
     { Icon: NodeJs, label: 'NodeJs' },
@@ -45,7 +47,6 @@ const skills: Skill[] = [
     { Icon: Jest, label: 'Jest' },
     { Icon: Python, label: 'Python' },
     { Icon: Cypress, label: 'Cypress' },
-    { Icon: Docker, label: 'Docker' },
     { Icon: ExpressJsDark, label: 'Express' },
     { Icon: Grafana, label: 'Grafana' },
     { Icon: Jenkins, label: 'Jenkins' },
@@ -53,7 +54,6 @@ const skills: Skill[] = [
     { Icon: Lua, label: 'Lua' },
     { Icon: MySQL, label: 'MySQL' },
     { Icon: MongoDB, label: 'MongoDB' },
-    { Icon: NextJs, label: 'Next.js' },
 ]
 
 const SkillItem = ({ Icon, label }: Skill) => (
@@ -81,13 +81,14 @@ const Skills = () => (
         id="skills"
         className="header"
         sx={{
-            m: { xs: '16px 8px', md: '24px 12px' },
+            m: { xs: '16px 8px', md: '12px' },
             p: { xs: 2, sm: 3, md: 4 },
             width: '100%',
             maxWidth: { xs: 680, md: 960 },
             boxSizing: 'border-box',
             mx: 'auto',
             scrollMarginTop: { xs: '20px', md: '104px' },
+            borderRadius: '15px',
         }}
     >
         <Typography

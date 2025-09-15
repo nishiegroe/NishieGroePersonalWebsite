@@ -9,13 +9,14 @@ const Introduction = () => {
             id="introduction"
             className="Introduction"
             sx={{
-                m: { xs: '16px 8px', md: '24px 12px' },
+                m: { xs: '16px 8px', md: '12px' },
                 p: { xs: 2, sm: 3, md: 4 },
                 width: '100%',
                 maxWidth: { xs: 680, md: 960 },
                 boxSizing: 'border-box',
                 mx: 'auto',
                 scrollMarginTop: { xs: '20px', md: '104px' },
+                borderRadius: '15px',
             }}
         >
             <Stack

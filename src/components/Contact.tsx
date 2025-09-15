@@ -15,7 +15,7 @@ const Contact = () => {
                 p: { xs: 2, sm: 3, md: 4 },
                 backgroundColor: '#FDFAF6',
                 borderRadius: '15px',
-                m: { xs: '16px 8px', md: '24px 12px' },
+                m: { xs: '16px 8px', md: '12px' },
                 width: '100%',
                 maxWidth: { xs: 680, md: 960 },
                 boxSizing: 'border-box',
