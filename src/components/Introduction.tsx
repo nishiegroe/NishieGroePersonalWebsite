@@ -72,26 +72,27 @@ const Introduction = () => {
                     </Typography>
                 </Box>
                 <Box sx={{ flexShrink: 0 }}>
-                    <Box
-                        component="img"
-                        src={img1w640}
-                        srcSet={`${img1w640} 640w, ${img1w960} 960w`}
-                        sizes="(max-width: 600px) 70vw, (max-width: 900px) 60vw, 260px"
-                        alt="Nishie portrait"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e: any) => {
-                            e.currentTarget.src = img1Jpg
-                        }}
-                        sx={{
-                            display: 'block',
-                            mx: { xs: 'auto', md: 0 },
-                            width: { xs: '70%', sm: '60%', md: '100%' },
-                            maxWidth: { xs: 200, sm: 240, md: 260 },
-                            height: 'auto',
-                            borderRadius: 2,
-                        }}
-                    />
+                    <picture>
+                        <source srcSet="/src/assets/IMG_2444.webp" type="image/webp" />
+                        <source srcSet={`${img1w640} 640w, ${img1w960} 960w`} type="image/webp" />
+                        <img
+                            src={img1Jpg}
+                            srcSet={`${img1w640} 640w, ${img1w960} 960w`}
+                            sizes="(max-width: 600px) 70vw, (max-width: 900px) 60vw, 260px"
+                            alt="Nishie portrait"
+                            loading="lazy"
+                            decoding="async"
+                            style={{
+                                display: 'block',
+                                marginLeft: 'auto',
+                                marginRight: 0,
+                                width: '70%',
+                                maxWidth: 240,
+                                height: 'auto',
+                                borderRadius: 8,
+                            }}
+                        />
+                    </picture>
                 </Box>
             </Stack>
         </Card>

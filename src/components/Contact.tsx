@@ -91,26 +91,27 @@ const Contact = () => {
                     </Stack>
                 </Stack>
                 <Box>
-                    <Box
-                        component="img"
-                        src={image640}
-                        srcSet={`${image640} 640w, ${image960} 960w`}
-                        sizes="(max-width: 600px) 80vw, 320px"
-                        alt="Nishie speaking"
-                        loading="lazy"
-                        decoding="async"
-                        onError={(e: any) => {
-                            e.currentTarget.src = imageJpg
-                        }}
-                        sx={{
-                            borderRadius: '15px',
-                            width: { xs: '80%', sm: 260 },
-                            maxWidth: 320,
-                            height: 'auto',
-                            display: 'block',
-                            mx: { xs: 'auto', md: 0 },
-                        }}
-                    />
+                    <picture>
+                        <source srcSet="/src/assets/IMG_2521.webp" type="image/webp" />
+                        <source srcSet={`${image640} 640w, ${image960} 960w`} type="image/webp" />
+                        <img
+                            src={imageJpg}
+                            srcSet={`${image640} 640w, ${image960} 960w`}
+                            sizes="(max-width: 600px) 80vw, 320px"
+                            alt="Nishie speaking"
+                            loading="lazy"
+                            decoding="async"
+                            style={{
+                                borderRadius: 15,
+                                width: '80%',
+                                maxWidth: 320,
+                                height: 'auto',
+                                display: 'block',
+                                marginLeft: 'auto',
+                                marginRight: 0,
+                            }}
+                        />
+                    </picture>
                 </Box>
             </Stack>
         </Card>
