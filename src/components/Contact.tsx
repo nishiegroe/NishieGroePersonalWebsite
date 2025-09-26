@@ -2,6 +2,7 @@ import { Card, Typography, Link, Stack, Box } from '@mui/material'
 import imageJpg from '../assets/IMG_2521.jpg'
 import image640 from '../assets/IMG_2521-640.webp'
 import image960 from '../assets/IMG_2521-960.webp'
+import img2521webp from '../assets/IMG_2521.webp'
 import Email from '@mui/icons-material/Email'
 import Phone from '@mui/icons-material/Phone'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
@@ -92,7 +93,7 @@ const Contact = () => {
                 </Stack>
                 <Box>
                     <picture>
-                        <source srcSet="/src/assets/IMG_2521.webp" type="image/webp" />
+                        <source srcSet={img2521webp} type="image/webp" />
                         <source srcSet={`${image640} 640w, ${image960} 960w`} type="image/webp" />
                         <img
                             src={imageJpg}
