@@ -12,7 +12,7 @@ const tasks = [
     {
         in: 'IMG_2444.jpg',
         outs: [
-            { name: 'IMG_2444-640.webp', width: 640 },
+            { name: 'IMG_2444-240.webp', width: 240 },
             { name: 'IMG_2444-960.webp', width: 960 },
         ],
     },
@@ -58,7 +58,7 @@ async function ensureWebp(inputFile, outputFile, width) {
 async function run() {
     for (const t of tasks) {
         for (const o of t.outs) {
-            // eslint-disable-next-line no-await-in-loop
+             
             await ensureWebp(t.in, o.name, o.width)
         }
     }

@@ -1,7 +1,5 @@
 import { Card, Typography, Box, Stack } from '@mui/material'
-import img1Jpg from '../assets/IMG_2444.jpg'
-import img1w640 from '../assets/IMG_2444-640.webp'
-import img1w960 from '../assets/IMG_2444-960.webp'
+import img1w240 from '../assets/IMG_2444-240.webp'
 
 const Introduction = () => {
     return (
@@ -73,14 +71,12 @@ const Introduction = () => {
                 </Box>
                 <Box sx={{ flexShrink: 0 }}>
                     <picture>
-                        <source srcSet="/src/assets/IMG_2444.webp" type="image/webp" />
-                        <source srcSet={`${img1w640} 640w, ${img1w960} 960w`} type="image/webp" />
                         <img
-                            src={img1Jpg}
-                            srcSet={`${img1w640} 640w, ${img1w960} 960w`}
-                            sizes="(max-width: 600px) 70vw, (max-width: 900px) 60vw, 260px"
-                            alt="Nishie portrait"
+                            fetchPriority="high"
                             loading="lazy"
+                            src={img1w240}
+                            sizes="240px"
+                            alt="Nishie portrait"
                             decoding="async"
                             style={{
                                 display: 'block',
