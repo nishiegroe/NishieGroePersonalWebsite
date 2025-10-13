@@ -31,7 +31,7 @@ import ContactPageIcon from '@mui/icons-material/ContactPage'
 // Centralized header styles
 const headerCardSx = {
     p: 1,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: '#fff', // Higher contrast for header background
     display: 'flex',
     position: 'fixed',
     zIndex: 999,

@@ -14,7 +14,7 @@ const Contact = () => {
             className="header"
             sx={{
                 p: { xs: 2, sm: 3, md: 4 },
-                backgroundColor: '#FDFAF6',
+                    backgroundColor: '#fff', // Higher contrast background
                 borderRadius: '15px',
                 m: { xs: '16px 8px', md: '12px' },
                 width: '100%',
@@ -34,7 +34,7 @@ const Contact = () => {
                         variant="h4"
                         sx={{ textAlign: { xs: 'center', md: 'left' } }}
                     >
-                        Contact Info
+                            <span style={{ color: '#222' }}>Contact Info</span>
                     </Typography>
                     <Typography
                         variant="body1"
@@ -93,11 +93,10 @@ const Contact = () => {
                 </Stack>
                 <Box>
                     <picture>
-                        <source srcSet={img2521webp} type="image/webp" />
-                        <source srcSet={`${image640} 640w, ${image960} 960w`} type="image/webp" />
+                        <source srcSet={`${image640} 640w, ${image960} 960w, ${img2521webp} 1280w`} type="image/webp" />
                         <img
-                            src={imageJpg}
-                            srcSet={`${image640} 640w, ${image960} 960w`}
+                            src={image640}
+                            srcSet={`${image640} 640w, ${image960} 960w, ${img2521webp} 1280w`}
                             sizes="(max-width: 600px) 80vw, 320px"
                             alt="Nishie speaking"
                             loading="lazy"
