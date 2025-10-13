@@ -14,7 +14,7 @@ const Contact = () => {
             className="header"
             sx={{
                 p: { xs: 2, sm: 3, md: 4 },
-                backgroundColor: '#FDFAF6',
+                    backgroundColor: '#fff', // Higher contrast background
                 borderRadius: '15px',
                 m: { xs: '16px 8px', md: '12px' },
                 width: '100%',
@@ -34,7 +34,7 @@ const Contact = () => {
                         variant="h4"
                         sx={{ textAlign: { xs: 'center', md: 'left' } }}
                     >
-                        Contact Info
+                            <span style={{ color: '#222' }}>Contact Info</span>
                     </Typography>
                     <Typography
                         variant="body1"

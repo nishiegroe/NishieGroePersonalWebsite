@@ -15,6 +15,7 @@ const Introduction = () => {
                 mx: 'auto',
                 scrollMarginTop: { xs: '20px', md: '104px' },
                 borderRadius: '15px',
+                   backgroundColor: '#fff', // Ensure high contrast background
             }}
         >
             <Stack
@@ -33,10 +34,11 @@ const Introduction = () => {
                                 sm: '2.2rem',
                                 md: '2.6rem',
                             },
+                               color: '#222',
                         }}
                     >
                         Hey! I'm{' '}
-                        <span style={{ color: '#36C0F0' }}>Nishie</span>,
+                            <span style={{ color: '#e6007a' }}>Nishie</span>,
                     </Typography>
                     {/* Visually hidden site name to reinforce title for crawlers */}
                     <Typography
