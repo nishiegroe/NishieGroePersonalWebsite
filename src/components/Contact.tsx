@@ -93,11 +93,10 @@ const Contact = () => {
                 </Stack>
                 <Box>
                     <picture>
-                        <source srcSet={img2521webp} type="image/webp" />
-                        <source srcSet={`${image640} 640w, ${image960} 960w`} type="image/webp" />
+                        <source srcSet={`${image640} 640w, ${image960} 960w, ${img2521webp} 1280w`} type="image/webp" />
                         <img
-                            src={imageJpg}
-                            srcSet={`${image640} 640w, ${image960} 960w`}
+                            src={image640}
+                            srcSet={`${image640} 640w, ${image960} 960w, ${img2521webp} 1280w`}
                             sizes="(max-width: 600px) 80vw, 320px"
                             alt="Nishie speaking"
                             loading="lazy"

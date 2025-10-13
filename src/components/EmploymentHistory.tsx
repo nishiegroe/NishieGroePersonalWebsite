@@ -1,3 +1,5 @@
+import usgLogo from '../assets/USG_Corporation_logo.svg.png'
+import jdLogo from '../assets/JD Logo.png'
 import {
     Card,
     Typography,
@@ -140,7 +142,7 @@ const employmentData: EmploymentEntryProps[] = [
     {
         title: 'Full-Stack Developer',
         company: 'USG',
-        logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/USG_Corporation_logo.svg/1200px-USG_Corporation_logo.svg.png',
+        logo: usgLogo,
         location: 'Chicago, IL',
         period: '2025 - Present',
         currentRole: true,
@@ -149,7 +151,7 @@ const employmentData: EmploymentEntryProps[] = [
     {
         title: 'Senior Software Engineer',
         company: 'John Deere',
-        logo: 'https://purepng.com/public/uploads/large/purepng.com-john-deere-logologobrand-logoiconslogos-251519940703ra54z.png',
+        logo: jdLogo,
         location: 'Moline, IL',
         period: '2022 - 2024',
         highlights: [
@@ -168,7 +170,7 @@ const employmentData: EmploymentEntryProps[] = [
     {
         title: 'Software Engineer',
         company: 'John Deere',
-        logo: 'https://purepng.com/public/uploads/large/purepng.com-john-deere-logologobrand-logoiconslogos-251519940703ra54z.png',
+        logo: jdLogo,
         location: 'Moline, IL',
         period: '2017 - 2022',
         highlights: [

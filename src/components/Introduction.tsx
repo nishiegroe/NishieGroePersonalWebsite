@@ -72,7 +72,6 @@ const Introduction = () => {
                 <Box sx={{ flexShrink: 0 }}>
                     <picture>
                         <img
-                            fetchPriority="high"
                             loading="lazy"
                             src={img1w240}
                             sizes="240px"
