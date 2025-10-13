@@ -72,11 +72,13 @@ const Introduction = () => {
                 <Box sx={{ flexShrink: 0 }}>
                     <picture>
                         <img
-                            loading="lazy"
                             src={img1w240}
                             sizes="240px"
                             alt="Nishie portrait"
                             decoding="async"
+                            fetchPriority="high"
+                            width={168}
+                            height={168}
                             style={{
                                 display: 'block',
                                 marginLeft: 'auto',

@@ -15,6 +15,27 @@
         <link rel="canonical" href="https://nishiegroe.com/" />
         <meta name="theme-color" content="#FDFAF6" />
 
+        <!-- Preload critical Roboto fonts -->
+        <link rel="preload" href="/assets/roboto-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+        <link rel="preload" href="/assets/roboto-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+        <style>
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+                src: url('/assets/roboto-latin-400.woff2') format('woff2');
+                font-display: swap;
+            }
+            @font-face {
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 700;
+                src: url('/assets/roboto-latin-700.woff2') format('woff2');
+                font-display: swap;
+            }
+        </style>
+
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Nishie Groe" />
@@ -72,6 +93,44 @@
                 "jobTitle": "Software Engineer"
             }
         </script>
+        <!-- Inline critical CSS for above-the-fold content -->
+        <style>
+            :root {
+                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+                line-height: 1.5;
+                font-weight: 400;
+                color-scheme: light dark;
+                color: rgba(255, 255, 255, 0.87);
+                background-color: #faf1e6;
+                font-synthesis: none;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            #root {
+                max-width: 1280px;
+                margin: 0 auto;
+                padding: 1rem;
+            }
+            .app {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                color: #333;
+            }
+        </style>
+        <!-- Defer non-critical CSS -->
+        <link rel="preload" href="/assets/index-CKepTx3p.css" as="style" onload="this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/assets/index-CKepTx3p.css"></noscript>
+        <!-- Non-critical icon CSS below -->
         <style>
             .programming{height:1.5em;width:1.5em;background-position:center;background-repeat:no-repeat;background-size:contain;display:inline-block;vertical-align:middle}
             .lang-c{background-image:url("languages/c.png")}

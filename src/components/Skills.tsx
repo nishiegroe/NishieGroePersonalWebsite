@@ -89,8 +89,9 @@ const Skills = () => (
             mx: 'auto',
             scrollMarginTop: { xs: '20px', md: '104px' },
             borderRadius: '15px',
+            minHeight: 120,
         }}
-    >
+        >
         <Typography
             variant="h4"
             sx={{
