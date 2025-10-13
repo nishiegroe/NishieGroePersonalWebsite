@@ -1,5 +1,7 @@
 # Nishie Groe — Software Engineer Portfolio
 
+<img width="406" height="137" alt="image" src="https://github.com/user-attachments/assets/421bde2d-5fed-47b2-bdef-208495b2980b" />
+
 Welcome to the personal portfolio of **Nishie Groe**, a Full-Stack Software Engineer at **USG** specializing in React, Micro-Frontends, AWS, CI/CD, and UI/UX. This site showcases my experience, skills, and contact information.
 
 ## 🚀 About Me
