@@ -33,21 +33,7 @@ const EmploymentHistoryEntry = ({
 }: EmploymentEntryProps) => {
     let content: React.ReactNode = null;
 
-    if (currentRole) {
-        content = (
-            <Container sx={{ m: 2 }}>
-                <Typography
-                    variant="h5"
-                    sx={{
-                        display: 'inline',
-                        fontWeight: 'bold',
-                    }}
-                >
-                    More to come!
-                </Typography>
-            </Container>
-        );
-    } else if (highlights && highlights.length > 0) {
+    if (highlights && highlights.length > 0) {
         content = (
             <List
                 sx={{
@@ -147,6 +133,13 @@ const employmentData: EmploymentEntryProps[] = [
         period: '2025 - Present',
         currentRole: true,
         headerColor: 'rgba(227, 28, 61, .05)',
+        highlights: [
+            'Developed and maintained a headless CMS-driven frontend, enabling flexible content delivery and scalable UI development',
+            'Built and onboarded a development team, establishing agile workflows and ceremonies to support rapid iteration',
+            'Led development efforts to successfully meet pilot go-live deadlines, coordinating scope, priorities, and delivery',
+            'Planned and executed the post-pilot roadmap, guiding the team toward full website deployment within scheduled timelines',
+            'Interviewed and evaluated engineering candidates, contributing to the growth and long-term stability of the development team',
+        ]
     },
     {
         title: 'Senior Software Engineer',
