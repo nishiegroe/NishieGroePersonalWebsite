@@ -6,10 +6,8 @@ import {
     PostgreSQL,
     Redux,
     Git,
-    Angular,
     CSS,
     NodeJs,
-    HTML5,
     Java,
     Jest,
     Python,
@@ -17,13 +15,11 @@ import {
     Docker,
     ExpressJsDark,
     Grafana,
-    Jenkins,
     Jira,
-    Lua,
     MySQL,
     MongoDB,
     NextJs,
-    C
+    C as Contentful
 } from 'developer-icons'
 
 type Skill = {
@@ -32,7 +28,7 @@ type Skill = {
 }
 
 const skills: Skill[] = [
-    { Icon: C,label: 'Contentful'},    
+    { Icon: Contentful, label: 'Contentful'},
     { Icon: NextJs, label: 'Next.js' },
     { Icon: React, label: 'React' },
     { Icon: Docker, label: 'Docker' },
