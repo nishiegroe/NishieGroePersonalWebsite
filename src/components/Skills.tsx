@@ -6,10 +6,8 @@ import {
     PostgreSQL,
     Redux,
     Git,
-    Angular,
     CSS,
     NodeJs,
-    HTML5,
     Java,
     Jest,
     Python,
@@ -17,12 +15,11 @@ import {
     Docker,
     ExpressJsDark,
     Grafana,
-    Jenkins,
     Jira,
-    Lua,
     MySQL,
     MongoDB,
     NextJs,
+    C as Contentful
 } from 'developer-icons'
 
 type Skill = {
@@ -31,27 +28,24 @@ type Skill = {
 }
 
 const skills: Skill[] = [
+    { Icon: Contentful, label: 'Contentful'},
+    { Icon: NextJs, label: 'Next.js' },
     { Icon: React, label: 'React' },
+    { Icon: Docker, label: 'Docker' },
     { Icon: TypeScript, label: 'TypeScript' },
     { Icon: JavaScript, label: 'JavaScript' },
     { Icon: Redux, label: 'Redux' },
     { Icon: PostgreSQL, label: 'PostgreSQL' },
     { Icon: Git, label: 'Git' },
-    { Icon: Docker, label: 'Docker' },
-    { Icon: NextJs, label: 'Next.js' },
-    { Icon: Angular, label: 'Angular' },
     { Icon: CSS, label: 'CSS' },
     { Icon: NodeJs, label: 'NodeJs' },
-    { Icon: HTML5, label: 'HTML5' },
     { Icon: Java, label: 'Java' },
     { Icon: Jest, label: 'Jest' },
     { Icon: Python, label: 'Python' },
     { Icon: Cypress, label: 'Cypress' },
     { Icon: ExpressJsDark, label: 'Express' },
     { Icon: Grafana, label: 'Grafana' },
-    { Icon: Jenkins, label: 'Jenkins' },
     { Icon: Jira, label: 'Jira' },
-    { Icon: Lua, label: 'Lua' },
     { Icon: MySQL, label: 'MySQL' },
     { Icon: MongoDB, label: 'MongoDB' },
 ]
