@@ -32,7 +32,7 @@ type Skill = {
 }
 
 const skills: Skill[] = [
-    { Icon: C,label: 'Contenful'},    
+    { Icon: C,label: 'Contentful'},    
     { Icon: NextJs, label: 'Next.js' },
     { Icon: React, label: 'React' },
     { Icon: Docker, label: 'Docker' },
