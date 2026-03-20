@@ -6,7 +6,11 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 
+// Theme and styles
+import './styles/global.css'
 import './App.css'
+import { useTheme } from './theme/useTheme'
+
 import Introduction from './components/Introduction.tsx'
 import Skills from './components/Skills.tsx'
 import Projects from './components/Projects.tsx'
@@ -15,6 +19,9 @@ import Contact from './components/Contact.tsx'
 import { Box } from '@mui/material'
 
 function App() {
+    // Apply theme configuration
+    useTheme()
+
     return (
         <div className="app">
             <Header />
