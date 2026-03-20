@@ -56,20 +56,26 @@ function App() {
 
     useEffect(() => {
         // Section jumping on scroll - navigate to next/prev section automatically
-        // Only enable on desktop (width > 768px)
-        const isMobile = window.innerWidth < 768
+        // Only on desktop devices
+        const isMobileDevice = () => {
+            return window.innerWidth < 768
+        }
+
+        if (isMobileDevice()) {
+            // Mobile: disable section jumping, use natural scrolling
+            return
+        }
 
         let isScrolling = false
         const scrollDelay = 1000 // Milliseconds to wait between section jumps
 
         const getSections = () => {
-            const hero = document.querySelector('.hero')
             const sections = document.querySelectorAll('.spatial-section, .hero, .skills-constellation')
-            return Array.from(sections).filter(el => el && el.offsetParent !== null) // Only visible elements
+            return Array.from(sections).filter(el => el && el.offsetParent !== null)
         }
 
         const handleWheel = (e) => {
-            if (isScrolling || isMobile) return
+            if (isScrolling) return
 
             const sections = getSections()
             if (sections.length === 0) return
@@ -96,7 +102,6 @@ function App() {
 
             if (targetIndex !== currentSectionIndex) {
                 isScrolling = true
-                // Use 'start' positioning for better mobile-friendly scrolling
                 sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' })
                 setTimeout(() => {
                     isScrolling = false
@@ -104,15 +109,10 @@ function App() {
             }
         }
 
-        // Only add wheel listener on desktop
-        if (!isMobile) {
-            window.addEventListener('wheel', handleWheel, { passive: true })
-        }
+        window.addEventListener('wheel', handleWheel, { passive: true })
 
         return () => {
-            if (!isMobile) {
-                window.removeEventListener('wheel', handleWheel)
-            }
+            window.removeEventListener('wheel', handleWheel)
         }
     }, [])
 
