@@ -1,113 +1,38 @@
 import {
     Card,
     Typography,
-    Container,
     List,
     ListItem,
+    Container,
     Grid,
-    Box,
     Link,
 } from '@mui/material'
 import React from 'react'
 
-type ProjectProps = {
+type ProjectEntryProps = {
     title: string
     description: string
     technologies: string[]
-    highlights: string[]
-    links: {
+    highlights?: string[]
+    links?: {
         website?: string
         github?: string
     }
+    headerColor?: string
 }
 
-const ProjectCard: React.FC<ProjectProps> = ({
+const ProjectEntry = ({
     title,
     description,
     technologies,
     highlights,
     links,
-}) => {
-    return (
-        <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
-            <Container
-                disableGutters
-                sx={{
-                    backgroundColor: '#f2f2f2',
-                    borderRadius: 1,
-                    px: { xs: 1.5, sm: 2 },
-                    py: { xs: 1.5, sm: 2 },
-                }}
-            >
-                <Grid container spacing={2} alignItems="center">
-                    <Grid size={{ xs: 12, md: 8 }}>
-                        <Typography
-                            variant="h6"
-                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
-                        >
-                            {title}
-                        </Typography>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                color: '#666',
-                                textAlign: { xs: 'center', md: 'left' },
-                            }}
-                        >
-                            {description}
-                        </Typography>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 4 }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                gap: 1,
-                                flexWrap: 'wrap',
-                                justifyContent: { xs: 'center', md: 'flex-end' },
-                            }}
-                        >
-                            {links.website && (
-                                <Link
-                                    href={links.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    sx={{
-                                        color: '#36c0f0',
-                                        textDecoration: 'none',
-                                        fontSize: '0.875rem',
-                                        fontWeight: 500,
-                                        '&:hover': {
-                                            textDecoration: 'underline',
-                                        },
-                                    }}
-                                >
-                                    Website
-                                </Link>
-                            )}
-                            {links.github && (
-                                <Link
-                                    href={links.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    sx={{
-                                        color: '#36c0f0',
-                                        textDecoration: 'none',
-                                        fontSize: '0.875rem',
-                                        fontWeight: 500,
-                                        '&:hover': {
-                                            textDecoration: 'underline',
-                                        },
-                                    }}
-                                >
-                                    GitHub
-                                </Link>
-                            )}
-                        </Box>
-                    </Grid>
-                </Grid>
-            </Container>
+    headerColor,
+}: ProjectEntryProps) => {
+    let content: React.ReactNode = null
 
-            {/* Highlights Section */}
+    if (highlights && highlights.length > 0) {
+        content = (
             <List
                 sx={{
                     listStyleType: 'disc',
@@ -127,75 +52,163 @@ const ProjectCard: React.FC<ProjectProps> = ({
                     </ListItem>
                 ))}
             </List>
+        )
+    }
 
-            {/* Technologies Section */}
-            <Box sx={{ px: { xs: 2, sm: 3 }, py: 2 }}>
-                <Typography
-                    variant="subtitle2"
-                    sx={{
-                        fontWeight: 600,
-                        mb: 1,
-                        color: '#555',
-                    }}
-                >
-                    Stack: {technologies.join(', ')}
-                </Typography>
-            </Box>
+    return (
+        <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
+            <Container
+                disableGutters
+                sx={{
+                    backgroundColor: headerColor || '#f2f2f2',
+                    borderRadius: 1,
+                    px: { xs: 1.5, sm: 2 },
+                    py: { xs: 1.5, sm: 2 },
+                }}
+            >
+                <Grid container spacing={2} alignItems="center">
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <Typography
+                            variant="h6"
+                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
+                        >
+                            {title}
+                        </Typography>
+                        <Typography
+                            variant="subtitle1"
+                            sx={{
+                                textAlign: { xs: 'center', md: 'left' },
+                                color: '#666',
+                            }}
+                        >
+                            {description}
+                        </Typography>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 6 }}>
+                        <Container
+                            disableGutters
+                            sx={{
+                                display: 'flex',
+                                justifyContent: { xs: 'center', md: 'flex-end' },
+                                gap: 2,
+                                flexWrap: 'wrap',
+                            }}
+                        >
+                            {links?.website && (
+                                <Link
+                                    href={links.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        color: '#36c0f0',
+                                        textDecoration: 'none',
+                                        fontSize: '0.875rem',
+                                        fontWeight: 500,
+                                        '&:hover': {
+                                            textDecoration: 'underline',
+                                        },
+                                    }}
+                                >
+                                    Website
+                                </Link>
+                            )}
+                            {links?.github && (
+                                <Link
+                                    href={links.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        color: '#36c0f0',
+                                        textDecoration: 'none',
+                                        fontSize: '0.875rem',
+                                        fontWeight: 500,
+                                        '&:hover': {
+                                            textDecoration: 'underline',
+                                        },
+                                    }}
+                                >
+                                    GitHub
+                                </Link>
+                            )}
+                        </Container>
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                textAlign: { xs: 'center', md: 'right' },
+                                mt: { xs: 0.5, md: 0 },
+                            }}
+                        >
+                            {technologies.join(', ')}
+                        </Typography>
+                    </Grid>
+                </Grid>
+            </Container>
+            {content}
         </Card>
     )
 }
 
-const Projects: React.FC = () => {
-    const projects: ProjectProps[] = [
-        {
-            title: 'VOD Insights',
-            description:
-                'Automated VOD analysis for esports coaches and content creators',
-            technologies: ['Python', 'React', 'Electron', 'OpenCV', 'FFmpeg'],
-            highlights: [
-                'Killfeed OCR detection for any esports game (Apex, Valorant, CS:GO, etc.)',
-                'Automated clip export with intelligent event merging',
-                'Twitch VOD integration—download and analyze VODs directly',
-                'Batch processing for analyzing multiple recordings',
-                'Event logs export (CSV/JSONL) for further analysis',
-                'Fully offline—no cloud dependencies or data tracking',
-            ],
-            links: {
-                website: 'https://vodinsights.app',
-            },
+const projectsData: ProjectEntryProps[] = [
+    {
+        title: 'VOD Insights',
+        description: 'Automated VOD analysis for esports coaches and creators',
+        technologies: ['Python', 'React', 'Electron', 'OpenCV', 'FFmpeg'],
+        highlights: [
+            'Killfeed OCR detection for any esports game (Apex, Valorant, CS:GO, etc.)',
+            'Automated clip export with intelligent event merging',
+            'Twitch VOD integration—download and analyze VODs directly',
+            'Batch processing for analyzing multiple recordings',
+            'Event logs export (CSV/JSONL) for further analysis',
+            'Fully offline—no cloud dependencies or data tracking',
+        ],
+        links: {
+            website: 'https://vodinsights.app',
         },
-    ]
+        headerColor: 'rgba(54, 192, 240, .1)',
+    },
+    {
+        title: 'Lootpath Finder',
+        description: 'Interactive map editor for Apex Legends loot paths',
+        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker'],
+        highlights: [
+            'Real-time interactive map editor with visual path drawing',
+            'JSON-based data persistence for loot routes',
+            'Docker containerization for easy deployment',
+            'Responsive design for desktop and tablet interfaces',
+        ],
+        headerColor: 'rgba(75, 192, 192, .1)',
+    },
+]
 
-    return (
-        <Container
-            id="projects"
-            maxWidth="md"
+const Projects = () => (
+    <Card
+        id="projects"
+        className="header"
+        sx={{
+            backgroundColor: '#FDFAF6',
+            m: { xs: '16px 8px', md: '12px' },
+            p: { xs: 2, sm: 3, md: 4 },
+            width: '100%',
+            maxWidth: { xs: 680, md: 960 },
+            boxSizing: 'border-box',
+            mx: 'auto',
+            scrollMarginTop: { xs: '20px', md: '104px' },
+            borderRadius: '15px',
+        }}
+    >
+        <Typography
+            variant="h4"
             sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                mt: { xs: 4, md: 6 },
-                mb: { xs: 4, md: 6 },
+                textAlign: { xs: 'center', md: 'left' },
+                mb: { xs: 1, sm: 2 },
             }}
         >
-            <Typography
-                variant="h4"
-                sx={{
-                    fontWeight: 600,
-                    mb: { xs: 3, md: 4 },
-                    textAlign: 'center',
-                }}
-            >
-                Projects
-            </Typography>
-
-            <Box sx={{ width: '100%' }}>
-                {projects.map((project) => (
-                    <ProjectCard key={project.title} {...project} />
-                ))}
-            </Box>
-        </Container>
-    )
-}
+            Projects
+        </Typography>
+        {projectsData.map((project) => (
+            <ProjectEntry key={project.title} {...project} />
+        ))}
+    </Card>
+)
 
 export default Projects
