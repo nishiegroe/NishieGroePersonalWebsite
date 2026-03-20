@@ -1,27 +1,21 @@
-import { Card, Typography, Box, Stack } from '@mui/material'
+import { Typography, Box, Stack } from '@mui/material'
 import img1w240 from '../assets/IMG_2444-240.webp'
 
 const Introduction = () => {
     return (
-        <Card
+        <Box
             id="introduction"
-            className="Introduction"
+            className="scroll-fade-in"
             sx={{
-                m: { xs: '16px 8px', md: '12px' },
-                p: { xs: 2, sm: 3, md: 4 },
                 width: '100%',
-                maxWidth: { xs: 680, md: 960 },
-                boxSizing: 'border-box',
-                mx: 'auto',
-                scrollMarginTop: { xs: '20px', md: '104px' },
-                borderRadius: '15px',
-                   backgroundColor: '#fff', // Ensure high contrast background
+                maxWidth: '900px',
+                margin: '0 auto',
             }}
         >
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
-                spacing={{ xs: 2, sm: 3 }}
-                alignItems="center"
+                spacing={{ xs: 3, md: 4 }}
+                alignItems={{ xs: 'center', md: 'flex-start' }}
             >
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Typography
@@ -30,15 +24,15 @@ const Introduction = () => {
                         sx={{
                             textAlign: { xs: 'center', md: 'left' },
                             fontSize: {
-                                xs: '1.9rem',
-                                sm: '2.2rem',
-                                md: '2.6rem',
+                                xs: '2rem',
+                                sm: '2.3rem',
+                                md: '2.5rem',
                             },
-                               color: '#222',
+                            fontFamily: 'Playfair Display, serif',
+                            mb: 2,
                         }}
                     >
-                        Hey! I'm{' '}
-                            <span style={{ color: '#e6007a' }}>Nishie</span>,
+                        About<span style={{ color: '#d9a8c7' }}>/me</span>
                     </Typography>
                     {/* Visually hidden site name to reinforce title for crawlers */}
                     <Typography
@@ -58,43 +52,48 @@ const Introduction = () => {
                         Nishie Groe
                     </Typography>
                     <Typography
-                        variant="body1"
                         sx={{
                             textAlign: { xs: 'center', md: 'left' },
-                            mt: { xs: 1.5, sm: 2 },
-                            fontSize: { xs: '1rem', sm: '1.05rem' },
+                            fontSize: { xs: '1.05rem', sm: '1.1rem' },
+                            lineHeight: 1.9,
+                            color: '#555',
                         }}
                     >
-                        Full-stack Software Engineer with 7+ years of experience
-                        in React, Java, and AWS. Passionate about building great
-                        user experiences and leading teams to deliver impactful
-                        solutions.
+                        I'm a full-stack software engineer with 7+ years building
+                        scalable applications. I specialize in React, microservices,
+                        AWS infrastructure, and leading technical initiatives. I love
+                        solving complex problems and creating experiences that users
+                        genuinely enjoy.
                     </Typography>
                 </Box>
-                <Box sx={{ flexShrink: 0 }}>
+                <Box
+                    sx={{
+                        flexShrink: 0,
+                        minWidth: { xs: '100%', md: '300px' },
+                    }}
+                >
                     <picture>
                         <img
                             src={img1w240}
-                            sizes="240px"
-                            alt="Nishie portrait"
+                            sizes="300px"
+                            alt="Nishie Groe"
                             decoding="async"
                             fetchPriority="high"
-                            width={168}
-                            height={168}
+                            width={240}
+                            height={240}
                             style={{
                                 display: 'block',
-                                marginLeft: 'auto',
-                                marginRight: 0,
-                                width: '70%',
-                                maxWidth: 240,
+                                width: '100%',
+                                maxWidth: '240px',
                                 height: 'auto',
-                                borderRadius: 8,
+                                borderRadius: '4px',
+                                margin: '0 auto',
                             }}
                         />
                     </picture>
                 </Box>
             </Stack>
-        </Card>
+        </Box>
     )
 }
 

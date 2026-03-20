@@ -283,6 +283,16 @@ const Header = () => {
                         </MenuItem>
                         <MenuItem
                             component="a"
+                            href="#projects"
+                            onClick={handleMenuClose}
+                        >
+                            <ListItemIcon>
+                                <WorkIcon fontSize="small" />
+                            </ListItemIcon>
+                            Projects
+                        </MenuItem>
+                        <MenuItem
+                            component="a"
                             href="#experience"
                             onClick={handleMenuClose}
                         >
