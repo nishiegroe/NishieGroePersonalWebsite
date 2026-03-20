@@ -631,7 +631,6 @@ svg.skill-connections {
 @media (max-width: 768px) {
   .spatial-section {
     min-height: 100vh;
-    height: 100vh;
     padding: 3rem 1.5rem;
     display: flex;
     flex-direction: column;
@@ -640,7 +639,6 @@ svg.skill-connections {
 
   .hero {
     min-height: 100vh;
-    height: 100vh;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
