@@ -5,7 +5,7 @@
 
 export const themeConfig = {
   // Main accent color - change this to update your entire site's accent color
-  accentColor: '#36c0f0', // Blue (current)
+  accentColor: '#d9a8c7', // Warm Lavender (Modern Feminine)
   // Alternative accent colors to try:
   // '#00d4ff' - Cyan (vibrant)
   // '#6366f1' - Indigo (professional)
@@ -16,17 +16,17 @@ export const themeConfig = {
   // '#3b82f6' - Sky Blue (classic)
 
   // Base colors
-  backgroundColor: '#faf1e6',
-  textPrimary: '#333333',
-  textSecondary: '#666666',
-  borderColor: '#e0d5c8',
+  backgroundColor: '#faf8f5',
+  textPrimary: '#3a3531',
+  textSecondary: '#7a7066',
+  borderColor: '#ede8e0',
   cardBackground: '#ffffff',
 
   // Derived colors (automatically adjusted based on accent)
-  accentLight: 'rgba(54, 192, 240, 0.1)',
-  accentMedium: 'rgba(54, 192, 240, 0.2)',
-  accentHover: '#2ba8d8',
-  accentActive: '#1f8fc0',
+  accentLight: 'rgba(245, 184, 168, 0.1)',
+  accentMedium: 'rgba(217, 168, 199, 0.2)',
+  accentHover: '#c697b8',
+  accentActive: '#b57fa7',
 }
 
 /**
@@ -37,8 +37,8 @@ export const generateCSSVariables = (config: typeof themeConfig) => {
   return `
     :root {
       --color-accent: ${config.accentColor};
-      --color-accent-light: rgba(54, 192, 240, 0.1);
-      --color-accent-medium: rgba(54, 192, 240, 0.2);
+      --color-accent-light: ${config.accentLight};
+      --color-accent-medium: ${config.accentMedium};
       --color-accent-hover: ${config.accentHover};
       --color-accent-active: ${config.accentActive};
       --color-bg: ${config.backgroundColor};
