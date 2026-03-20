@@ -67,7 +67,8 @@ function App() {
         }
 
         let isScrolling = false
-        const scrollDelay = 1000 // Milliseconds to wait between section jumps
+        let lastScrollDirection = null
+        const scrollDelay = 1200 // Milliseconds to wait between section jumps
 
         const getSections = () => {
             const sections = document.querySelectorAll('.spatial-section, .hero, .skills-constellation')
@@ -83,11 +84,12 @@ function App() {
             const windowHeight = window.innerHeight
             let currentSectionIndex = 0
 
-            // Find the current section (closest to viewport center)
+            // Find the current section (top is most visible in viewport)
             let minDistance = Infinity
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect()
-                const distance = Math.abs(rect.top + rect.height / 2 - windowHeight / 2)
+                // Find section with top closest to viewport top (more reliable than center)
+                const distance = Math.abs(rect.top)
                 if (distance < minDistance) {
                     minDistance = distance
                     currentSectionIndex = index
@@ -95,6 +97,15 @@ function App() {
             })
 
             const scrollingDown = e.deltaY > 0
+
+            // Only jump if scrolling direction matches expectation
+            // This prevents jumping backwards when transitioning between sections
+            if (lastScrollDirection !== null && scrollingDown !== lastScrollDirection) {
+                lastScrollDirection = scrollingDown
+                return
+            }
+            lastScrollDirection = scrollingDown
+
             let targetIndex = scrollingDown ? currentSectionIndex + 1 : currentSectionIndex - 1
 
             // Clamp to valid range
