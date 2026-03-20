@@ -171,15 +171,26 @@ const SkillsConstellation = () => {
                                 <skill.icon size={32} />
                             </Box>
                             {hoveredId === skill.id && (
-                                <Box>
+                                <Box sx={{
+                                    position: 'absolute',
+                                    top: '100%',
+                                    left: '50%',
+                                    transform: 'translateX(-50%)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    gap: '2px',
+                                    zIndex: 10,
+                                    mt: 1,
+                                }}>
                                     <Typography className="skill-label">
                                         {skill.name}
                                     </Typography>
                                     <Typography sx={{
                                         fontSize: '0.7rem',
-                                        color: '#999',
+                                        color: '#7a7066',
                                         textAlign: 'center',
-                                        mt: '2px'
+                                        fontWeight: 500,
                                     }}>
                                         {categoryColors[skill.category].name}
                                     </Typography>

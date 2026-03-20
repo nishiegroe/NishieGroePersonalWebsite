@@ -335,12 +335,21 @@ body::-webkit-scrollbar {
 }
 
 .skill-label {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   font-family: var(--font-display);
   text-align: center;
-  opacity: 0.7;
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  margin-top: 4px;
+  opacity: 0;
   transition: opacity var(--transition-fast);
+  pointer-events: none;
 }
 
 .skill-node:hover .skill-label {
