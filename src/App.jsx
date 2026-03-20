@@ -56,13 +56,9 @@ function App() {
 
     useEffect(() => {
         // Section jumping on scroll - navigate to next/prev section automatically
-        // Only on desktop devices
-        const isMobileDevice = () => {
-            return window.innerWidth < 768
-        }
-
-        if (isMobileDevice()) {
-            // Mobile: disable section jumping, use natural scrolling
+        // Disabled on mobile, only on desktop
+        if (window.innerWidth < 768) {
+            // Mobile: no section jumping, just natural scrolling
             return
         }
 
@@ -88,7 +84,7 @@ function App() {
             let minDistance = Infinity
             sections.forEach((section, index) => {
                 const rect = section.getBoundingClientRect()
-                // Find section with top closest to viewport top (more reliable than center)
+                // Find section with top closest to viewport top
                 const distance = Math.abs(rect.top)
                 if (distance < minDistance) {
                     minDistance = distance
@@ -99,7 +95,6 @@ function App() {
             const scrollingDown = e.deltaY > 0
 
             // Only jump if scrolling direction matches expectation
-            // This prevents jumping backwards when transitioning between sections
             if (lastScrollDirection !== null && scrollingDown !== lastScrollDirection) {
                 lastScrollDirection = scrollingDown
                 return
