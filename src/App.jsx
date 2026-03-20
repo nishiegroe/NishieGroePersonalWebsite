@@ -56,6 +56,9 @@ function App() {
 
     useEffect(() => {
         // Section jumping on scroll - navigate to next/prev section automatically
+        // Only enable on desktop (width > 768px)
+        const isMobile = window.innerWidth < 768
+
         let isScrolling = false
         const scrollDelay = 1000 // Milliseconds to wait between section jumps
 
@@ -66,7 +69,7 @@ function App() {
         }
 
         const handleWheel = (e) => {
-            if (isScrolling) return
+            if (isScrolling || isMobile) return
 
             const sections = getSections()
             if (sections.length === 0) return
@@ -93,16 +96,24 @@ function App() {
 
             if (targetIndex !== currentSectionIndex) {
                 isScrolling = true
-                sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' })
+                // Use 'start' positioning for better mobile-friendly scrolling
+                sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' })
                 setTimeout(() => {
                     isScrolling = false
                 }, scrollDelay)
             }
         }
 
-        window.addEventListener('wheel', handleWheel, { passive: true })
+        // Only add wheel listener on desktop
+        if (!isMobile) {
+            window.addEventListener('wheel', handleWheel, { passive: true })
+        }
 
-        return () => window.removeEventListener('wheel', handleWheel)
+        return () => {
+            if (!isMobile) {
+                window.removeEventListener('wheel', handleWheel)
+            }
+        }
     }, [])
 
     return (
