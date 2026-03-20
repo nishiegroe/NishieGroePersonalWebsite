@@ -9,6 +9,7 @@ import '@fontsource/roboto/700.css'
 import './App.css'
 import Introduction from './components/Introduction'
 import Skills from './components/Skills'
+import Projects from './components/Projects'
 import EmploymentHistory from './components/EmploymentHistory'
 import Contact from './components/Contact'
 import { Box } from '@mui/material'
@@ -34,6 +35,7 @@ const App: React.FC = () => {
                 </div>
 
                 <Skills />
+                <Projects />
                 <EmploymentHistory />
 
                 <Contact />
