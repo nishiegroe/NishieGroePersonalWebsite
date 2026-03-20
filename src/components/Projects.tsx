@@ -2,204 +2,144 @@ import {
     Card,
     Typography,
     Container,
+    List,
+    ListItem,
+    Grid,
     Box,
-    Chip,
-    Button,
+    Link,
 } from '@mui/material'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import LanguageIcon from '@mui/icons-material/Language'
 import React from 'react'
 
 type ProjectProps = {
     title: string
     description: string
     technologies: string[]
-    keyFeatures: string[]
+    highlights: string[]
     links: {
         website?: string
         github?: string
-        demo?: string
     }
-    screenshot?: string
-    screenshotAlt?: string
 }
 
 const ProjectCard: React.FC<ProjectProps> = ({
     title,
     description,
     technologies,
-    keyFeatures,
+    highlights,
     links,
-    screenshot,
-    screenshotAlt,
 }) => {
     return (
-        <Card
-            sx={{
-                m: { xs: 2, sm: 3 },
-                p: { xs: 2, sm: 3 },
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                gap: { xs: 2, md: 3 },
-            }}
-        >
-            {/* Screenshot Section */}
-            {screenshot && (
-                <Box
-                    sx={{
-                        flex: { xs: '0 100%', md: '0 0 40%' },
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: '#f5f5f5',
-                        borderRadius: 2,
-                        overflow: 'hidden',
-                    }}
-                >
-                    <img
-                        src={screenshot}
-                        alt={screenshotAlt || title}
-                        style={{
-                            width: '100%',
-                            height: 'auto',
-                            objectFit: 'cover',
-                            display: 'block',
-                        }}
-                    />
-                </Box>
-            )}
-
-            {/* Content Section */}
-            <Box
+        <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
+            <Container
+                disableGutters
                 sx={{
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
+                    backgroundColor: '#f2f2f2',
+                    borderRadius: 1,
+                    px: { xs: 1.5, sm: 2 },
+                    py: { xs: 1.5, sm: 2 },
                 }}
             >
-                <Box>
-                    <Typography
-                        variant="h5"
-                        sx={{
-                            fontWeight: 600,
-                            mb: 1,
-                        }}
-                    >
-                        {title}
-                    </Typography>
-
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            mb: 2,
-                            color: '#555',
-                        }}
-                    >
-                        {description}
-                    </Typography>
-
-                    {/* Key Features */}
-                    <Box sx={{ mb: 2 }}>
+                <Grid container spacing={2} alignItems="center">
+                    <Grid size={{ xs: 12, md: 8 }}>
                         <Typography
-                            variant="subtitle2"
-                            sx={{
-                                fontWeight: 600,
-                                mb: 1,
-                                color: '#333',
-                            }}
+                            variant="h6"
+                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
                         >
-                            Key Features:
+                            {title}
                         </Typography>
-                        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-                            {keyFeatures.map((feature) => (
-                                <Typography key={feature} variant="body2">
-                                    • {feature}
-                                </Typography>
-                            ))}
-                        </Box>
-                    </Box>
-
-                    {/* Technologies */}
-                    <Box sx={{ mb: 2 }}>
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-                            {technologies.map((tech) => (
-                                <Chip
-                                    key={tech}
-                                    label={tech}
-                                    variant="outlined"
-                                    size="small"
+                        <Typography
+                            variant="body2"
+                            sx={{
+                                color: '#666',
+                                textAlign: { xs: 'center', md: 'left' },
+                            }}
+                        >
+                            {description}
+                        </Typography>
+                    </Grid>
+                    <Grid size={{ xs: 12, md: 4 }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                gap: 1,
+                                flexWrap: 'wrap',
+                                justifyContent: { xs: 'center', md: 'flex-end' },
+                            }}
+                        >
+                            {links.website && (
+                                <Link
+                                    href={links.website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     sx={{
-                                        backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                        borderColor: 'rgba(54, 192, 240, 0.4)',
+                                        color: '#36c0f0',
+                                        textDecoration: 'none',
+                                        fontSize: '0.875rem',
+                                        fontWeight: 500,
+                                        '&:hover': {
+                                            textDecoration: 'underline',
+                                        },
                                     }}
-                                />
-                            ))}
+                                >
+                                    Website
+                                </Link>
+                            )}
+                            {links.github && (
+                                <Link
+                                    href={links.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        color: '#36c0f0',
+                                        textDecoration: 'none',
+                                        fontSize: '0.875rem',
+                                        fontWeight: 500,
+                                        '&:hover': {
+                                            textDecoration: 'underline',
+                                        },
+                                    }}
+                                >
+                                    GitHub
+                                </Link>
+                            )}
                         </Box>
-                    </Box>
-                </Box>
+                    </Grid>
+                </Grid>
+            </Container>
 
-                {/* Links */}
-                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                    {links.website && (
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            startIcon={<LanguageIcon />}
-                            href={links.website}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{
-                                borderColor: 'rgba(54, 192, 240, 0.6)',
-                                color: '#36c0f0',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                },
-                            }}
-                        >
-                            Website
-                        </Button>
-                    )}
-                    {links.demo && (
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            startIcon={<OpenInNewIcon />}
-                            href={links.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{
-                                borderColor: 'rgba(54, 192, 240, 0.6)',
-                                color: '#36c0f0',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                },
-                            }}
-                        >
-                            Live Demo
-                        </Button>
-                    )}
-                    {links.github && (
-                        <Button
-                            variant="outlined"
-                            size="small"
-                            startIcon={<GitHubIcon />}
-                            href={links.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{
-                                borderColor: 'rgba(54, 192, 240, 0.6)',
-                                color: '#36c0f0',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                },
-                            }}
-                        >
-                            GitHub
-                        </Button>
-                    )}
-                </Box>
+            {/* Highlights Section */}
+            <List
+                sx={{
+                    listStyleType: 'disc',
+                    px: { xs: 2, sm: 3 },
+                    width: '100%',
+                    boxSizing: 'border-box',
+                }}
+            >
+                {highlights.map((highlight) => (
+                    <ListItem
+                        key={highlight}
+                        sx={{ display: 'list-item', pl: 2, p: 0 }}
+                    >
+                        <Typography variant="body2" align="left">
+                            {highlight}
+                        </Typography>
+                    </ListItem>
+                ))}
+            </List>
+
+            {/* Technologies Section */}
+            <Box sx={{ px: { xs: 2, sm: 3 }, py: 2 }}>
+                <Typography
+                    variant="subtitle2"
+                    sx={{
+                        fontWeight: 600,
+                        mb: 1,
+                        color: '#555',
+                    }}
+                >
+                    Stack: {technologies.join(', ')}
+                </Typography>
             </Box>
         </Card>
     )
@@ -210,22 +150,19 @@ const Projects: React.FC = () => {
         {
             title: 'VOD Insights',
             description:
-                'Automated VOD analysis for esports coaches and content creators. Scans gaming footage, detects key moments (kills, assists, knockdowns), and exports clips—all locally on Windows.',
-            technologies: ['Python', 'React', 'Electron', 'OpenCV', 'Tesseract', 'FFmpeg'],
-            keyFeatures: [
-                'Killfeed OCR detection for any game (Apex, Valorant, CS:GO, etc.)',
+                'Automated VOD analysis for esports coaches and content creators',
+            technologies: ['Python', 'React', 'Electron', 'OpenCV', 'FFmpeg'],
+            highlights: [
+                'Killfeed OCR detection for any esports game (Apex, Valorant, CS:GO, etc.)',
                 'Automated clip export with intelligent event merging',
-                'Twitch VOD download and analysis',
-                'Batch processing for multiple recordings',
-                'Event logs export (CSV/JSONL)',
-                'Works entirely offline—no cloud dependencies',
+                'Twitch VOD integration—download and analyze VODs directly',
+                'Batch processing for analyzing multiple recordings',
+                'Event logs export (CSV/JSONL) for further analysis',
+                'Fully offline—no cloud dependencies or data tracking',
             ],
             links: {
                 website: 'https://vodinsights.app',
-                demo: 'https://vodinsights.app',
             },
-            screenshot: '/vod-insights-home.png',
-            screenshotAlt: 'VOD Insights Home Page showing recent VODs and clips',
         },
     ]
 
@@ -242,14 +179,14 @@ const Projects: React.FC = () => {
             }}
         >
             <Typography
-                variant="h3"
+                variant="h4"
                 sx={{
                     fontWeight: 600,
-                    mb: 4,
+                    mb: { xs: 3, md: 4 },
                     textAlign: 'center',
                 }}
             >
-                Featured Projects
+                Projects
             </Typography>
 
             <Box sx={{ width: '100%' }}>
