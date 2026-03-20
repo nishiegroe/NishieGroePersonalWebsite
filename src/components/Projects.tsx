@@ -14,6 +14,8 @@ type ProjectEntryProps = {
     description: string
     technologies: string[]
     highlights?: string[]
+    image?: string
+    imageAlt?: string
     links?: {
         website?: string
         github?: string
@@ -26,6 +28,8 @@ const ProjectEntry = ({
     description,
     technologies,
     highlights,
+    image,
+    imageAlt,
     links,
     headerColor,
 }: ProjectEntryProps) => {
@@ -143,6 +147,31 @@ const ProjectEntry = ({
                     </Grid>
                 </Grid>
             </Container>
+
+            {/* Project Image */}
+            {image && (
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        padding: '16px 24px',
+                        backgroundColor: '#fafafa',
+                    }}
+                >
+                    <img
+                        src={image}
+                        alt={imageAlt || title}
+                        style={{
+                            maxWidth: '100%',
+                            height: 'auto',
+                            borderRadius: '8px',
+                            maxHeight: '300px',
+                            objectFit: 'cover',
+                        }}
+                    />
+                </div>
+            )}
+
             {content}
         </Card>
     )
@@ -161,6 +190,8 @@ const projectsData: ProjectEntryProps[] = [
             'Event logs export (CSV/JSONL) for further analysis',
             'Fully offline—no cloud dependencies or data tracking',
         ],
+        image: '/vod-insights-home.png',
+        imageAlt: 'VOD Insights home page showing recent VODs and clips library',
         links: {
             website: 'https://vodinsights.app',
         },
