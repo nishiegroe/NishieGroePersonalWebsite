@@ -49,38 +49,38 @@ const categoryColors: Record<string, SkillCategory> = {
 
 const SkillsConstellation = () => {
     const skills: SkillNode[] = [
-        // Frontend
-        { id: 1, name: 'React', icon: ReactIcon, category: 'frontend', x: 15, y: 15 },
-        { id: 2, name: 'Next.js', icon: NextJs, category: 'frontend', x: 25, y: 20 },
-        { id: 3, name: 'TypeScript', icon: TypeScript, category: 'frontend', x: 20, y: 30 },
-        { id: 4, name: 'JavaScript', icon: JavaScript, category: 'frontend', x: 10, y: 35 },
-        { id: 5, name: 'CSS', icon: CSS, category: 'frontend', x: 30, y: 35 },
-        { id: 6, name: 'Redux', icon: Redux, category: 'frontend', x: 25, y: 10 },
+        // Frontend (top-left cluster)
+        { id: 1, name: 'React', icon: ReactIcon, category: 'frontend', x: 12, y: 10 },
+        { id: 2, name: 'Next.js', icon: NextJs, category: 'frontend', x: 22, y: 8 },
+        { id: 3, name: 'TypeScript', icon: TypeScript, category: 'frontend', x: 18, y: 18 },
+        { id: 4, name: 'JavaScript', icon: JavaScript, category: 'frontend', x: 8, y: 20 },
+        { id: 5, name: 'CSS', icon: CSS, category: 'frontend', x: 28, y: 22 },
+        { id: 6, name: 'Redux', icon: Redux, category: 'frontend', x: 16, y: 28 },
 
-        // Backend
-        { id: 7, name: 'Node.js', icon: NodeJs, category: 'backend', x: 60, y: 15 },
-        { id: 8, name: 'Express', icon: ExpressJsDark, category: 'backend', x: 70, y: 22 },
-        { id: 9, name: 'Java', icon: Java, category: 'backend', x: 50, y: 25 },
-        { id: 10, name: 'Python', icon: Python, category: 'backend', x: 65, y: 35 },
+        // Backend (top-right cluster)
+        { id: 7, name: 'Node.js', icon: NodeJs, category: 'backend', x: 78, y: 12 },
+        { id: 8, name: 'Express', icon: ExpressJsDark, category: 'backend', x: 88, y: 18 },
+        { id: 9, name: 'Java', icon: Java, category: 'backend', x: 82, y: 28 },
+        { id: 10, name: 'Python', icon: Python, category: 'backend', x: 72, y: 22 },
 
-        // Database
-        { id: 11, name: 'PostgreSQL', icon: PostgreSQL, category: 'database', x: 45, y: 55 },
-        { id: 12, name: 'MySQL', icon: MySQL, category: 'database', x: 35, y: 60 },
-        { id: 13, name: 'MongoDB', icon: MongoDB, category: 'database', x: 55, y: 65 },
+        // Database (center cluster)
+        { id: 11, name: 'PostgreSQL', icon: PostgreSQL, category: 'database', x: 45, y: 48 },
+        { id: 12, name: 'MySQL', icon: MySQL, category: 'database', x: 38, y: 58 },
+        { id: 13, name: 'MongoDB', icon: MongoDB, category: 'database', x: 55, y: 55 },
 
-        // DevOps
-        { id: 14, name: 'Docker', icon: Docker, category: 'devops', x: 15, y: 55 },
-        { id: 15, name: 'AWS', icon: AWS, category: 'devops', x: 20, y: 65 },
-        { id: 16, name: 'Grafana', icon: Grafana, category: 'devops', x: 10, y: 75 },
+        // DevOps (bottom-left cluster)
+        { id: 14, name: 'Docker', icon: Docker, category: 'devops', x: 10, y: 70 },
+        { id: 15, name: 'AWS', icon: AWS, category: 'devops', x: 18, y: 80 },
+        { id: 16, name: 'Grafana', icon: Grafana, category: 'devops', x: 8, y: 90 },
 
-        // Testing
-        { id: 17, name: 'Jest', icon: Jest, category: 'testing', x: 75, y: 55 },
-        { id: 18, name: 'Cypress', icon: Cypress, category: 'testing', x: 85, y: 60 },
+        // Testing (right-middle cluster)
+        { id: 17, name: 'Jest', icon: Jest, category: 'testing', x: 82, y: 50 },
+        { id: 18, name: 'Cypress', icon: Cypress, category: 'testing', x: 92, y: 62 },
 
-        // Tools & CMS
-        { id: 19, name: 'Git', icon: Git, category: 'tools', x: 50, y: 80 },
-        { id: 20, name: 'Jira', icon: Jira, category: 'tools', x: 40, y: 75 },
-        { id: 21, name: 'Contentful', icon: Contentful, category: 'tools', x: 65, y: 80 },
+        // Tools & CMS (bottom-center cluster)
+        { id: 19, name: 'Git', icon: Git, category: 'tools', x: 42, y: 80 },
+        { id: 20, name: 'Jira', icon: Jira, category: 'tools', x: 58, y: 88 },
+        { id: 21, name: 'Contentful', icon: Contentful, category: 'tools', x: 50, y: 75 },
     ]
 
     const [hoveredId, setHoveredId] = useState<number | null>(null)
