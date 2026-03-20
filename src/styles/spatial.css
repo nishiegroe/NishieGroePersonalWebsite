@@ -97,18 +97,28 @@ a:hover {
   perspective: 1200px;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar in Chrome/Safari/Edge */
+.spatial-container::-webkit-scrollbar {
+  display: none !important;
 }
 
 /* Smooth scroll behavior (scroll snapping handled by JavaScript) */
-html {
+html, body {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
 /* Hide scrollbars for webkit browsers (Chrome, Safari, Edge) */
-html::-webkit-scrollbar {
-  display: none;
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
 }
 
 /* Depth layers – elements at different z-depths */
