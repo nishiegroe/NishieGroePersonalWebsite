@@ -630,13 +630,21 @@ svg.skill-connections {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .spatial-section {
-    min-height: auto;
+    min-height: 100vh;
+    height: 100vh;
     padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero {
-    min-height: 80vh;
+    min-height: 100vh;
+    height: 100vh;
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .skills-constellation {
