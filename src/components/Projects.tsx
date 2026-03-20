@@ -317,6 +317,12 @@ const projectsData: ProjectEntryProps[] = [
             'Docker containerization for easy deployment',
             'Responsive design for desktop and tablet interfaces',
         ],
+        images: [
+            '/lootpath-finder-home.png',
+            '/lootpath-finder-map.png',
+            '/lootpath-finder-lootpath.png',
+        ],
+        imageAlt: 'Lootpath Finder application screenshots',
         headerColor: 'rgba(75, 192, 192, .1)',
     },
 ]
