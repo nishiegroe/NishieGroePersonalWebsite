@@ -24,6 +24,57 @@ import {
     C as Contentful
 } from 'developer-icons'
 
+// Icon components for AI skills with internet-sourced logos
+const OllamaIcon = () => (
+  <img
+    src="https://ollama.ai/public/ollama.png"
+    style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+    alt="Ollama"
+  />
+)
+
+const ClaudeIcon = () => {
+  const [failed, setFailed] = useState(false)
+  return failed ? (
+    <span style={{ fontSize: '28px', lineHeight: '32px' }}>🤖</span>
+  ) : (
+    <img
+      src="https://cdn.simpleicons.org/anthropic/e31b24"
+      style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+      alt="Claude"
+      onError={() => setFailed(true)}
+    />
+  )
+}
+
+const MCPIcon = () => {
+  const [failed, setFailed] = useState(false)
+  return failed ? (
+    <span style={{ fontSize: '28px', lineHeight: '32px' }}>🔗</span>
+  ) : (
+    <img
+      src="https://modelcontextprotocol.io/favicon.ico"
+      style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+      alt="MCP"
+      onError={() => setFailed(true)}
+    />
+  )
+}
+
+const PromptEngineeringIcon = () => {
+  const [failed, setFailed] = useState(false)
+  return failed ? (
+    <span style={{ fontSize: '28px', lineHeight: '32px' }}>💬</span>
+  ) : (
+    <img
+      src="https://raw.githubusercontent.com/anthropics/prompt-library/main/assets/prompt-engineering.png"
+      style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+      alt="Prompt Engineering"
+      onError={() => setFailed(true)}
+    />
+  )
+}
+
 interface SkillNode {
     id: number
     name: string
@@ -45,6 +96,7 @@ const categoryColors: Record<string, SkillCategory> = {
     devops: { name: 'DevOps', color: '#a8c8d9' },
     testing: { name: 'Testing', color: '#d9d4a8' },
     tools: { name: 'Tools & CMS', color: '#d4a8b8' },
+    ai: { name: 'AI & ML', color: '#b8d9c8' },
 }
 
 const SkillsConstellation = () => {
@@ -81,6 +133,12 @@ const SkillsConstellation = () => {
         { id: 19, name: 'Git', icon: Git, category: 'tools', x: 42, y: 80 },
         { id: 20, name: 'Jira', icon: Jira, category: 'tools', x: 58, y: 88 },
         { id: 21, name: 'Contentful', icon: Contentful, category: 'tools', x: 50, y: 75 },
+
+        // AI & ML (bottom-right corner - well separated from all sections)
+        { id: 22, name: 'Ollama', icon: OllamaIcon, category: 'ai', x: 72, y: 80 },
+        { id: 23, name: 'Claude', icon: ClaudeIcon, category: 'ai', x: 85, y: 78 },
+        { id: 24, name: 'MCP', icon: MCPIcon, category: 'ai', x: 78, y: 92 },
+        { id: 25, name: 'Prompt Engineering', icon: PromptEngineeringIcon, category: 'ai', x: 68, y: 98 },
     ]
 
     const [hoveredId, setHoveredId] = useState<number | null>(null)
@@ -155,6 +213,11 @@ const SkillsConstellation = () => {
                         <Box
                             key={skill.id}
                             className="skill-node"
+                            role="img"
+                            aria-label={`${skill.name}, ${categoryColors[skill.category].name}`}
+                            data-skill-name={skill.name}
+                            data-skill-category={skill.category}
+                            data-skill-type={categoryColors[skill.category].name}
                             sx={{
                                 left: `calc(${skill.x}% - 30px)`,
                                 top: `calc(${skill.y}% - 30px)`,
@@ -198,6 +261,30 @@ const SkillsConstellation = () => {
                             )}
                         </Box>
                     ))}
+                </Box>
+
+                {/* Hidden SEO text for search engines */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        left: '-9999px',
+                        width: '1px',
+                        height: '1px',
+                        overflow: 'hidden',
+                    }}
+                    role="doc-note"
+                >
+                    <Typography component="h3" sx={{ mb: 1, fontWeight: 'bold' }}>
+                        Professional Skills and Technologies
+                    </Typography>
+                    {Object.entries(categoryColors).map(([key, category]) => {
+                        const skillsInCategory = getSkillsByCategory(key)
+                        return (
+                            <Typography key={key} component="p" sx={{ mb: 1 }}>
+                                <strong>{category.name}:</strong> {skillsInCategory.map(s => s.name).join(', ')}
+                            </Typography>
+                        )
+                    })}
                 </Box>
 
                 {/* Category Legend */}

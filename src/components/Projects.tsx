@@ -1,10 +1,7 @@
 import {
-    Card,
     Typography,
     List,
     ListItem,
-    Container,
-    Grid,
     Link,
     Box,
     IconButton,
@@ -24,10 +21,9 @@ type ProjectEntryProps = {
         website?: string
         github?: string
     }
-    headerColor?: string
 }
 
-const ProjectEntry = ({
+const ProjectCard = ({
     title,
     description,
     technologies,
@@ -35,7 +31,6 @@ const ProjectEntry = ({
     images,
     imageAlt,
     links,
-    headerColor,
 }: ProjectEntryProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const hasMultipleImages = images && images.length > 1
@@ -54,231 +49,210 @@ const ProjectEntry = ({
         }
     }
 
-    let content: React.ReactNode = null
-
-    if (highlights && highlights.length > 0) {
-        content = (
-            <List
-                sx={{
-                    listStyleType: 'disc',
-                    px: { xs: 2, sm: 3 },
-                    width: '100%',
-                    boxSizing: 'border-box',
-                }}
-            >
-                {highlights.map((highlight) => (
-                    <ListItem
-                        key={highlight}
-                        sx={{ display: 'list-item', pl: 2, p: 0 }}
-                    >
-                        <Typography variant="body2" align="left">
-                            {highlight}
-                        </Typography>
-                    </ListItem>
-                ))}
-            </List>
-        )
-    }
-
     return (
-        <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
-            <Container
-                disableGutters
+        <Box className="project-card scroll-zoom-in">
+            <Typography
+                variant="h3"
                 sx={{
-                    backgroundColor: headerColor || '#f2f2f2',
-                    borderRadius: 1,
-                    px: { xs: 1.5, sm: 2 },
-                    py: { xs: 1.5, sm: 2 },
+                    mb: 0.5,
+                    fontFamily: 'Playfair Display, serif',
+                    color: '#3a3531',
                 }}
             >
-                <Grid container spacing={2} alignItems="center">
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Typography
-                            variant="h6"
-                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
-                        >
-                            {title}
-                        </Typography>
-                        <Typography
-                            variant="subtitle1"
-                            sx={{
-                                textAlign: { xs: 'center', md: 'left' },
-                                color: '#666',
-                            }}
-                        >
-                            {description}
-                        </Typography>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 6 }}>
-                        <Container
-                            disableGutters
-                            sx={{
-                                display: 'flex',
-                                justifyContent: { xs: 'center', md: 'flex-end' },
-                                gap: 2,
-                                flexWrap: 'wrap',
-                            }}
-                        >
-                            {links?.website && (
-                                <Link
-                                    href={links.website}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    sx={{
-                                        color: '#36c0f0',
-                                        textDecoration: 'none',
-                                        fontSize: '0.875rem',
-                                        fontWeight: 500,
-                                        '&:hover': {
-                                            textDecoration: 'underline',
-                                        },
-                                    }}
-                                >
-                                    Website
-                                </Link>
-                            )}
-                            {links?.github && (
-                                <Link
-                                    href={links.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    sx={{
-                                        color: '#36c0f0',
-                                        textDecoration: 'none',
-                                        fontSize: '0.875rem',
-                                        fontWeight: 500,
-                                        '&:hover': {
-                                            textDecoration: 'underline',
-                                        },
-                                    }}
-                                >
-                                    GitHub
-                                </Link>
-                            )}
-                        </Container>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                textAlign: { xs: 'center', md: 'right' },
-                                mt: { xs: 0.5, md: 0 },
-                            }}
-                        >
-                            {technologies.join(', ')}
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Container>
+                {title}
+            </Typography>
+            <Typography
+                sx={{
+                    color: '#d9a8c7',
+                    mb: 1.5,
+                    fontSize: '0.9rem',
+                    fontFamily: 'Poppins, sans-serif',
+                    fontWeight: 600,
+                }}
+            >
+                {technologies.join(' • ')}
+            </Typography>
+            <Typography
+                sx={{
+                    mb: 1.5,
+                    color: '#555',
+                }}
+            >
+                {description}
+            </Typography>
 
-            {/* Project Image Gallery */}
+            {/* Project Gallery */}
             {images && images.length > 0 && (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '16px 24px',
-                        backgroundColor: '#fafafa',
-                        gap: 1,
-                        position: 'relative',
-                    }}
-                >
-                    {hasMultipleImages && (
-                        <IconButton
-                            onClick={handlePrevImage}
-                            size="small"
-                            sx={{
-                                color: '#36c0f0',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                },
-                            }}
-                            aria-label="Previous image"
-                        >
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    )}
-
+                <Box className="project-images">
                     <Box
                         sx={{
                             display: 'flex',
-                            flex: 1,
+                            alignItems: 'center',
                             justifyContent: 'center',
-                            overflow: 'hidden',
+                            position: 'relative',
+                            backgroundColor: '#f9f9f9',
                         }}
                     >
+                        {hasMultipleImages && (
+                            <IconButton
+                                onClick={handlePrevImage}
+                                size="small"
+                                sx={{
+                                    position: 'absolute',
+                                    left: 8,
+                                    color: '#d9a8c7',
+                                    zIndex: 10,
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(217, 168, 199, 0.15)',
+                                    },
+                                }}
+                                aria-label="Previous image"
+                            >
+                                <ChevronLeftIcon />
+                            </IconButton>
+                        )}
+
                         <img
                             src={images[currentImageIndex]}
                             alt={imageAlt || `${title} screenshot`}
                             style={{
                                 maxWidth: '100%',
                                 height: 'auto',
-                                borderRadius: '8px',
-                                maxHeight: '300px',
-                                objectFit: 'cover',
+                                display: 'block',
                             }}
                         />
+
+                        {hasMultipleImages && (
+                            <IconButton
+                                onClick={handleNextImage}
+                                size="small"
+                                sx={{
+                                    position: 'absolute',
+                                    right: 8,
+                                    color: '#d9a8c7',
+                                    zIndex: 10,
+                                    '&:hover': {
+                                        backgroundColor: 'rgba(217, 168, 199, 0.15)',
+                                    },
+                                }}
+                                aria-label="Next image"
+                            >
+                                <ChevronRightIcon />
+                            </IconButton>
+                        )}
                     </Box>
 
-                    {hasMultipleImages && (
-                        <IconButton
-                            onClick={handleNextImage}
-                            size="small"
+                    {/* Gallery Dots */}
+                    {images.length > 1 && (
+                        <Box
                             sx={{
-                                color: '#36c0f0',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
-                                },
+                                display: 'flex',
+                                justifyContent: 'center',
+                                gap: 0.75,
+                                py: 1.5,
                             }}
-                            aria-label="Next image"
                         >
-                            <ChevronRightIcon />
-                        </IconButton>
+                            {images.map((_, index) => (
+                                <Box
+                                    key={index}
+                                    onClick={() => setCurrentImageIndex(index)}
+                                    sx={{
+                                        width: 6,
+                                        height: 6,
+                                        borderRadius: '50%',
+                                        backgroundColor:
+                                            index === currentImageIndex
+                                                ? '#d9a8c7'
+                                                : '#e0d5cc',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.2s ease',
+                                        '&:hover': {
+                                            backgroundColor:
+                                                index === currentImageIndex
+                                                    ? '#d9a8c7'
+                                                    : '#ccc4bb',
+                                        },
+                                    }}
+                                    role="button"
+                                    tabIndex={0}
+                                />
+                            ))}
+                        </Box>
                     )}
                 </Box>
             )}
 
-            {/* Gallery Dots Indicator */}
-            {images && images.length > 1 && (
-                <Box
+            {/* Highlights */}
+            {highlights && highlights.length > 0 && (
+                <List
                     sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        gap: 1,
-                        paddingY: 1,
-                        backgroundColor: '#f5f5f5',
+                        listStyleType: 'disc',
+                        pl: 2,
+                        py: 1,
                     }}
                 >
-                    {images.map((_, index) => (
-                        <Box
-                            key={index}
-                            onClick={() => setCurrentImageIndex(index)}
+                    {highlights.map((highlight) => (
+                        <ListItem
+                            key={highlight}
                             sx={{
-                                width: 8,
-                                height: 8,
-                                borderRadius: '50%',
-                                backgroundColor:
-                                    index === currentImageIndex
-                                        ? '#36c0f0'
-                                        : '#ccc',
-                                cursor: 'pointer',
-                                transition: 'background-color 0.3s ease',
-                                '&:hover': {
-                                    backgroundColor:
-                                        index === currentImageIndex
-                                            ? '#36c0f0'
-                                            : '#999',
-                                },
+                                display: 'list-item',
+                                p: 0,
+                                pb: 0.5,
+                                fontSize: '0.95rem',
                             }}
-                            aria-label={`Go to image ${index + 1}`}
-                            role="button"
-                            tabIndex={0}
-                        />
+                        >
+                            <Typography sx={{ color: '#555' }}>
+                                {highlight}
+                            </Typography>
+                        </ListItem>
                     ))}
-                </Box>
+                </List>
             )}
 
-            {content}
-        </Card>
+            {/* Links */}
+            {(links?.website || links?.github) && (
+                <Box sx={{ display: 'flex', gap: 2, mt: 2 }}>
+                    {links?.website && (
+                        <Link
+                            href={links.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{
+                                color: '#d9a8c7',
+                                fontFamily: 'Poppins, sans-serif',
+                                fontSize: '0.9rem',
+                                fontWeight: 600,
+                                textDecoration: 'none',
+                                '&:hover': {
+                                    textDecoration: 'underline',
+                                },
+                            }}
+                        >
+                            Live →
+                        </Link>
+                    )}
+                    {links?.github && (
+                        <Link
+                            href={links.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            sx={{
+                                color: '#d9a8c7',
+                                fontFamily: 'Poppins, sans-serif',
+                                fontSize: '0.9rem',
+                                fontWeight: 600,
+                                textDecoration: 'none',
+                                '&:hover': {
+                                    textDecoration: 'underline',
+                                },
+                            }}
+                        >
+                            GitHub →
+                        </Link>
+                    )}
+                </Box>
+            )}
+        </Box>
     )
 }
 
@@ -288,12 +262,11 @@ const projectsData: ProjectEntryProps[] = [
         description: 'Automated VOD analysis for esports coaches and creators',
         technologies: ['Python', 'React', 'Electron', 'OpenCV', 'FFmpeg'],
         highlights: [
-            'Killfeed OCR detection for any esports game (Apex, Valorant, CS:GO, etc.)',
+            'Killfeed OCR detection for any esports game',
             'Automated clip export with intelligent event merging',
-            'Twitch VOD integration—download and analyze VODs directly',
-            'Batch processing for analyzing multiple recordings',
-            'Event logs export (CSV/JSONL) for further analysis',
-            'Fully offline—no cloud dependencies or data tracking',
+            'Twitch VOD integration and batch processing',
+            'Event logs export (CSV/JSONL)',
+            'Fully offline with zero cloud dependencies',
         ],
         images: [
             '/vod-insights-home.png',
@@ -305,7 +278,6 @@ const projectsData: ProjectEntryProps[] = [
         links: {
             website: 'https://vodinsights.app',
         },
-        headerColor: 'rgba(54, 192, 240, .1)',
     },
     {
         title: 'Lootpath Finder',
@@ -315,7 +287,7 @@ const projectsData: ProjectEntryProps[] = [
             'Real-time interactive map editor with visual path drawing',
             'JSON-based data persistence for loot routes',
             'Docker containerization for easy deployment',
-            'Responsive design for desktop and tablet interfaces',
+            'Responsive design for desktop and tablet',
         ],
         images: [
             '/lootpath-finder-home.png',
@@ -323,39 +295,35 @@ const projectsData: ProjectEntryProps[] = [
             '/lootpath-finder-lootpath.png',
         ],
         imageAlt: 'Lootpath Finder application screenshots',
-        headerColor: 'rgba(75, 192, 192, .1)',
     },
 ]
 
 const Projects = () => (
-    <Card
+    <Box
         id="projects"
-        className="header"
         sx={{
-            backgroundColor: '#FDFAF6',
-            m: { xs: '16px 8px', md: '12px' },
-            p: { xs: 2, sm: 3, md: 4 },
             width: '100%',
-            maxWidth: { xs: 680, md: 960 },
-            boxSizing: 'border-box',
-            mx: 'auto',
-            scrollMarginTop: { xs: '20px', md: '104px' },
-            borderRadius: '15px',
+            maxWidth: '900px',
+            margin: '0 auto',
         }}
     >
         <Typography
-            variant="h4"
+            variant="h2"
             sx={{
-                textAlign: { xs: 'center', md: 'left' },
-                mb: { xs: 1, sm: 2 },
+                mb: 4,
+                textAlign: 'center',
+                fontFamily: 'Playfair Display, serif',
             }}
         >
             Projects
         </Typography>
-        {projectsData.map((project) => (
-            <ProjectEntry key={project.title} {...project} />
-        ))}
-    </Card>
+
+        <Box className="projects-gallery">
+            {projectsData.map((project) => (
+                <ProjectCard key={project.title} {...project} />
+            ))}
+        </Box>
+    </Box>
 )
 
 export default Projects

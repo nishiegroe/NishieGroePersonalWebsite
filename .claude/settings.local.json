@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"Lootpath Finder Home page.png\" \"lootpath-finder-home.png\")",
+      "Bash(mv \"Lootpath Finder Lootpath Example.png\" \"lootpath-finder-lootpath.png\")",
+      "Bash(mv \"Lootpath Finder Map Example.png\" \"lootpath-finder-map.png\")",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(pkill -f \"vite\")",
+      "Bash(git commit:*)",
+      "Bash(git add:*)",
+      "WebSearch"
+    ]
+  }
+}

@@ -205,6 +205,7 @@ body::-webkit-scrollbar {
 
 .hero-cta {
   animation: slideUpFade 0.8s ease-out 0.2s both;
+  margin-top: 2rem;
 }
 
 .hero-cta a {
@@ -221,6 +222,12 @@ body::-webkit-scrollbar {
 
 .hero-cta a:hover {
   transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(217, 168, 199, 0.35);
+}
+
+.hero-cta a:active,
+.hero-cta a:focus {
+  outline: none;
   box-shadow: 0 15px 35px rgba(217, 168, 199, 0.35);
 }
 

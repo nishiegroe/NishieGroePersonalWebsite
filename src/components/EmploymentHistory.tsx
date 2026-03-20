@@ -1,215 +1,118 @@
-import usgLogo from '../assets/USG_Corporation_logo.svg.png'
-import jdLogo from '../assets/JD Logo.png'
-import {
-    Card,
-    Typography,
-    List,
-    ListItem,
-    Container,
-    Grid,
-} from '@mui/material'
-import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { Box, Typography, List, ListItem } from '@mui/material'
 
-type EmploymentEntryProps = {
+type TimelineItemProps = {
     title: string
     company: string
-    logo: string
     location: string
     period: string
     highlights?: string[]
-    currentRole?: boolean
-    headerColor?: string
 }
 
-const EmploymentHistoryEntry = ({
-    title,
-    company,
-    logo,
-    location,
-    period,
-    highlights,
-    currentRole,
-    headerColor,
-}: EmploymentEntryProps) => {
-    let content: React.ReactNode = null;
-
-    if (highlights && highlights.length > 0) {
-        content = (
-            <List
-                sx={{
-                    listStyleType: 'disc',
-                    px: { xs: 2, sm: 3 },
-                    width: '100%',
-                    boxSizing: 'border-box',
-                }}
-            >
-                {highlights.map((highlight) => (
-                    <ListItem
-                        key={highlight}
-                        sx={{ display: 'list-item', pl: 2, p: 0 }}
-                    >
-                        <Typography variant="body2" align="left">
-                            {highlight}
-                        </Typography>
-                    </ListItem>
-                ))}
-            </List>
-        );
-    }
-
-    return (
-        <Card sx={{ m: { xs: 2, sm: 3 }, p: { xs: 1, sm: 2 } }}>
-            <Container
-                disableGutters
-                sx={{
-                    backgroundColor: headerColor || '#f2f2f2',
-                    borderRadius: 1,
-                    px: { xs: 1.5, sm: 2 },
-                    py: { xs: 1.5, sm: 2 },
-                }}
-            >
-                <Grid container spacing={2} alignItems="center">
-                    <Grid size={{ xs: 12, md: 5 }}>
-                        <Typography
-                            variant="h6"
-                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
-                        >
-                            {title}
-                        </Typography>
-                        <Typography
-                            variant="subtitle1"
-                            sx={{ textAlign: { xs: 'center', md: 'left' } }}
-                        >
-                            {company}
-                        </Typography>
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 2 }} sx={{ textAlign: 'center' }}>
-                        <img
-                            src={logo}
-                            alt={`${company} Logo`}
-                            loading="lazy"
-                            decoding="async"
-                            style={{
-                                height: 50,
-                                maxWidth: '100%',
-                                objectFit: 'contain',
-                            }}
-                        />
-                    </Grid>
-                    <Grid size={{ xs: 12, md: 5 }}>
-                        <Container
-                            disableGutters
-                            sx={{
-                                display: 'flex',
-                                justifyContent: { xs: 'center', md: 'flex-end' },
-                            }}
-                        >
-                            <LocationOnIcon sx={{ mr: 0.5, fontSize: 18 }} />
-                            <Typography>{location}</Typography>
-                        </Container>
-                        <Typography
-                            variant="body2"
-                            sx={{
-                                textAlign: { xs: 'center', md: 'right' },
-                                mt: { xs: 0.5, md: 0 },
-                            }}
-                        >
-                            {period}
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </Container>
-            {content}
-        </Card>
-    );
-}
-
-const employmentData: EmploymentEntryProps[] = [
+const timelineData: TimelineItemProps[] = [
     {
         title: 'Full-Stack Developer',
         company: 'USG',
-        logo: usgLogo,
         location: 'Chicago, IL',
         period: '2025 - Present',
-        currentRole: true,
-        headerColor: 'rgba(227, 28, 61, .05)',
         highlights: [
-            'Developed and maintained a headless CMS-driven frontend, enabling flexible content delivery and scalable UI development',
-            'Built and onboarded a development team, establishing agile workflows and ceremonies to support rapid iteration',
-            'Led development efforts to successfully meet pilot go-live deadlines, coordinating scope, priorities, and delivery',
-            'Planned and executed the post-pilot roadmap, guiding the team toward full website deployment within scheduled timelines',
-            'Interviewed and evaluated engineering candidates, contributing to the growth and long-term stability of the development team',
+            'Headless CMS-driven frontend for flexible content delivery',
+            'Built and onboarded development team with agile workflows',
+            'Led pilot go-live coordination and post-pilot roadmap',
+            'Interviewed candidates and evaluated technical fit',
         ]
     },
     {
         title: 'Senior Software Engineer',
         company: 'John Deere',
-        logo: jdLogo,
         location: 'Moline, IL',
         period: '2022 - 2024',
         highlights: [
-            'Spearheaded UI/UX modernization, creating ReactJS Micro-Frontends to dismantle monolithic AngularJS and Java applications, enhancing maintainability and development efficiency.',
-            'Conducted international knowledge transfer, upskilling remote and local teams on ReactJS and UI/UX best practices, fostering global collaboration.',
-            'Created multiple Micro-Frontends (MFE) to split up our monolithic application Created Drone CI/CD pipelines for our MFE’s.',
-            'Replaced out-of-date SOAP API’s with REST API’s',
-            'Conceptualized and developed a container UI to effectively house micro-frontends, improving overall system architecture and user experience.',
-            'Made use of SaaS and AWS to host and deploy JS and Java applications',
-            'Reworked and automated M/A processes using SQL functionality',
-            'Created Drone CI/CD pipelines for our MFE’s',
-            'Assisted in creating a container UI to better house our MFE’s.',
-        ],
-        headerColor: 'rgba(54, 124, 43, .1)',
+            'Led UI/UX modernization with ReactJS Micro-Frontends',
+            'Replaced monolithic AngularJS/Java with scalable MFE architecture',
+            'Conducted international knowledge transfer on React best practices',
+            'Established Drone CI/CD pipelines and REST API migrations',
+            'Designed container UI to house micro-frontends effectively',
+        ]
     },
     {
         title: 'Software Engineer',
         company: 'John Deere',
-        logo: jdLogo,
         location: 'Moline, IL',
         period: '2017 - 2022',
         highlights: [
-            'Optimized software development lifecycle, enhancing team productivity and reducing time to-market for key product features',
-            'Fostered cross-functional collaboration, aligning software development with business objectives and enhancing overall product quality',
-            'Assisted in migrating applications to AWS',
-            'Conducted comprehensive analysis to identify and decommission underutilized ColdFusion applications, optimizing system resources and reducing maintenance costs.',
-            'Partnered with cross-functional teams to execute smooth transition from legacy systems, ensuring minimal disruption to business operations during migration process.',
-            'Spearheaded SiteMinder to OKTA SSO migration in ColdFusion apps, enhancing security protocols. Analyzed and decommissioned underutilized applications, optimizing resources.',
-        ],
-        headerColor: 'rgba(54, 124, 43, .1)',
+            'Optimized development lifecycle and reduced time-to-market',
+            'Led AWS migration initiatives across multiple applications',
+            'Decommissioned legacy ColdFusion applications',
+            'Spearheaded SiteMinder to OKTA SSO migration',
+            'Fostered cross-functional collaboration on product quality',
+        ]
     },
 ]
 
 const EmploymentHistory = () => (
-    <Card
+    <Box
         id="experience"
-        className="header"
         sx={{
-            backgroundColor: '#FDFAF6',
-            m: { xs: '16px 8px', md: '12px' },
-            p: { xs: 2, sm: 3, md: 4 },
             width: '100%',
-            maxWidth: { xs: 680, md: 960 },
-            boxSizing: 'border-box',
-            mx: 'auto',
-            scrollMarginTop: { xs: '20px', md: '104px' },
-            borderRadius: '15px',
+            maxWidth: '900px',
+            margin: '0 auto',
         }}
     >
         <Typography
-            variant="h4"
+            variant="h2"
             sx={{
-                textAlign: { xs: 'center', md: 'left' },
-                mb: { xs: 1, sm: 2 },
+                mb: 4,
+                textAlign: 'center',
+                fontFamily: 'Playfair Display, serif',
             }}
         >
-            Employment History
+            Experience
         </Typography>
-        {employmentData.map((entry) => (
-            <EmploymentHistoryEntry
-                key={`${entry.company}-${entry.period}`}
-                {...entry}
-            />
-        ))}
-    </Card>
+
+        <Box className="employment-timeline">
+            {timelineData.map((item) => (
+                <Box key={`${item.company}-${item.period}`} className="timeline-item">
+                    <Box className="timeline-dot" />
+                    <Box className="timeline-line" />
+
+                    <Typography className="timeline-title">
+                        {item.title}
+                    </Typography>
+                    <Typography className="timeline-subtitle">
+                        {item.company}
+                    </Typography>
+                    <Typography className="timeline-date">
+                        {item.period} - {item.location}
+                    </Typography>
+
+                    {item.highlights && (
+                        <List
+                            sx={{
+                                listStyleType: 'disc',
+                                pl: 2,
+                                py: 0,
+                            }}
+                        >
+                            {item.highlights.map((highlight) => (
+                                <ListItem
+                                    key={highlight}
+                                    sx={{
+                                        display: 'list-item',
+                                        p: 0,
+                                        pb: 0.5,
+                                    }}
+                                >
+                                    <Typography className="timeline-description">
+                                        {highlight}
+                                    </Typography>
+                                </ListItem>
+                            ))}
+                        </List>
+                    )}
+                </Box>
+            ))}
+        </Box>
+    </Box>
 )
 
 export default EmploymentHistory

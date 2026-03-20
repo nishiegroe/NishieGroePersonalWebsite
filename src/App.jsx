@@ -1,4 +1,4 @@
-import Header from './components/Header.tsx'
+// import Header from './components/Header.tsx'
 
 // Import fonts
 import '@fontsource/roboto/300.css'
@@ -108,7 +108,7 @@ function App() {
 
             if (targetIndex !== currentSectionIndex) {
                 isScrolling = true
-                sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' })
+                sections[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'center' })
                 setTimeout(() => {
                     isScrolling = false
                 }, scrollDelay)
@@ -124,7 +124,7 @@ function App() {
 
     return (
         <div className="app spatial-container">
-            <Header />
+            {/* <Header /> */}
 
             {/* Hero Section */}
             <Hero />
