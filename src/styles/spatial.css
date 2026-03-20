@@ -99,10 +99,9 @@ a:hover {
   scroll-behavior: smooth;
 }
 
-/* Add smooth scroll snap behavior */
+/* Smooth scroll behavior (scroll snapping handled by JavaScript) */
 html {
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
 }
 
 /* Depth layers – elements at different z-depths */
@@ -139,8 +138,6 @@ html {
   text-align: center;
   padding: 2rem;
   overflow: hidden;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 }
 
 .hero::before {
@@ -230,8 +227,6 @@ html {
   align-items: center;
   padding: 5rem 2rem;
   overflow: hidden;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
 }
 
 .spatial-section-content {
