@@ -1,0 +1,302 @@
+/* Modern Minimalist Redesign with Geometric Accents */
+
+:root {
+  --color-accent: #36c0f0;
+  --color-accent-light: rgba(54, 192, 240, 0.1);
+  --color-accent-medium: rgba(54, 192, 240, 0.2);
+  --color-accent-hover: #2ba8d8;
+  --color-accent-active: #1f8fc0;
+  --color-bg: #faf1e6;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555555;
+  --color-border: #e0d5c8;
+  --color-card-bg: #ffffff;
+  --color-accent-dark: #2a2a2a;
+
+  /* Typography */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Animation */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Redesign */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 0.75rem;
+  color: var(--color-accent);
+  position: relative;
+  padding-left: 1rem;
+}
+
+/* Geometric accent line before h2 */
+h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-fast);
+  font-weight: 500;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Geometric decorative elements */
+.geometric-accent {
+  position: relative;
+}
+
+.geometric-accent::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Card styling with glass effect */
+.card-glass,
+[class*='Card'] {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card-glass:hover,
+[class*='Card']:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Asymmetric grid layout */
+.asymmetric-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+@media (min-width: 768px) {
+  .asymmetric-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+
+  .asymmetric-grid > *:nth-child(even) {
+    transform: translateY(4rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  .asymmetric-grid {
+    grid-template-columns: 1.5fr 1fr 1.2fr;
+  }
+
+  .asymmetric-grid > *:nth-child(2) {
+    transform: translateY(2rem);
+  }
+
+  .asymmetric-grid > *:nth-child(3) {
+    transform: translateY(4rem);
+  }
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp var(--transition-normal) ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-normal) ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slide-in {
+  animation: slideInLeft var(--transition-normal) ease-out forwards;
+  opacity: 0;
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 200ms; }
+.stagger-4 { animation-delay: 300ms; }
+.stagger-5 { animation-delay: 400ms; }
+
+/* Diagonal separator line */
+.separator-diagonal {
+  position: relative;
+  margin: 4rem 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-light) 50%, transparent 100%);
+  transform: skewY(-2deg);
+}
+
+/* Decorative corner circles */
+.corner-circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.corner-circle.top-left {
+  top: -100px;
+  left: -100px;
+}
+
+.corner-circle.bottom-right {
+  bottom: -100px;
+  right: -100px;
+}
+
+.corner-circle.top-right {
+  top: -50px;
+  right: -50px;
+}
+
+/* Improved focus states */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Selection styling */
+::selection {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* Utility classes */
+.text-accent { color: var(--color-accent); }
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.font-display { font-family: var(--font-display); }
+.font-bold { font-weight: 700; }
+.font-xl { font-size: 1.5rem; }
+.font-lg { font-size: 1.125rem; }
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
