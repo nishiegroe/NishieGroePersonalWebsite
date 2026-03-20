@@ -6,15 +6,19 @@ import {
     Container,
     Grid,
     Link,
+    Box,
+    IconButton,
 } from '@mui/material'
-import React from 'react'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import React, { useState } from 'react'
 
 type ProjectEntryProps = {
     title: string
     description: string
     technologies: string[]
     highlights?: string[]
-    image?: string
+    images?: string[]
     imageAlt?: string
     links?: {
         website?: string
@@ -28,11 +32,28 @@ const ProjectEntry = ({
     description,
     technologies,
     highlights,
-    image,
+    images,
     imageAlt,
     links,
     headerColor,
 }: ProjectEntryProps) => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const hasMultipleImages = images && images.length > 1
+
+    const handlePrevImage = () => {
+        if (images) {
+            setCurrentImageIndex(
+                (prev) => (prev - 1 + images.length) % images.length
+            )
+        }
+    }
+
+    const handleNextImage = () => {
+        if (images) {
+            setCurrentImageIndex((prev) => (prev + 1) % images.length)
+        }
+    }
+
     let content: React.ReactNode = null
 
     if (highlights && highlights.length > 0) {
@@ -148,28 +169,112 @@ const ProjectEntry = ({
                 </Grid>
             </Container>
 
-            {/* Project Image */}
-            {image && (
-                <div
-                    style={{
+            {/* Project Image Gallery */}
+            {images && images.length > 0 && (
+                <Box
+                    sx={{
                         display: 'flex',
+                        alignItems: 'center',
                         justifyContent: 'center',
                         padding: '16px 24px',
                         backgroundColor: '#fafafa',
+                        gap: 1,
+                        position: 'relative',
                     }}
                 >
-                    <img
-                        src={image}
-                        alt={imageAlt || title}
-                        style={{
-                            maxWidth: '100%',
-                            height: 'auto',
-                            borderRadius: '8px',
-                            maxHeight: '300px',
-                            objectFit: 'cover',
+                    {hasMultipleImages && (
+                        <IconButton
+                            onClick={handlePrevImage}
+                            size="small"
+                            sx={{
+                                color: '#36c0f0',
+                                '&:hover': {
+                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
+                                },
+                            }}
+                            aria-label="Previous image"
+                        >
+                            <ChevronLeftIcon />
+                        </IconButton>
+                    )}
+
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flex: 1,
+                            justifyContent: 'center',
+                            overflow: 'hidden',
                         }}
-                    />
-                </div>
+                    >
+                        <img
+                            src={images[currentImageIndex]}
+                            alt={imageAlt || `${title} screenshot`}
+                            style={{
+                                maxWidth: '100%',
+                                height: 'auto',
+                                borderRadius: '8px',
+                                maxHeight: '300px',
+                                objectFit: 'cover',
+                            }}
+                        />
+                    </Box>
+
+                    {hasMultipleImages && (
+                        <IconButton
+                            onClick={handleNextImage}
+                            size="small"
+                            sx={{
+                                color: '#36c0f0',
+                                '&:hover': {
+                                    backgroundColor: 'rgba(54, 192, 240, 0.1)',
+                                },
+                            }}
+                            aria-label="Next image"
+                        >
+                            <ChevronRightIcon />
+                        </IconButton>
+                    )}
+                </Box>
+            )}
+
+            {/* Gallery Dots Indicator */}
+            {images && images.length > 1 && (
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        gap: 1,
+                        paddingY: 1,
+                        backgroundColor: '#f5f5f5',
+                    }}
+                >
+                    {images.map((_, index) => (
+                        <Box
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
+                            sx={{
+                                width: 8,
+                                height: 8,
+                                borderRadius: '50%',
+                                backgroundColor:
+                                    index === currentImageIndex
+                                        ? '#36c0f0'
+                                        : '#ccc',
+                                cursor: 'pointer',
+                                transition: 'background-color 0.3s ease',
+                                '&:hover': {
+                                    backgroundColor:
+                                        index === currentImageIndex
+                                            ? '#36c0f0'
+                                            : '#999',
+                                },
+                            }}
+                            aria-label={`Go to image ${index + 1}`}
+                            role="button"
+                            tabIndex={0}
+                        />
+                    ))}
+                </Box>
             )}
 
             {content}
@@ -190,8 +295,13 @@ const projectsData: ProjectEntryProps[] = [
             'Event logs export (CSV/JSONL) for further analysis',
             'Fully offline—no cloud dependencies or data tracking',
         ],
-        image: '/vod-insights-home.png',
-        imageAlt: 'VOD Insights home page showing recent VODs and clips library',
+        images: [
+            '/vod-insights-home.png',
+            '/vod-insights-clips.png',
+            '/vod-insights-viewer.png',
+            '/vod-insights-clip-viewer.png',
+        ],
+        imageAlt: 'VOD Insights application screenshots',
         links: {
             website: 'https://vodinsights.app',
         },
