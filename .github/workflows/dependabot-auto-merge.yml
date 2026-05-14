@@ -1,0 +1,27 @@
+name: Dependabot Auto-Merge
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, master]
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]' && github.event.pull_request.draft == false
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      
+      - name: Merge Dependabot PR when checks pass
+        if: github.actor == 'dependabot[bot]' && github.event.pull_request.draft == false
+        uses: pascalgn/automerge-action@v0.16.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          merge_labels: ""
+          merge_method: squash
+          merge_retry_sleep: 30000
