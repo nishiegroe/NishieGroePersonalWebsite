@@ -3,7 +3,6 @@ import {
     Card,
     Tooltip,
     Typography,
-    Container,
     Link,
     Box,
     IconButton,
@@ -15,128 +14,116 @@ import {
 import profilePic128 from '../assets/profile-pic-128.webp'
 import profilePic256 from '../assets/profile-pic-256.webp'
 import resume from '../assets/Resume Jan 2026.pdf'
-import ArticleIcon from '@mui/icons-material/Article'
 import { LinkedIn } from 'developer-icons'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MenuIcon from '@mui/icons-material/Menu'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { useState } from 'react'
-import Email from '@mui/icons-material/Email'
-import GitHub from '@mui/icons-material/GitHub'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import EmailIcon from '@mui/icons-material/Email'
 import HomeIcon from '@mui/icons-material/Home'
 import BuildIcon from '@mui/icons-material/Build'
 import WorkIcon from '@mui/icons-material/Work'
 import ContactPageIcon from '@mui/icons-material/ContactPage'
+import ArticleIcon from '@mui/icons-material/Article'
+import { useState, useEffect } from 'react'
 
-// Centralized header styles
-const headerCardSx = {
-    p: 1,
-    backgroundColor: '#fff', // Higher contrast for header background
-    display: 'flex',
-    position: 'fixed',
-    zIndex: 999,
-    top: { xs: 'auto', md: 16 },
-    bottom: { xs: 16, md: 'auto' },
-    borderRadius: '15px',
-    backdropFilter: 'blur(6px)',
-    WebkitBackdropFilter: 'blur(6px)',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-    width: { xs: '100%', md: '70vw' },
-    maxWidth: { xs: 360, sm: 680, md: 960 },
-    boxSizing: 'border-box',
-    left: '50%',
-    transform: 'translateX(-50%)',
-    overflow: 'visible',
-} as const
+const navLinks = [
+    { label: 'About', href: '#introduction', icon: <HomeIcon fontSize="small" /> },
+    { label: 'Skills', href: '#skills', icon: <BuildIcon fontSize="small" /> },
+    { label: 'Projects', href: '#projects', icon: <WorkIcon fontSize="small" /> },
+    { label: 'Experience', href: '#experience', icon: <WorkIcon fontSize="small" /> },
+    { label: 'Contact', href: '#contact', icon: <ContactPageIcon fontSize="small" /> },
+]
 
 const Header = () => {
     const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null)
+    const [scrolled, setScrolled] = useState(false)
     const menuOpen = Boolean(menuAnchorEl)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50)
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true })
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMenuAnchorEl(event.currentTarget)
     }
     const handleMenuClose = () => setMenuAnchorEl(null)
 
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault()
+        const el = document.querySelector(href)
+        if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+        handleMenuClose()
+    }
+
     return (
         <>
-            {/* Page-edge blur overlays (not on header) */}
-
-            <Box
-                aria-hidden
+            <Card
                 sx={{
-                    position: 'fixed',
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    height: 56,
-                    zIndex: 998,
-                    pointerEvents: 'none',
-                    display: { xs: 'block', md: 'none' },
-                    backdropFilter: 'blur(12px)',
-                    WebkitBackdropFilter: 'blur(12px)',
-                    background:
-                        'linear-gradient(to top, rgba(250,241,230,0.9) 0%, rgba(250,241,230,0.6) 35%, rgba(250,241,230,0.25) 65%, rgba(250,241,230,0) 100%)',
+                    ...headerStyles.card,
+                    ...(scrolled ? headerStyles.cardScrolled : {}),
                 }}
-            />
-            <Card className="header" sx={headerCardSx}>
-                <div
-                    id="Left"
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        marginLeft: '16px',
+            >
+                {/* Logo */}
+                <Link
+                    href="#"
+                    onClick={(e) => {
+                        e.preventDefault()
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
+                    sx={headerStyles.logoLink}
                 >
                     <Avatar
-                        className="logo"
-                        sx={{ mr: 2, width: 40, height: 40 }}
+                        sx={{ width: 36, height: 36 }}
                         alt="Profile picture"
                         src={profilePic256}
                         srcSet={`${profilePic128} 128w, ${profilePic256} 256w`}
-                        sizes="40px"
+                        sizes="36px"
                         imgProps={{ loading: 'eager', decoding: 'async' }}
                     />
                     <Typography
-                        variant="h4"
-                        className="logo"
-                        sx={{ textWrap: 'nowrap' }}
+                        variant="h6"
+                        sx={{
+                            fontFamily: "'Playfair Display', Georgia, serif",
+                            fontWeight: 700,
+                            fontSize: '1.1rem',
+                            color: '#4a4a52',
+                        }}
                     >
                         Nishie Groe
                     </Typography>
-                </div>
+                </Link>
 
-                <Box
-                    id="center"
-                    sx={{
-                        flexGrow: 1,
-                        display: { xs: 'none', md: 'flex' },
-                        justifyContent: 'center',
-                        gap: '8px',
-                    }}
-                >
+                {/* Desktop Nav */}
+                <Box sx={headerStyles.desktopNav}>
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.label}
+                            href={link.href}
+                            onClick={(e) => handleNavClick(e as React.MouseEvent<HTMLAnchorElement>, link.href)}
+                            sx={headerStyles.navLink}
+                        >
+                            {link.label}
+                        </Link>
+                    ))}
+                </Box>
+
+                {/* Desktop Actions */}
+                <Box sx={headerStyles.desktopActions}>
                     <Tooltip title="View my GitHub profile">
                         <Link
                             href="https://github.com/nishiegroe"
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                display: 'flex',
-                                alignItems: 'center',
-                                mr: 1,
-                            }}
+                            sx={headerStyles.iconLink}
+                            aria-label="GitHub"
                         >
-                            <div
-                                className="icon-wiggle"
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <GitHub sx={{ fontSize: 30 }} />
-                            </div>
+                            <GitHubIcon sx={{ fontSize: 22 }} />
                         </Link>
                     </Tooltip>
                     <Tooltip title="View my LinkedIn profile">
@@ -144,189 +131,78 @@ const Header = () => {
                             href="https://www.linkedin.com/in/nishie-groe/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            sx={{
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                display: 'flex',
-                                alignItems: 'center',
-                                mr: 1,
-                            }}
+                            sx={headerStyles.iconLink}
+                            aria-label="LinkedIn"
                         >
-                            <div
-                                className="icon-wiggle"
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <LinkedIn size={30} />
-                            </div>
+                            <LinkedIn size={22} />
                         </Link>
                     </Tooltip>
-                    <Tooltip title="Send me an email">
-                        <Link
-                            href="mailto:nishiegroe@gmail.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            sx={{
-                                color: 'inherit',
-                                textDecoration: 'none',
-                                display: 'flex',
-                                alignItems: 'center',
-                                mr: 1,
-                            }}
-                        >
-                            <div
-                                className="icon-wiggle"
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                            >
-                                <Email sx={{ fontSize: 30 }} />
-                            </div>
-                        </Link>
-                    </Tooltip>
+                    <Link
+                        href={resume}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={headerStyles.resumeButton}
+                    >
+                        <ArticleIcon sx={{ fontSize: 18 }} />
+                        Resume
+                    </Link>
                 </Box>
 
-                <Container
-                    id="right"
-                    sx={{
-                        display: { xs: 'none', md: 'flex' },
-                        alignItems: 'center',
-                        paddingRight: '8px',
-                        width: 'auto',
-                    }}
-                >
-                    <Card
-                        sx={{
-                            backgroundColor: 'rgba(54, 192, 240, .4)',
-                            ml: 2,
-                        }}
-                    >
-                        <Tooltip title="View my resume">
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    ml: 1,
-                                    mr: 1,
-                                    cursor: 'pointer',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                }}
-                                onClick={(e) => {
-                                    window.open(resume, '_blank')
-                                }}
-                            >
-                                View Resume
-                                <ArticleIcon sx={{ top: '5px', ml: 1 }} />
-                            </Typography>
-                        </Tooltip>
-                    </Card>
-                </Container>
-
-                {/* Mobile menu trigger */}
-                <Box
-                    sx={{
-                        ml: 'auto',
-                        display: { xs: 'flex', md: 'none' },
-                        alignItems: 'center',
-                        pr: 1,
-                    }}
-                >
+                {/* Mobile Menu Button */}
+                <Box sx={headerStyles.mobileMenu}>
                     <IconButton
-                        id="header-menu-button"
                         aria-label="Open navigation menu"
                         aria-controls={menuOpen ? 'header-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={menuOpen ? 'true' : undefined}
                         onClick={handleMenuOpen}
-                        size="large"
                     >
-                        <MenuIcon />
+                        <MenuIcon sx={{ color: '#4a4a52' }} />
                     </IconButton>
                     <Menu
                         id="header-menu"
                         anchorEl={menuAnchorEl}
                         open={menuOpen}
                         onClose={handleMenuClose}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'right',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'right',
-                        }}
+                        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                         keepMounted
+                        PaperProps={{
+                            sx: {
+                                borderRadius: '16px',
+                                boxShadow: '0 8px 32px rgba(217, 168, 199, 0.2)',
+                                border: '1px solid rgba(217, 168, 199, 0.2)',
+                                mt: 1,
+                            },
+                        }}
                     >
-                        {/* In-page navigation */}
-                        <MenuItem
-                            component="a"
-                            href="#introduction"
-                            onClick={handleMenuClose}
-                        >
-                            <ListItemIcon>
-                                <HomeIcon fontSize="small" />
-                            </ListItemIcon>
-                            Introduction
-                        </MenuItem>
-                        <MenuItem
-                            component="a"
-                            href="#skills"
-                            onClick={handleMenuClose}
-                        >
-                            <ListItemIcon>
-                                <BuildIcon fontSize="small" />
-                            </ListItemIcon>
-                            Skills
-                        </MenuItem>
-                        <MenuItem
-                            component="a"
-                            href="#projects"
-                            onClick={handleMenuClose}
-                        >
-                            <ListItemIcon>
-                                <WorkIcon fontSize="small" />
-                            </ListItemIcon>
-                            Projects
-                        </MenuItem>
-                        <MenuItem
-                            component="a"
-                            href="#experience"
-                            onClick={handleMenuClose}
-                        >
-                            <ListItemIcon>
-                                <WorkIcon fontSize="small" />
-                            </ListItemIcon>
-                            Experience
-                        </MenuItem>
-                        <MenuItem
-                            component="a"
-                            href="#contact"
-                            onClick={handleMenuClose}
-                        >
-                            <ListItemIcon>
-                                <ContactPageIcon fontSize="small" />
-                            </ListItemIcon>
-                            Contact
-                        </MenuItem>
-                        <Divider />
+                        {navLinks.map((link) => (
+                            <MenuItem
+                                key={link.label}
+                                component="a"
+                                href={link.href}
+                                onClick={(e) => handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, link.href)}
+                                sx={headerStyles.menuItem}
+                            >
+                                <ListItemIcon sx={{ minWidth: 32, color: '#d9a8c7' }}>
+                                    {link.icon}
+                                </ListItemIcon>
+                                {link.label}
+                            </MenuItem>
+                        ))}
+                        <Divider sx={{ my: 1, borderColor: 'rgba(217, 168, 199, 0.15)' }} />
                         <MenuItem
                             component="a"
                             href="https://github.com/nishiegroe"
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={handleMenuClose}
+                            sx={headerStyles.menuItem}
                         >
-                            <ListItemIcon>
-                                <GitHub fontSize="small" />
+                            <ListItemIcon sx={{ minWidth: 32, color: '#d9a8c7' }}>
+                                <GitHubIcon fontSize="small" />
                             </ListItemIcon>
                             GitHub
-                            <OpenInNewIcon
-                                fontSize="small"
-                                style={{ marginLeft: 'auto' }}
-                            />
                         </MenuItem>
                         <MenuItem
                             component="a"
@@ -334,51 +210,134 @@ const Header = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={handleMenuClose}
+                            sx={headerStyles.menuItem}
                         >
-                            <ListItemIcon>
+                            <ListItemIcon sx={{ minWidth: 32, color: '#d9a8c7' }}>
                                 <LinkedInIcon fontSize="small" />
                             </ListItemIcon>
                             LinkedIn
-                            <OpenInNewIcon
-                                fontSize="small"
-                                style={{ marginLeft: 'auto' }}
-                            />
                         </MenuItem>
                         <MenuItem
                             component="a"
-                            href="mailto:nishiegroe@gmail.com"
+                            href={resume}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={handleMenuClose}
+                            sx={headerStyles.menuItem}
                         >
-                            <ListItemIcon>
-                                <Email fontSize="small" />
-                            </ListItemIcon>
-                            Email
-                        </MenuItem>
-                        <Divider />
-                        <MenuItem
-                            onClick={() => {
-                                handleMenuClose()
-                                window.open(
-                                    resume,
-                                    '_blank',
-                                    'noopener,noreferrer'
-                                )
-                            }}
-                        >
-                            <ListItemIcon>
+                            <ListItemIcon sx={{ minWidth: 32, color: '#d9a8c7' }}>
                                 <ArticleIcon fontSize="small" />
                             </ListItemIcon>
-                            View Resume
-                            <OpenInNewIcon
-                                fontSize="small"
-                                style={{ marginLeft: 'auto' }}
-                            />
+                            Resume
                         </MenuItem>
                     </Menu>
                 </Box>
             </Card>
         </>
     )
+}
+
+/* ─── Styles ─── */
+const headerStyles = {
+    card: {
+        position: 'fixed',
+        top: { xs: 'auto', md: 20 },
+        bottom: { xs: 16, md: 'auto' },
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 2,
+        width: { xs: 'calc(100% - 32px)', sm: 'auto' },
+        maxWidth: { xs: '100%', sm: 850 },
+        p: { xs: '8px 16px', md: '10px 20px' },
+        borderRadius: '9999px',
+        background: 'rgba(255, 255, 255, 0.72)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: '1px solid rgba(217, 168, 199, 0.25)',
+        boxShadow: '0 8px 32px rgba(217, 168, 199, 0.15)',
+        transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+    cardScrolled: {
+        boxShadow: '0 12px 40px rgba(217, 168, 199, 0.2)',
+        border: '1px solid rgba(217, 168, 199, 0.35)',
+    },
+    logoLink: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: 1.5,
+        textDecoration: 'none',
+        flexShrink: 0,
+    },
+    desktopNav: {
+        display: { xs: 'none', md: 'flex' },
+        alignItems: 'center',
+        gap: 1,
+    },
+    navLink: {
+        color: '#4a4a52',
+        fontFamily: "'Poppins', sans-serif",
+        fontSize: '0.9rem',
+        fontWeight: 500,
+        textDecoration: 'none',
+        padding: '6px 14px',
+        borderRadius: '9999px',
+        transition: 'all 200ms ease',
+        position: 'relative',
+        '&:hover': {
+            color: '#d9a8c7',
+            background: 'rgba(217, 168, 199, 0.1)',
+        },
+    },
+    desktopActions: {
+        display: { xs: 'none', md: 'flex' },
+        alignItems: 'center',
+        gap: 1.5,
+    },
+    iconLink: {
+        color: '#8a8a92',
+        display: 'flex',
+        alignItems: 'center',
+        transition: 'color 200ms ease',
+        '&:hover': {
+            color: '#d9a8c7',
+        },
+    },
+    resumeButton: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '4px',
+        padding: '6px 16px',
+        background: 'linear-gradient(135deg, #d9a8c7 0%, #f2a8c5 100%)',
+        color: '#fff',
+        fontFamily: "'Poppins', sans-serif",
+        fontWeight: 600,
+        fontSize: '0.85rem',
+        borderRadius: '9999px',
+        textDecoration: 'none',
+        transition: 'all 200ms ease',
+        boxShadow: '0 2px 8px rgba(217, 168, 199, 0.3)',
+        '&:hover': {
+            transform: 'translateY(-1px)',
+            boxShadow: '0 4px 16px rgba(217, 168, 199, 0.4)',
+        },
+    },
+    mobileMenu: {
+        display: { xs: 'flex', md: 'none' },
+        ml: 'auto',
+    },
+    menuItem: {
+        fontFamily: "'Poppins', sans-serif",
+        fontSize: '0.95rem',
+        py: 1,
+        px: 2,
+        '&:hover': {
+            background: 'rgba(217, 168, 199, 0.08)',
+        },
+    },
 }
 
 export default Header

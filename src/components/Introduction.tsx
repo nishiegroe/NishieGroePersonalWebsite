@@ -6,95 +6,103 @@ const Introduction = () => {
         <Box
             id="introduction"
             className="scroll-fade-in"
-            sx={{
-                width: '100%',
-                maxWidth: '900px',
-                margin: '0 auto',
-            }}
+            sx={styles.container}
         >
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
-                spacing={{ xs: 3, md: 4 }}
-                alignItems={{ xs: 'center', md: 'flex-start' }}
+                spacing={{ xs: 4, md: 6 }}
+                alignItems={{ xs: 'center', md: 'center' }}
             >
+                {/* Image */}
+                <Box sx={styles.imageWrapper}>
+                    <Box sx={styles.imageGlow} />
+                    <picture>
+                        <img
+                            src={img1w240}
+                            sizes="280px"
+                            alt="Nishie Groe"
+                            decoding="async"
+                            loading="lazy"
+                            style={styles.portrait}
+                        />
+                    </picture>
+                </Box>
+
+                {/* Text */}
                 <Box sx={{ flex: 1, minWidth: 0 }}>
                     <Typography
                         variant="h2"
                         component="h1"
-                        sx={{
-                            textAlign: { xs: 'center', md: 'left' },
-                            fontSize: {
-                                xs: '2rem',
-                                sm: '2.3rem',
-                                md: '2.5rem',
-                            },
-                            fontFamily: 'Playfair Display, serif',
-                            mb: 2,
-                        }}
+                        sx={styles.heading}
                     >
-                        About<span style={{ color: '#d9a8c7' }}>/me</span>
+                        About
+                        <Box component="span" sx={{ color: '#d9a8c7' }}>
+                            /me
+                        </Box>
                     </Typography>
-                    {/* Visually hidden site name to reinforce title for crawlers */}
-                    <Typography
-                        component="span"
-                        sx={{
-                            position: 'absolute',
-                            width: 1,
-                            height: 1,
-                            p: 0,
-                            m: -1,
-                            overflow: 'hidden',
-                            clip: 'rect(0,0,0,0)',
-                            whiteSpace: 'nowrap',
-                            border: 0,
-                        }}
-                    >
-                        Nishie Groe
+                    <Typography sx={styles.bio}>
+                        I'm a Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and Typescript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. Passionate about creating well-documented, maintainable systems that empower teams and drive business value.
                     </Typography>
-                    <Typography
-                        sx={{
-                            textAlign: { xs: 'center', md: 'left' },
-                            fontSize: { xs: '1.05rem', sm: '1.1rem' },
-                            lineHeight: 1.9,
-                            color: '#555',
-                        }}
-                    >
-                        I'm a full-stack software engineer with 7+ years building
-                        scalable applications. I specialize in React, microservices,
-                        AWS infrastructure, and leading technical initiatives. I love
-                        solving complex problems and creating experiences that users
-                        genuinely enjoy.
-                    </Typography>
-                </Box>
-                <Box
-                    sx={{
-                        flexShrink: 0,
-                        minWidth: { xs: '100%', md: '300px' },
-                    }}
-                >
-                    <picture>
-                        <img
-                            src={img1w240}
-                            sizes="300px"
-                            alt="Nishie Groe"
-                            decoding="async"
-                            fetchPriority="high"
-                            width={240}
-                            height={240}
-                            style={{
-                                display: 'block',
-                                width: '100%',
-                                maxWidth: '240px',
-                                height: 'auto',
-                                borderRadius: '4px',
-                                margin: '0 auto',
-                            }}
-                        />
-                    </picture>
                 </Box>
             </Stack>
         </Box>
     )
+}
+
+/* ─── Styles ─── */
+const styles = {
+    container: {
+        width: '100%',
+        maxWidth: '900px',
+        margin: '0 auto',
+        px: { xs: 2, md: 4 },
+    },
+    imageWrapper: {
+        position: 'relative',
+        flexShrink: 0,
+        width: { xs: '200px', md: '280px' },
+        height: { xs: '200px', md: '280px' },
+    },
+    imageGlow: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '90%',
+        height: '90%',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(217,168,199,0.15) 0%, transparent 70%)',
+        zIndex: 0,
+    },
+    portrait: {
+        position: 'relative',
+        zIndex: 1,
+        display: 'block',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        borderRadius: '20px',
+        boxShadow: '0 8px 24px rgba(217, 168, 199, 0.15)',
+    },
+    heading: {
+        textAlign: { xs: 'center', md: 'left' },
+        fontSize: {
+            xs: '2rem',
+            sm: '2.3rem',
+            md: '2.5rem',
+        },
+        fontFamily: "'Playfair Display', Georgia, serif",
+        fontWeight: 700,
+        mb: 2.5,
+        color: '#4a4a52',
+    },
+    bio: {
+        textAlign: { xs: 'center', md: 'left' },
+        fontSize: { xs: '1rem', sm: '1.1rem' },
+        lineHeight: 1.9,
+        color: '#8a8a92',
+        fontFamily: "'Poppins', sans-serif",
+    },
 }
 
 export default Introduction
