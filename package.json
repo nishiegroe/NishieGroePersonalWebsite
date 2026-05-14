@@ -22,13 +22,13 @@
         "@mui/system": "^7.3.2",
         "developer-icons": "^6.0.5",
         "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
-        "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+        "react-dom": "^19.2.6",
         "webpack-cli": "^6.0.1"
     },
     "devDependencies": {
         "@eslint/js": "^9.21.0",
         "@types/react": "^19.0.10",
-        "@types/react-dom": "^19.0.4",
+        "@types/react-dom": "^19.2.3",
         "@vitejs/plugin-react": "^4.3.4",
         "constructs": "^10.4.2",
         "esbuild": "^0.25.1",
@@ -45,7 +45,7 @@
     },
     "peerDependencies": {
         "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
-        "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0"
+        "react-dom": "^19.2.6"
     },
     "optionalDependencies": {
         "@rollup/rollup-linux-x64-gnu": "4.6.1"
