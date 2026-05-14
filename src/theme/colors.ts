@@ -1,51 +1,65 @@
 /**
  * Color theme configuration for the portfolio
- * Change the accentColor to easily update the entire site's color scheme
+ * Pastel Tech - Cute Feminine Matte Palette
  */
 
 export const themeConfig = {
-  // Main accent color - change this to update your entire site's accent color
-  accentColor: '#d9a8c7', // Warm Lavender (Modern Feminine)
-  // Alternative accent colors to try:
-  // '#00d4ff' - Cyan (vibrant)
-  // '#6366f1' - Indigo (professional)
-  // '#ec4899' - Pink (bold)
-  // '#10b981' - Emerald (fresh)
-  // '#f97316' - Orange (warm)
-  // '#8b5cf6' - Violet (creative)
-  // '#3b82f6' - Sky Blue (classic)
+  // Main accent colors - pastel feminine palette
+  primary: '#d9a8c7',      // Warm lavender
+  secondary: '#f2a8c5',    // Soft pink
+  accent: '#a8d8f2',       // Light blue
+  accent2: '#c8b8e8',      // Soft purple
+  accent3: '#f5d1c8',      // Peach
 
   // Base colors
-  backgroundColor: '#faf8f5',
-  textPrimary: '#3a3531',
-  textSecondary: '#7a7066',
-  borderColor: '#ede8e0',
-  cardBackground: '#ffffff',
+  backgroundColor: '#faf8f5', // Cream white
+  surfaceColor: '#ffffff',    // Pure white for cards
+  textPrimary: '#4a4a52',     // Soft dark gray
+  textSecondary: '#8a8a92',   // Medium gray
+  borderColor: '#f0e8f0',     // Very light lavender
 
-  // Derived colors (automatically adjusted based on accent)
-  accentLight: 'rgba(245, 184, 168, 0.1)',
-  accentMedium: 'rgba(217, 168, 199, 0.2)',
-  accentHover: '#c697b8',
-  accentActive: '#b57fa7',
+  // Derived accent colors
+  primaryHover: '#c697b8',
+  primaryActive: '#b583a8',
+  primaryLight: 'rgba(217, 168, 199, 0.15)',
+  primaryMedium: 'rgba(217, 168, 199, 0.3)',
+
+  // Glassmorphism
+  glassBackground: 'rgba(255, 255, 255, 0.72)',
+  glassBorder: 'rgba(217, 168, 199, 0.25)',
+  glassShadow: '0 8px 32px rgba(217, 168, 199, 0.15)',
+
+  // Gradient definitions
+  gradient: {
+    primary: 'linear-gradient(135deg, #d9a8c7 0%, #f2a8c5 100%)',
+    hero: 'linear-gradient(135deg, rgba(217,168,199,0.1) 0%, rgba(168,216,242,0.1) 100%)',
+    surface: 'linear-gradient(180deg, #ffffff 0%, #faf8f5 100%)',
+  },
 }
 
 /**
  * Generate CSS variables from the theme config
- * This ensures all components use the same color palette
  */
 export const generateCSSVariables = (config: typeof themeConfig) => {
   return `
     :root {
-      --color-accent: ${config.accentColor};
-      --color-accent-light: ${config.accentLight};
-      --color-accent-medium: ${config.accentMedium};
-      --color-accent-hover: ${config.accentHover};
-      --color-accent-active: ${config.accentActive};
+      --color-primary: ${config.primary};
+      --color-secondary: ${config.secondary};
+      --color-accent: ${config.accent};
+      --color-accent2: ${config.accent2};
+      --color-accent3: ${config.accent3};
       --color-bg: ${config.backgroundColor};
+      --color-surface: ${config.surfaceColor};
       --color-text-primary: ${config.textPrimary};
       --color-text-secondary: ${config.textSecondary};
       --color-border: ${config.borderColor};
-      --color-card-bg: ${config.cardBackground};
+      --color-primary-hover: ${config.primaryHover};
+      --color-primary-active: ${config.primaryActive};
+      --color-primary-light: ${config.primaryLight};
+      --color-primary-medium: ${config.primaryMedium};
+      --glass-bg: ${config.glassBackground};
+      --glass-border: ${config.glassBorder};
+      --glass-shadow: ${config.glassShadow};
     }
   `
 }
