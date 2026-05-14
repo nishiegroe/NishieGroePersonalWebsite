@@ -34,3 +34,8 @@ amplifyconfiguration*
 # Lighthouse CI
 .lighthouseci
 .env
+
+# AI
+.opencode
+.swarm
+.agents

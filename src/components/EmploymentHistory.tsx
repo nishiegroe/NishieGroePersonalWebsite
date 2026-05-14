@@ -15,10 +15,14 @@ const timelineData: TimelineItemProps[] = [
         location: 'Chicago, IL',
         period: '2025 - Present',
         highlights: [
-            'Headless CMS-driven frontend for flexible content delivery',
-            'Built and onboarded development team with agile workflows',
-            'Led pilot go-live coordination and post-pilot roadmap',
-            'Interviewed candidates and evaluated technical fit',
+            'Led an architectural redesign of 21 legacy estimator tools, designing domain-driven RESTful apis with OpenAPI specifications and implementing via a Next.js monorepo',
+            'Architected a Turborepo monorepo with 6 shared packages achieving 90%+ code reuse across multi-tenant architecture (USG/Knauf) while implementing server-first data fetching, i18next/Crowdin OTA internationalization, MUI design system, and strict TS type safety',
+            'Created many technical documentations including OpenAPI specifications, architectural diagrams, and onboarding guides to facilitate team knowledge sharing and streamline development processes',
+            'Developed and maintained a headless CMS–driven frontend, enabling flexible content delivery and scalable UI development',
+            'Built and onboarded a development team, establishing agile workflows and ceremonies to support rapid iteration',
+            'Led development efforts to successfully meet pilot go-live deadlines, coordinating scope, priorities, and delivery',
+            'Planned and executed the post-pilot roadmap, guiding the team toward full website deployment within scheduled timelines',
+            'Interviewed and evaluated engineering candidates, contributing to the growth and long-term stability of the development team',
         ]
     },
     {

@@ -228,7 +228,7 @@ const ProjectCard = ({
                                 },
                             }}
                         >
-                            Live →
+                            View Website →
                         </Link>
                     )}
                     {links?.github && (
