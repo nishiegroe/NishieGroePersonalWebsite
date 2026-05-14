@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import profilePic128 from '../assets/profile-pic-128.webp'
 import profilePic256 from '../assets/profile-pic-256.webp'
-import resume from '../assets/Resume Jan 2026.pdf'
+import resume from '../assets/Resume May 2026.pdf'
 import { LinkedIn } from 'developer-icons'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import MenuIcon from '@mui/icons-material/Menu'
