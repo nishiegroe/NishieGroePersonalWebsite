@@ -5,10 +5,12 @@ import {
     Link,
     Box,
     IconButton,
+    Modal,
 } from '@mui/material'
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import React, { useState } from 'react'
+import CloseIcon from '@mui/icons-material/Close'
+import { useState, useCallback } from 'react'
 
 type ProjectEntryProps = {
     title: string
@@ -33,6 +35,7 @@ const ProjectCard = ({
     links,
 }: ProjectEntryProps) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const [galleryOpen, setGalleryOpen] = useState(false)
     const hasMultipleImages = images && images.length > 1
 
     const handlePrevImage = () => {
@@ -49,28 +52,52 @@ const ProjectCard = ({
         }
     }
 
+    const openGallery = useCallback(() => {
+        if (images && images.length > 0) {
+            setGalleryOpen(true)
+        }
+    }, [images])
+
+    const navigateFullscreen = (e: React.MouseEvent, direction: 'prev' | 'next') => {
+        e.stopPropagation()
+        if (direction === 'prev') {
+            handlePrevImage()
+        } else {
+            handleNextImage()
+        }
+    }
+
     return (
         <Box sx={styles.card}>
-            <Typography
-                variant="h3"
-                sx={styles.cardTitle}
-            >
-                {title}
-            </Typography>
-            <Typography sx={styles.techStack}>
-                {technologies.join(' \u2022 ')}
-            </Typography>
-            <Typography sx={styles.description}>
-                {description}
-            </Typography>
+            <Box sx={styles.cardHeader}>
+                <Typography
+                    variant="h3"
+                    sx={styles.cardTitle}
+                >
+                    {title}
+                </Typography>
+                <Typography sx={styles.techStack}>
+                    {technologies.join(' \u2022 ')}
+                </Typography>
+                <Typography sx={styles.description}>
+                    {description}
+                </Typography>
+            </Box>
 
             {/* Project Gallery */}
             {images && images.length > 0 && (
                 <Box sx={styles.galleryContainer}>
-                    <Box sx={styles.galleryInner}>
+                    <Box
+                        sx={styles.galleryInner}
+                        onClick={openGallery}
+                        style={{ cursor: 'zoom-in' }}
+                    >
                         {hasMultipleImages && (
                             <IconButton
-                                onClick={handlePrevImage}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    handlePrevImage()
+                                }}
                                 size="small"
                                 sx={{ ...styles.galleryNav, left: 8 }}
                                 aria-label="Previous image"
@@ -87,7 +114,10 @@ const ProjectCard = ({
 
                         {hasMultipleImages && (
                             <IconButton
-                                onClick={handleNextImage}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleNextImage()
+                                }}
                                 size="small"
                                 sx={{ ...styles.galleryNav, right: 8 }}
                                 aria-label="Next image"
@@ -119,6 +149,88 @@ const ProjectCard = ({
                     )}
                 </Box>
             )}
+
+            {/* Fullscreen Gallery Modal */}
+            <Modal
+                open={galleryOpen}
+                onClose={() => setGalleryOpen(false)}
+                sx={styles.modal}
+            >
+                <Box
+                    sx={styles.modalContent}
+                    onClick={() => setGalleryOpen(false)}
+                >
+                    <IconButton
+                        onClick={() => setGalleryOpen(false)}
+                        sx={styles.modalCloseButton}
+                        aria-label="Close gallery"
+                    >
+                        <CloseIcon />
+                    </IconButton>
+
+                    <Box
+                        sx={styles.modalImageContainer}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {hasMultipleImages && (
+                            <IconButton
+                                onClick={(e) => navigateFullscreen(e, 'prev')}
+                                sx={{ ...styles.modalNav, left: { xs: 8, md: 24 } }}
+                                aria-label="Previous image"
+                            >
+                                <ChevronLeftIcon fontSize="large" />
+                            </IconButton>
+                        )}
+
+                        <img
+                            src={images?.[currentImageIndex]}
+                            alt={imageAlt || `${title} fullscreen screenshot`}
+                            style={styles.modalImage}
+                        />
+
+                        {hasMultipleImages && (
+                            <IconButton
+                                onClick={(e) => navigateFullscreen(e, 'next')}
+                                sx={{ ...styles.modalNav, right: { xs: 8, md: 24 } }}
+                                aria-label="Next image"
+                            >
+                                <ChevronRightIcon fontSize="large" />
+                            </IconButton>
+                        )}
+                    </Box>
+
+                    {/* Modal Dots */}
+                    {images && images.length > 1 && (
+                        <Box sx={styles.modalDotsContainer}>
+                            {images.map((imageUrl, index) => (
+                                <Box
+                                    key={index}
+                                    sx={{
+                                        ...styles.modalDot,
+                                        backgroundColor:
+                                            index === currentImageIndex
+                                                ? '#d9a8c7'
+                                                : '#e8e0e0',
+                                    }}
+                                    onClick={(e) => {
+                                        e.stopPropagation()
+                                        setCurrentImageIndex(index)
+                                    }}
+                                    role="button"
+                                    tabIndex={0}
+                                />
+                            ))}
+                        </Box>
+                    )}
+
+                    {/* Image counter */}
+                    {images && images.length > 1 && (
+                        <Box sx={styles.imageCounter}>
+                            {currentImageIndex + 1} / {images.length}
+                        </Box>
+                    )}
+                </Box>
+            </Modal>
 
             {/* Highlights */}
             {highlights && highlights.length > 0 && (
@@ -189,6 +301,21 @@ const projectsData: ProjectEntryProps[] = [
         },
     },
     {
+        title: 'USG.com',
+        description:
+            'The corporate website for USG Corporation — a leading manufacturer of innovative construction products including drywall, ceiling tiles, subfloors, and building envelope solutions.',
+        technologies: ['Contentful', 'Next.js', 'TypeScript'],
+        highlights: [
+            'Built on a modern Next.js + TypeScript stack integrated with Contentful CMS',
+            'Supports rich product catalogs, design tools, and multi-language content',
+        ],
+        images: ['/usg-com-screenshot.png'],
+        imageAlt: 'USG.com website screenshot',
+        links: {
+            website: 'https://usg.com',
+        },
+    },
+    {
         title: 'Lootpath Finder',
         description: 'Interactive map editor for Apex Legends loot paths',
         technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Docker'],
@@ -245,7 +372,7 @@ const styles = {
     },
     projectsContainer: {
         display: 'grid',
-        gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' },
+        gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
         gap: { xs: 3, md: 4 },
     },
     card: {
@@ -265,6 +392,11 @@ const styles = {
             boxShadow: '0 16px 40px rgba(217, 168, 199, 0.15)',
             borderColor: 'rgba(217, 168, 199, 0.35)',
         },
+    },
+    cardHeader: {
+        minHeight: { xs: 'auto', md: '16rem' },
+        display: 'flex',
+        flexDirection: 'column',
     },
     cardTitle: {
         mb: 0.5,
@@ -289,6 +421,7 @@ const styles = {
     galleryContainer: {
         mt: 1.5,
         mb: 2,
+        minHeight: { xs: '180px', sm: '200px', md: '180px' },
     },
     galleryInner: {
         display: 'flex',
@@ -298,6 +431,7 @@ const styles = {
         background: '#f9f9f9',
         borderRadius: '16px',
         overflow: 'hidden',
+        height: { xs: 140, sm: 160, md: 140 },
     },
     galleryNav: {
         position: 'absolute',
@@ -314,8 +448,9 @@ const styles = {
         },
     },
     galleryImage: {
-        maxWidth: '100%',
-        height: 'auto',
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
         display: 'block',
         borderRadius: '12px',
     },
@@ -367,6 +502,93 @@ const styles = {
             color: '#c697b8',
             textDecoration: 'underline',
         },
+    },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1300,
+    },
+    modalContent: {
+        position: 'relative',
+        background: 'rgba(0, 0, 0, 0.85)',
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+    },
+    modalCloseButton: {
+        position: 'absolute',
+        top: 16,
+        right: 16,
+        color: '#fff',
+        background: 'rgba(255, 255, 255, 0.1)',
+        backdropFilter: 'blur(4px)',
+        zIndex: 10,
+        '&:hover': {
+            background: 'rgba(255, 255, 255, 0.2)',
+        },
+    },
+    modalImageContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        maxWidth: '90vw',
+        maxHeight: '85vh',
+        px: { xs: 6, md: 10 },
+    },
+    modalImage: {
+        maxWidth: '100%',
+        maxHeight: '85vh',
+        width: 'auto',
+        height: 'auto',
+        borderRadius: '12px',
+        objectFit: 'contain',
+        display: 'block',
+    },
+    modalNav: {
+        position: 'absolute',
+        top: '50%',
+        transform: 'translateY(-50%)',
+        color: '#d9a8c7',
+        background: 'rgba(255, 255, 255, 0.8)',
+        backdropFilter: 'blur(4px)',
+        zIndex: 10,
+        '&:hover': {
+            background: 'rgba(217, 168, 199, 0.5)',
+        },
+    },
+    modalDotsContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '10px',
+        py: 2,
+        position: 'absolute',
+        bottom: 16,
+    },
+    modalDot: {
+        width: 10,
+        height: 10,
+        borderRadius: '50%',
+        cursor: 'pointer',
+        transition: 'all 0.2s ease',
+        '&:hover': {
+            transform: 'scale(1.3)',
+        },
+    },
+    imageCounter: {
+        position: 'absolute',
+        bottom: 12,
+        right: 24,
+        color: '#fff',
+        fontSize: '0.85rem',
+        fontFamily: "'Poppins', sans-serif",
+        opacity: 0.7,
     },
 }
 
