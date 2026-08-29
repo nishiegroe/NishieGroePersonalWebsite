@@ -279,6 +279,30 @@ const ProjectCard = ({
 
 const projectsData: ProjectEntryProps[] = [
     {
+        title: 'Veridian Esports',
+        description:
+            "Competitive Apex Legends platform for women's comp — team rosters, MMR rankings, and live tournament scoring.",
+        technologies: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind CSS', 'AWS'],
+        highlights: [
+            'Dual-ladder MMR engine with time-weighted match decay',
+            'Live scrim and tournament scoring streamed over SSE',
+            'Overstat.gg stats ingestion with per-player caching',
+            'Discord OAuth with role-gated organizer and admin tooling',
+            'Bilingual (en/es), Dockerized on AWS Lightsail behind Caddy',
+        ],
+        images: [
+            '/veridian-home.webp',
+            '/veridian-player-profile.webp',
+            '/veridian-rankings.webp',
+            '/veridian-events.webp',
+            '/veridian-lootpaths.webp',
+        ],
+        imageAlt: 'Veridian Esports platform screenshots',
+        links: {
+            website: 'https://veridianesports.org',
+        },
+    },
+    {
         title: 'VOD Insights',
         description: 'Automated VOD analysis for esports coaches and creators',
         technologies: ['Python', 'React', 'Electron', 'OpenCV', 'FFmpeg'],
@@ -372,7 +396,7 @@ const styles = {
     },
     projectsContainer: {
         display: 'grid',
-        gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
+        gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
         gap: { xs: 3, md: 4 },
     },
     card: {
@@ -394,7 +418,12 @@ const styles = {
         },
     },
     cardHeader: {
-        minHeight: { xs: 'auto', md: '16rem' },
+        // Keeps the image tops aligned across a row. Sized to the tallest real
+        // header at md's narrowest: USG.com's long description measures 206px at
+        // a 900px viewport (180px at 1440). Anything smaller and that one card's
+        // image drops below its neighbour's. Was 16rem for the old 3-across grid,
+        // which left ~100px of dead space under every description at 2-up.
+        minHeight: { xs: 'auto', md: '13rem' },
         display: 'flex',
         flexDirection: 'column',
     },
@@ -421,7 +450,6 @@ const styles = {
     galleryContainer: {
         mt: 1.5,
         mb: 2,
-        minHeight: { xs: '180px', sm: '200px', md: '180px' },
     },
     galleryInner: {
         display: 'flex',
@@ -431,7 +459,6 @@ const styles = {
         background: '#f9f9f9',
         borderRadius: '16px',
         overflow: 'hidden',
-        height: { xs: 140, sm: 160, md: 140 },
     },
     galleryNav: {
         position: 'absolute',
@@ -449,8 +476,7 @@ const styles = {
     },
     galleryImage: {
         width: '100%',
-        height: '100%',
-        objectFit: 'cover',
+        height: 'auto',
         display: 'block',
         borderRadius: '12px',
     },
