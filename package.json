@@ -8,7 +8,7 @@
         "build": "vite build && tsx scripts/write-route-pages.ts",
         "lint": "eslint .",
         "preview": "vite preview",
-        "compress:og": "node scripts/compress-og-image.mjs && node -e \"const fs=require('fs');fs.renameSync('public/og-image.compressed.jpg','public/og-image.jpg');\"",
+        "generate:og": "node scripts/generate-og-image.mjs",
         "compress:profile": "node scripts/compress-profile-pic.mjs",
         "compress:photos": "node scripts/compress-photos.mjs"
     },
