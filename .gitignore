@@ -12,7 +12,9 @@ dist
 dist-ssr
 *.local
 *-lock.json
-scripts
+scripts/*
+# The build needs this one (writes per-route HTML after vite build)
+!scripts/write-route-pages.ts
 
 # Editor directories and files
 .vscode/*
