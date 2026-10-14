@@ -5,7 +5,7 @@ import DescriptionIcon from '@mui/icons-material/Description'
 import EmailIcon from '@mui/icons-material/Email'
 import PhoneIcon from '@mui/icons-material/Phone'
 import img2521webp from '../assets/IMG_2521.webp'
-import resume from '../assets/Resume May 2026.pdf'
+import resume from '../assets/Resume Oct 2026.pdf'
 
 
 

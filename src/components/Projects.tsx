@@ -281,14 +281,16 @@ const projectsData: ProjectEntryProps[] = [
     {
         title: 'Veridian Esports',
         description:
-            "Competitive Apex Legends platform for women's comp — team rosters, MMR rankings, and live tournament scoring.",
-        technologies: ['Next.js', 'TypeScript', 'Prisma', 'Tailwind CSS', 'AWS'],
+            "Built solo: a production platform that runs competitive Apex Legends leagues, plus a real-time server that ingests live match data straight from the game.",
+        technologies: ['Next.js', 'TypeScript', 'Prisma', 'WebSockets', 'Protobuf', 'AWS'],
         highlights: [
-            'Dual-ladder MMR engine with time-weighted match decay',
-            'Live scrim and tournament scoring streamed over SSE',
-            'Overstat.gg stats ingestion with per-player caching',
-            'Discord OAuth with role-gated organizer and admin tooling',
-            'Bilingual (en/es), Dockerized on AWS Lightsail behind Caddy',
+            'Sole developer: 840+ commits, 200+ merged PRs, 1,400+ automated tests',
+            'Tournament engine with group seeding, a timed multi-map draft, and ALGS tiebreakers',
+            'Dual-ladder MMR rankings with time-weighted decay and live Top 25',
+            'LiveAPI server: game client → WebSocket (JSON or protobuf) → live SSE scoreboards',
+            'Observer camera control from the browser, plus OBS broadcast overlays',
+            'Zero-downtime blue/green Docker deploys on AWS Lightsail with CI auto-rollback',
+            'Bilingual (en/es), Discord OAuth, role-gated organizer and admin tooling',
         ],
         images: [
             '/veridian-home.webp',

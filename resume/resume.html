@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Nishie Groe - Resume</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  :root { --side: #ebe9fa; --accent: #9e92e6; --ink: #111; --muted: #333; }
+  * { box-sizing: border-box; }
+  html {
+    /* Root background paints on every printed page, so the sidebar tint continues onto page 2 */
+    background: linear-gradient(to right, var(--side) 0, var(--side) 2.55in, #fff 2.55in);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  body { margin: 0; font-family: "Liberation Serif", "Times New Roman", Times, serif; color: var(--ink); font-size: 10pt; line-height: 1.35; }
+  a { color: inherit; }
+  .page { display: grid; grid-template-columns: 2.55in 1fr; }
+  aside { padding: 0.36in 0.22in 0.3in 0.22in; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  main { padding: 0.34in 0.38in 0.3in 0.3in; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .photo { display: block; width: 1.75in; height: 2.1in; object-fit: cover; border-radius: 0.38in; margin: 0 auto 0.12in; }
+  .name { text-align: center; font-size: 15.5pt; font-weight: 700; margin: 0; }
+  .role { text-align: center; margin: 1pt 0 8pt; }
+  .contact { border: 1px solid var(--accent); border-radius: 4px; padding: 5pt 8pt; margin: 0 auto 10pt; width: fit-content; font-size: 9pt; }
+  .contact div { display: flex; align-items: center; gap: 5pt; margin: 2pt 0; }
+  .contact svg { width: 9pt; height: 9pt; flex: none; stroke: #555; fill: none; stroke-width: 2; }
+  h3.side { color: var(--accent); font-size: 9.2pt; font-weight: 700; border-bottom: 1px solid var(--accent); padding-bottom: 2pt; margin: 9pt 0 5pt; }
+  .skill { font-weight: 700; font-size: 9.6pt; margin-top: 4pt; }
+  .bar { height: 5pt; background: var(--accent); border-radius: 2pt; margin: 2pt 0 4pt; }
+  .item { margin-bottom: 5pt; font-size: 9.2pt; }
+  .item b { font-size: 9.8pt; }
+  h2 { font-size: 9.6pt; font-weight: 700; border-bottom: 1.2px solid #222; padding-bottom: 2pt; margin: 0 0 6pt; }
+  h2 + p { margin-top: 0; }
+  section { margin-bottom: 9pt; }
+  .job { margin-bottom: 8pt; }
+  .job > .row, .job > .url { break-after: avoid; }
+  li { break-inside: avoid; }
+  .job .row { display: flex; justify-content: space-between; }
+  .job .row:first-child { font-weight: 700; }
+  .job .url { font-size: 9.5pt; display: flex; gap: 4pt; align-items: center; }
+  .job .url svg { width: 9pt; height: 9pt; stroke: #777; fill: none; stroke-width: 2; }
+  ul { margin: 3pt 0 0; padding-left: 14pt; }
+  li { margin-bottom: 2.5pt; }
+  .tag { font-weight: 400; font-style: italic; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="at" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M16 12v1.5a2.5 2.5 0 0 0 5 0V12a9 9 0 1 0-3.5 7.1"/></symbol>
+    <symbol id="link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="li" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></symbol>
+    <symbol id="gh" viewBox="0 0 24 24"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5V18a3.4 3.4 0 0 0-1-2.6c3.2-.4 6.5-1.6 6.5-7a5.4 5.4 0 0 0-1.5-3.8 5 5 0 0 0-.1-3.8s-1.2-.4-3.9 1.5a13.4 13.4 0 0 0-7 0C6.3 1.4 5.1 1.8 5.1 1.8a5 5 0 0 0-.1 3.8A5.4 5.4 0 0 0 3.5 9.4c0 5.4 3.3 6.6 6.5 7a3.4 3.4 0 0 0-1 2.6v3.5"/></symbol>
+  </defs>
+</svg>
+
+<div class="page">
+<aside>
+  <img class="photo" src="photo.jpg" alt="Nishie Groe">
+  <p class="name">Nishie Groe</p>
+  <p class="role">Software Engineer</p>
+  <div class="contact">
+    <div><svg><use href="#pin"/></svg>Chicago, IL</div>
+    <div><svg><use href="#phone"/></svg><a href="tel:+18152199863">+1 (815) 219-9863</a></div>
+    <div><svg><use href="#at"/></svg><a href="mailto:nishiegroe@gmail.com">nishiegroe@gmail.com</a></div>
+    <div><svg><use href="#link"/></svg><a href="https://nishiegroe.com/">NishieGroe.com</a></div>
+    <div><svg><use href="#li"/></svg><a href="https://www.linkedin.com/in/nishie-groe/">LinkedIn</a></div>
+    <div><svg><use href="#gh"/></svg><a href="https://github.com/nishiegroe">GitHub</a></div>
+  </div>
+
+  <h3 class="side">Skills</h3>
+  <div class="skill">Next.js</div><div class="bar"></div>
+  <div class="skill">React</div><div class="bar"></div>
+  <div class="skill">TypeScript</div><div class="bar"></div>
+  <div class="skill">JavaScript</div><div class="bar"></div>
+  <div class="skill">Node.js</div><div class="bar"></div>
+  <div class="skill">PostgreSQL / SQLite</div><div class="bar"></div>
+  <div class="skill">Prisma</div><div class="bar"></div>
+  <div class="skill">WebSockets / SSE</div><div class="bar"></div>
+  <div class="skill">Docker</div><div class="bar"></div>
+  <div class="skill">AWS</div><div class="bar"></div>
+  <div class="skill">Turborepo</div><div class="bar"></div>
+  <div class="skill">Contentful</div><div class="bar"></div>
+  <div class="skill">Material UI</div><div class="bar"></div>
+  <div class="skill">Tailwind CSS</div><div class="bar"></div>
+
+  <h3 class="side">Interests</h3>
+  <div class="item"><b>Gaming</b><br>Apex Legends and Minecraft</div>
+  <div class="item"><b>Homelab</b><br>Vaultwarden, Homeassistant, Portainer</div>
+  <div class="item"><b>TV &amp; Movies</b><br>Grey's Anatomy, Dexter, Harry Potter, Breaking Bad</div>
+
+  <h3 class="side">Education</h3>
+  <div class="item" style="font-size:10pt">
+    <b>Western Illinois University</b><br>
+    Information Systems and Management<br>
+    <div style="text-align:center;font-weight:700">2018</div>
+    Bachelors of Science<br>
+    <a href="https://www.wiu.edu/">https://www.wiu.edu/</a>
+  </div>
+
+  <h3 class="side">References</h3>
+  <div class="item" style="font-size:10pt"><b>John Dolce</b><br>USG<br><a href="mailto:johndolce@gmail.com">johndolce@gmail.com</a></div>
+  <div class="item" style="font-size:10pt"><b>Sarah Shaw</b><br>John Deere<br><a href="mailto:shawsarahl@johndeere.com">shawsarahl@johndeere.com</a><br>(536) 340-2920</div>
+</aside>
+
+<main>
+  <section>
+    <h2>Summary</h2>
+    <p>Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and TypeScript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. Outside my day job, I designed and solely built Veridian Esports, a production tournament platform with real-time ingestion of live game data. Passionate about well-documented, maintainable systems that empower teams and drive business value.</p>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div class="row"><span>Veridian Esports <span class="tag">(independent project)</span></span><span>Jun 2026 - Present</span></div>
+      <div class="row"><span>Sole Software Engineer</span><span>Remote</span></div>
+      <div class="url"><svg><use href="#link"/></svg><a href="https://veridianesports.org/">https://veridianesports.org/</a></div>
+      <ul>
+        <li><b>Designed, built, and operate a production esports platform</b> as the only engineer, used by community leagues to run competitive Apex Legends tournaments; 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)</li>
+        <li><b>Built a full tournament operations suite</b>: multi-stage events with groups, invite-gated registration, roster locks, MMR-based seeding, a real-time timed map draft, live scoring with ALGS tiebreakers, and broadcast overlays for OBS</li>
+        <li><b>Engineered a dual-ladder MMR ranking engine</b> with time-weighted decay and per-ladder Top 25, integrating Overstat.gg, NeatQueue, and Respawn's official stats API with player identity resolution across Discord, Overstat, and in-game IDs</li>
+        <li><b>Built a standalone real-time ingest server</b> for Apex Legends' LiveAPI (Node.js, WebSockets, Protocol Buffers) that auto-detects JSON or protobuf per connection, reduces the event stream into live scoreboards streamed over SSE, and routes observer camera commands back to game clients; backed by a match simulator, session replay tooling, and 180 unit tests</li>
+        <li><b>Own production infrastructure end to end</b>: Docker on AWS Lightsail behind Caddy TLS with zero-downtime blue/green deploys, plus GitHub Actions CI (1,400+ Vitest tests, schema-drift guard, CodeQL, dependency audits) and SSH auto-deploy with rollback</li>
+        <li><b>Shipped platform fundamentals</b>: Discord OAuth with role-based access, player verification, ban-list enforcement, English/Spanish i18n, SEO (JSON-LD, dynamic OG images), and GA4 with Consent Mode v2</li>
+        <li><b>Ran an AI-assisted SDLC</b> (Claude Code orchestrator/implementer agents, automated AI PR review, decision logs) to ship at team velocity as a solo developer</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span>United States Gypsum Corporation</span><span>May 2025 - Present</span></div>
+      <div class="row"><span>Software Developer</span><span>Chicago, IL</span></div>
+      <div class="url"><svg><use href="#link"/></svg><a href="https://www.usg.com/">https://www.usg.com/</a></div>
+      <ul>
+        <li><b>Led an architectural redesign of 21 legacy estimator tools</b>, designing domain-driven RESTful APIs with OpenAPI specifications and implementing via a Next.js monorepo</li>
+        <li><b>Architected a Turborepo monorepo</b> with 6 shared packages achieving 90%+ code reuse across <b>multi-tenant architecture</b> (USG/Knauf) while implementing server-first data fetching, i18next/Crowdin OTA internationalization, MUI design system, and strict TS type safety</li>
+        <li>Created technical documentation including <b>OpenAPI specifications, architectural diagrams, and onboarding guides</b> to facilitate team knowledge sharing and streamline development processes</li>
+        <li>Developed and maintained a <b>headless CMS–driven frontend</b>, enabling flexible content delivery and scalable UI development</li>
+        <li><b>Built and onboarded a development team</b>, establishing agile workflows and ceremonies to support rapid iteration</li>
+        <li><b>Led development efforts to successfully meet pilot go-live deadlines</b>, coordinating scope, priorities, and delivery</li>
+        <li><b>Planned and executed the post-pilot roadmap</b>, guiding the team toward full website deployment within scheduled timelines</li>
+        <li><b>Interviewed and evaluated engineering candidates</b>, contributing to the growth and long-term stability of the development team</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span>John Deere</span><span>Jun 2022 - Aug 2024</span></div>
+      <div class="row"><span>Senior Software Engineer</span><span>Moline, IL</span></div>
+      <div class="url"><svg><use href="#link"/></svg><a href="https://www.deere.com/en/">https://www.deere.com/en/</a></div>
+      <ul>
+        <li><b>Led UI/UX modernization initiatives</b>, designing and implementing React-based micro-frontends to decompose legacy AngularJS and Java monoliths, significantly improving maintainability and development velocity</li>
+        <li><b>Architected and delivered multiple micro-frontends (MFEs)</b>, enabling independent deployment, clearer ownership, and faster feature iteration</li>
+        <li><b>Designed and implemented CI/CD pipelines using Drone</b>, automating build, test, and deployment workflows for JavaScript and Java micro-frontend applications</li>
+        <li><b>Modernized backend integrations</b> by replacing legacy SOAP APIs with RESTful services, improving performance, scalability, and developer experience</li>
+        <li><b>Conceptualized and developed a container UI framework</b> to seamlessly host and orchestrate micro-frontends, enhancing system architecture and user experience consistency</li>
+        <li><b>Leveraged SaaS platforms and AWS services</b> to host, deploy, and scale frontend and backend applications reliably</li>
+        <li><b>Conducted international knowledge transfer and technical enablement</b>, mentoring remote and onshore teams on React, micro-frontend architecture, and UI/UX best practices</li>
+        <li><b>Reworked and automated M&amp;A operational processes</b> using advanced SQL capabilities, improving data accuracy and reducing manual effort</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="row"><span>John Deere</span><span>Jun 2020 - Jun 2022</span></div>
+      <div class="row"><span>Software Engineer</span><span>Moline, IL</span></div>
+      <div class="url"><svg><use href="#link"/></svg><a href="https://www.deere.com/en/">https://www.deere.com/en/</a></div>
+      <ul>
+        <li><b>Optimized the software development lifecycle</b>, improving team productivity and accelerating time-to-market for critical product features</li>
+        <li><b>Conducted comprehensive application portfolio analysis</b>, identifying and decommissioning underutilized ColdFusion systems to reduce maintenance overhead</li>
+        <li><b>Led SSO migration</b> from SiteMinder to Okta across ColdFusion applications, strengthening security posture and modernizing auth workflows</li>
+        <li>Supported <b>application migrations to AWS</b>, contributing to improved scalability, reliability, and operational efficiency</li>
+      </ul>
+    </div>
+  </section>
+</main>
+</div>
+</body>
+</html>
