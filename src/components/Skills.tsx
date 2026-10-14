@@ -19,6 +19,11 @@ import {
     MySQL,
     MongoDB,
     NextJs,
+    Prisma,
+    TailwindCSS,
+    AWS,
+    Vitest,
+    Playwright,
     C as Contentful
 } from 'developer-icons'
 
@@ -31,8 +36,11 @@ const skills: Skill[] = [
     { Icon: Contentful, label: 'Contentful'},
     { Icon: NextJs, label: 'Next.js' },
     { Icon: React, label: 'React' },
-    { Icon: Docker, label: 'Docker' },
     { Icon: TypeScript, label: 'TypeScript' },
+    { Icon: Prisma, label: 'Prisma' },
+    { Icon: Docker, label: 'Docker' },
+    { Icon: AWS, label: 'AWS' },
+    { Icon: TailwindCSS, label: 'Tailwind CSS' },
     { Icon: JavaScript, label: 'JavaScript' },
     { Icon: Redux, label: 'Redux' },
     { Icon: PostgreSQL, label: 'PostgreSQL' },
@@ -40,6 +48,8 @@ const skills: Skill[] = [
     { Icon: CSS, label: 'CSS' },
     { Icon: NodeJs, label: 'NodeJs' },
     { Icon: Java, label: 'Java' },
+    { Icon: Vitest, label: 'Vitest' },
+    { Icon: Playwright, label: 'Playwright' },
     { Icon: Jest, label: 'Jest' },
     { Icon: Python, label: 'Python' },
     { Icon: Cypress, label: 'Cypress' },

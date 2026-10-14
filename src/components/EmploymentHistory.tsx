@@ -10,14 +10,29 @@ type TimelineItemProps = {
 
 const timelineData: TimelineItemProps[] = [
     {
+        title: 'Director of Technology',
+        company: 'Veridian Esports',
+        location: 'Remote',
+        period: '2026 - Present',
+        highlights: [
+            'Designed, built, and operate veridianesports.org end to end: 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)',
+            'Built the tournament operations suite community leagues run on: multi-stage events, invite-gated registration, roster locks, MMR-based group seeding, a real-time timed map draft, and live scoring with ALGS tiebreakers',
+            'Built a live broadcast console for casters and observers: one-click camera switching to any player or squad, auto-detected live fights surfaced as recommended POVs, off-camera fight alerts, shared multi-observer consoles, and OBS overlays',
+            'Engineered a dual-ladder MMR ranking engine with time-weighted decay and per-ladder Top 25, fed by Overstat.gg, NeatQueue, and Respawn\'s official stats-token API, with identity resolution across Discord, Overstat, and in-game IDs',
+            'Built a standalone real-time ingest server for Apex Legends\' LiveAPI (Node.js, WebSockets, Protocol Buffers) that auto-detects JSON or protobuf per connection, reduces the event stream into live scoreboards served over SSE, and routes observer camera commands back to game clients',
+            'Run production on AWS Lightsail with Docker, Caddy TLS, and zero-downtime blue/green deploys; GitHub Actions CI with 1,500+ Vitest tests, a schema-drift guard, CodeQL, and auto-deploy with rollback',
+            'Shipped Discord OAuth with role-based access, player verification, ban-list enforcement, English/Spanish i18n, and SEO (JSON-LD, dynamic OG images)',
+        ]
+    },
+    {
         title: 'Senior Full-Stack Developer',
         company: 'USG',
         location: 'Chicago, IL',
         period: '2025 - Present',
         highlights: [
-            'Led an architectural redesign of 21 legacy estimator tools, designing domain-driven RESTful apis with OpenAPI specifications and implementing via a Next.js monorepo',
+            'Led an architectural redesign of 21 legacy estimator tools, designing domain-driven RESTful APIs with OpenAPI specifications and implementing via a Next.js monorepo',
             'Architected a Turborepo monorepo with 6 shared packages achieving 90%+ code reuse across multi-tenant architecture (USG/Knauf) while implementing server-first data fetching, i18next/Crowdin OTA internationalization, MUI design system, and strict TS type safety',
-            'Created many techical documentations including OpenAPI specifications, architectural diagrams, and onboarding guides to facilitate team knowledge sharing and streamline development processes',
+            'Created technical documentation including OpenAPI specifications, architectural diagrams, and onboarding guides to facilitate team knowledge sharing and streamline development processes',
             'Headless CMS-driven frontend for flexible content delivery',
             'Built and onboarded development team with agile workflows',
             'Led pilot go-live coordination and post-pilot roadmap',
