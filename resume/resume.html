@@ -107,24 +107,23 @@
 <main>
   <section>
     <h2>Summary</h2>
-    <p>Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and TypeScript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. Outside my day job, I designed and solely built Veridian Esports, a production tournament platform with real-time ingestion of live game data. Passionate about well-documented, maintainable systems that empower teams and drive business value.</p>
+    <p>Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and TypeScript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. As Director of Technology at Veridian Esports, I designed and built a production tournament platform with real-time ingestion of live game data. Passionate about well-documented, maintainable systems that empower teams and drive business value.</p>
   </section>
 
   <section>
     <h2>Experience</h2>
 
     <div class="job">
-      <div class="row"><span>Veridian Esports <span class="tag">(independent project)</span></span><span>Jun 2026 - Present</span></div>
-      <div class="row"><span>Sole Software Engineer</span><span>Remote</span></div>
+      <div class="row"><span>Veridian Esports</span><span>Jun 2026 - Present</span></div>
+      <div class="row"><span>Director of Technology</span><span>Remote</span></div>
       <div class="url"><svg><use href="#link"/></svg><a href="https://veridianesports.org/">https://veridianesports.org/</a></div>
       <ul>
-        <li><b>Designed, built, and operate a production esports platform</b> as the only engineer, used by community leagues to run competitive Apex Legends tournaments; 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)</li>
+        <li><b>Designed, built, and operate a production esports platform</b> used by community leagues to run competitive Apex Legends tournaments; 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)</li>
         <li><b>Built a full tournament operations suite</b>: multi-stage events with groups, invite-gated registration, roster locks, MMR-based seeding, a real-time timed map draft, live scoring with ALGS tiebreakers, and broadcast overlays for OBS</li>
         <li><b>Engineered a dual-ladder MMR ranking engine</b> with time-weighted decay and per-ladder Top 25, integrating Overstat.gg, NeatQueue, and Respawn's official stats API with player identity resolution across Discord, Overstat, and in-game IDs</li>
         <li><b>Built a standalone real-time ingest server</b> for Apex Legends' LiveAPI (Node.js, WebSockets, Protocol Buffers) that auto-detects JSON or protobuf per connection, reduces the event stream into live scoreboards streamed over SSE, and routes observer camera commands back to game clients; backed by a match simulator, session replay tooling, and 180 unit tests</li>
-        <li><b>Own production infrastructure end to end</b>: Docker on AWS Lightsail behind Caddy TLS with zero-downtime blue/green deploys, plus GitHub Actions CI (1,400+ Vitest tests, schema-drift guard, CodeQL, dependency audits) and SSH auto-deploy with rollback</li>
+        <li><b>Own production infrastructure end to end</b>: Docker on AWS Lightsail behind Caddy TLS with zero-downtime blue/green deploys, plus GitHub Actions CI (1,500+ Vitest tests, schema-drift guard, CodeQL, dependency audits) and SSH auto-deploy with rollback</li>
         <li><b>Shipped platform fundamentals</b>: Discord OAuth with role-based access, player verification, ban-list enforcement, English/Spanish i18n, SEO (JSON-LD, dynamic OG images), and GA4 with Consent Mode v2</li>
-        <li><b>Ran an AI-assisted SDLC</b> (Claude Code orchestrator/implementer agents, automated AI PR review, decision logs) to ship at team velocity as a solo developer</li>
       </ul>
     </div>
 

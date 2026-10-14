@@ -281,10 +281,10 @@ const projectsData: ProjectEntryProps[] = [
     {
         title: 'Veridian Esports',
         description:
-            "Built solo: a production platform that runs competitive Apex Legends leagues, plus a real-time server that ingests live match data straight from the game.",
+            "A production platform that runs competitive Apex Legends leagues, plus a real-time server that ingests live match data straight from the game.",
         technologies: ['Next.js', 'TypeScript', 'Prisma', 'WebSockets', 'Protobuf', 'AWS'],
         highlights: [
-            'Sole developer: 840+ commits, 200+ merged PRs, 1,400+ automated tests',
+            '840+ commits, 200+ merged PRs, and 1,500+ automated tests',
             'Tournament engine with group seeding, a timed multi-map draft, and ALGS tiebreakers',
             'Dual-ladder MMR rankings with time-weighted decay and live Top 25',
             'LiveAPI server: game client → WebSocket (JSON or protobuf) → live SSE scoreboards',
@@ -293,11 +293,13 @@ const projectsData: ProjectEntryProps[] = [
             'Bilingual (en/es), Discord OAuth, role-gated organizer and admin tooling',
         ],
         images: [
-            '/veridian-home.webp',
-            '/veridian-player-profile.webp',
-            '/veridian-rankings.webp',
-            '/veridian-events.webp',
-            '/veridian-lootpaths.webp',
+            '/veridian-2026-10-home.webp',
+            '/veridian-2026-10-player-profile.webp',
+            '/veridian-2026-10-console.webp',
+            '/veridian-2026-10-rankings.webp',
+            '/veridian-2026-10-tournament.webp',
+            '/veridian-2026-10-events.webp',
+            '/veridian-2026-10-lootpaths.webp',
         ],
         imageAlt: 'Veridian Esports platform screenshots',
         links: {

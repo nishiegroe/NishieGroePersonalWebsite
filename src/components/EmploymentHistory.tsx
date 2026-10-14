@@ -10,16 +10,16 @@ type TimelineItemProps = {
 
 const timelineData: TimelineItemProps[] = [
     {
-        title: 'Sole Software Engineer',
-        company: 'Veridian Esports (independent project)',
+        title: 'Director of Technology',
+        company: 'Veridian Esports',
         location: 'Remote',
         period: '2026 - Present',
         highlights: [
-            'Designed, built, and operate veridianesports.org end to end as the only developer: 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)',
+            'Designed, built, and operate veridianesports.org end to end: 840+ commits and 200+ merged PRs across ~87k lines of strict TypeScript (Next.js 16, React 19, Prisma 7, Tailwind v4)',
             'Built the tournament operations suite community leagues run on: multi-stage events, invite-gated registration, roster locks, MMR-based group seeding, a real-time timed map draft, live scoring with ALGS tiebreakers, and OBS broadcast overlays',
             'Engineered a dual-ladder MMR ranking engine with time-weighted decay and per-ladder Top 25, fed by Overstat.gg, NeatQueue, and Respawn\'s official stats-token API, with identity resolution across Discord, Overstat, and in-game IDs',
             'Built a standalone real-time ingest server for Apex Legends\' LiveAPI (Node.js, WebSockets, Protocol Buffers) that auto-detects JSON or protobuf per connection, reduces the event stream into live scoreboards served over SSE, and routes observer camera commands back to game clients',
-            'Run production on AWS Lightsail with Docker, Caddy TLS, and zero-downtime blue/green deploys; GitHub Actions CI with 1,400+ Vitest tests, a schema-drift guard, CodeQL, and auto-deploy with rollback',
+            'Run production on AWS Lightsail with Docker, Caddy TLS, and zero-downtime blue/green deploys; GitHub Actions CI with 1,500+ Vitest tests, a schema-drift guard, CodeQL, and auto-deploy with rollback',
             'Shipped Discord OAuth with role-based access, player verification, ban-list enforcement, English/Spanish i18n, and SEO (JSON-LD, dynamic OG images)',
         ]
     },

@@ -41,7 +41,7 @@ const Introduction = () => {
                         </Box>
                     </Typography>
                     <Typography sx={styles.bio}>
-                        I'm a Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and Typescript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. Passionate about creating well-documented, maintainable systems that empower teams and drive business value. Outside of work, I'm the sole engineer behind Veridian Esports, a production platform for competitive Apex Legends leagues, from live in-game data ingestion to tournament operations.
+                        I'm a Software Engineer with 8+ years of experience specializing in modern frontend architecture and full-stack development. Expert in Next.js, React, and Typescript with proven ability to design and deliver scalable multi-tenant applications. Demonstrated success leading architectural initiatives, establishing development teams, and executing complex migrations with zero downtime. Passionate about creating well-documented, maintainable systems that empower teams and drive business value. I'm also Director of Technology at Veridian Esports, where I designed and built a production platform for competitive Apex Legends leagues, from live in-game data ingestion to tournament operations.
                     </Typography>
                 </Box>
             </Stack>
