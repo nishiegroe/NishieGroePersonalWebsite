@@ -2,166 +2,66 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- SEO essentials -->
-        <title>Nishie Groe — Software Engineer</title>
+        <title>Nishie Groe · Software Engineer</title>
         <meta
             name="description"
-            content="Nishie Groe — Software Engineer specializing in React, Micro-Frontends, AWS, CI/CD, and UI/UX. Based in the Bay Area; building performant, accessible web apps."
+            content="Nishie Groe is a full-stack software engineer in Chicago with 8+ years of experience in Next.js, React and TypeScript, and Director of Technology at Veridian Esports."
         />
         <meta name="robots" content="index,follow" />
-        <!-- Production domain -->
         <link rel="canonical" href="https://nishiegroe.com/" />
-        <meta name="theme-color" content="#faf8f5" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="theme-color" content="#faf8f5" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#18141c" media="(prefers-color-scheme: dark)" />
 
-        <!-- Google Fonts for Pastel Tech cute feminine redesign -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Crimson+Text:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-        <!-- Preload critical Roboto fonts -->
-        <link rel="preload" href="/assets/roboto-latin-400.woff2" as="font" type="font/woff2" crossorigin>
-        <link rel="preload" href="/assets/roboto-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-
-        <style>
-            @font-face {
-                font-family: 'Roboto';
-                font-style: normal;
-                font-weight: 400;
-                src: url('/assets/roboto-latin-400.woff2') format('woff2');
-                font-display: swap;
-            }
-            @font-face {
-                font-family: 'Roboto';
-                font-style: normal;
-                font-weight: 700;
-                src: url('/assets/roboto-latin-700.woff2') format('woff2');
-                font-display: swap;
-            }
-        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap"
+            rel="stylesheet"
+        />
 
         <!-- Open Graph -->
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Nishie Groe" />
-        <meta property="og:title" content="Nishie Groe — Software Engineer" />
+        <meta property="og:title" content="Nishie Groe · Software Engineer" />
         <meta
             property="og:description"
-            content="Software Engineer specializing in React, Micro-Frontends, AWS, and CI/CD."
+            content="Full-stack software engineer in Chicago. Next.js, React and TypeScript; Director of Technology at Veridian Esports."
         />
         <meta property="og:url" content="https://nishiegroe.com/" />
-        <!-- Optional preview image: place a file in public and set absolute URL when deployed -->
-        <meta
-            property="og:image"
-            content="https://nishiegroe.com/og-image.jpg"
-        />
+        <meta property="og:image" content="https://nishiegroe.com/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
 
         <!-- Twitter -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Nishie Groe — Software Engineer" />
+        <meta name="twitter:title" content="Nishie Groe · Software Engineer" />
         <meta
             name="twitter:description"
-            content="Software Engineer specializing in React, Micro-Frontends, AWS, and CI/CD."
+            content="Full-stack software engineer in Chicago. Next.js, React and TypeScript; Director of Technology at Veridian Esports."
         />
-        <meta
-            name="twitter:image"
-            content="https://nishiegroe.com/og-image.jpg"
-        />
+        <meta name="twitter:image" content="https://nishiegroe.com/og-image.jpg" />
 
-        <!-- Optional: structured data -->
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "Nishie Groe",
-                "alternateName": "nishiegroe.com",
-                "url": "https://nishiegroe.com/",
-                "potentialAction": {
-                    "@type": "SearchAction",
-                    "target": "https://nishiegroe.com/?q={search_term_string}",
-                    "query-input": "required name=search_term_string"
-                }
-            }
-        </script>
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
                 "@type": "Person",
                 "name": "Nishie Groe",
                 "url": "https://nishiegroe.com/",
-                "sameAs": [
-                    "https://github.com/nishiegroe",
-                    "https://www.linkedin.com/in/nishie-groe/"
-                ],
-                "jobTitle": "Software Engineer"
+                "jobTitle": "Software Engineer",
+                "address": { "@type": "PostalAddress", "addressLocality": "Chicago", "addressRegion": "IL" },
+                "sameAs": ["https://github.com/nishiegroe", "https://www.linkedin.com/in/nishie-groe/"]
             }
-        </script>
-        <!-- Inline critical CSS for above-the-fold content -->
-        <style>
-            :root {
-                font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-                line-height: 1.5;
-                font-weight: 400;
-                color-scheme: light dark;
-                color: rgba(255, 255, 255, 0.87);
-                background-color: #faf8f5;
-                font-synthesis: none;
-                text-rendering: optimizeLegibility;
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-            }
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            html {
-                scroll-behavior: smooth;
-            }
-            #root {
-                max-width: 1280px;
-                margin: 0 auto;
-                padding: 1rem;
-            }
-            .app {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                min-height: 100vh;
-                color: #333;
-            }
-        </style>
-        <!-- Defer non-critical CSS -->
-        <link rel="preload" href="/assets/index-CKepTx3p.css" as="style" onload="this.rel='stylesheet'">
-        <noscript><link rel="stylesheet" href="/assets/index-CKepTx3p.css"></noscript>
-        <!-- Non-critical icon CSS below -->
-        <style>
-            .programming{height:1.5em;width:1.5em;background-position:center;background-repeat:no-repeat;background-size:contain;display:inline-block;vertical-align:middle}
-            .lang-c{background-image:url("languages/c.png")}
-            .lang-cpp{background-image:url("languages/cpp.png")}
-            .lang-csharp{background-image:url("languages/csharp.png")}
-            .lang-css{background-image:url("languages/css.png")}
-            .lang-go-old{background-image:url("languages/go-old.png")}
-            .lang-go{background-image:url("languages/go.png")}
-            .lang-html{background-image:url("languages/html.png")}
-            .lang-java{background-image:url("languages/java.png")}
-            .lang-javascript{background-image:url("languages/javascript.png")}
-            .lang-kotlin{background-image:url("languages/kotlin.png")}
-            .lang-lua{background-image:url("languages/lua.png")}
-            .lang-php{background-image:url("languages/php.png")}
-            .lang-python{background-image:url("languages/python.png")}
-            .lang-r{background-image:url("languages/r.png")}
-            .lang-ruby{background-image:url("languages/ruby.png")}
-            .lang-swift{background-image:url("languages/swift.png")}
-            .lang-typescript{background-image:url("languages/typescript.png")}
-        </style>
-        <script>
-            window.dataLayer = window.dataLayer || []
         </script>
     </head>
     <body>
         <div id="root"></div>
-        <script type="module" src="/src/main.jsx"></script>
+        <noscript>
+            <p style="padding: 1rem; font-family: system-ui, sans-serif">
+                This site needs JavaScript to show its pages. You can still reach Nishie at nishiegroe@gmail.com.
+            </p>
+        </noscript>
+        <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>

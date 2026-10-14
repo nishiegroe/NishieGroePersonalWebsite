@@ -38,6 +38,20 @@ I am passionate about building performant, accessible web applications and leadi
   - Optimized SDLC, improved team productivity, and migrated applications to AWS.
   - Led SSO migrations and decommissioned legacy applications for efficiency.
 
+## 🧭 How the site is built
+
+- **Pages:** Home, Projects, one page per project, Experience, Resume and Contact, each at its own URL
+  (React Router). There is no in-page scrolling navigation: every link goes to a real page, which opens
+  at the top with focus on its heading.
+- **Content:** all copy lives in `src/data/content.ts`. Add a project by adding an entry to `projects`
+  (screenshots go in `public/` as `.webp`) and a matching route in `pageMeta`.
+- **Build:** `npm run build` runs Vite, then `scripts/write-route-pages.ts` writes a real
+  `index.html` for every page (with its own title and description) plus `sitemap.xml`.
+- **Accessibility:** skip link, landmarks, one `h1` per page, visible focus, no motion, and colors
+  that pass WCAG AA in light and dark mode. See `THEME_GUIDE.md` before changing colors.
+
+---
+
 ## 📦 Getting Started
 
 1. **Clone the repository:**

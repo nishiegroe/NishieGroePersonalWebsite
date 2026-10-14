@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "vite build && tsx scripts/write-route-pages.ts",
         "lint": "eslint .",
         "preview": "vite preview",
         "compress:og": "node scripts/compress-og-image.mjs && node -e \"const fs=require('fs');fs.renameSync('public/og-image.compressed.jpg','public/og-image.jpg');\"",
@@ -13,17 +13,10 @@
         "compress:photos": "node scripts/compress-photos.mjs"
     },
     "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0",
-        "@fontsource/roboto": "^5.2.10",
-        "@mui/icons-material": "^7.3.2",
-        "@mui/lab": "^7.0.0-beta.17",
-        "@mui/material": "^7.3.2",
-        "@mui/system": "^7.3.2",
-        "developer-icons": "^6.0.5",
         "playwright": "^1.60.0",
         "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
         "react-dom": "^19.2.6",
+        "react-router": "^7.18.3",
         "webpack-cli": "^6.0.1"
     },
     "devDependencies": {
