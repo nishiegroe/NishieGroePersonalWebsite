@@ -1,6 +1,6 @@
 import { Link } from 'react-router'
 import { skillGroups } from '../data/content'
-import resumeUrl from '../assets/Resume Oct 2026.pdf'
+import resumeUrl from '../assets/Resume Nov 2026.pdf'
 
 const Resume = () => (
     <>
